@@ -530,8 +530,19 @@
     display:grid;
     grid-template-columns:repeat(4, 1fr);
     grid-auto-rows:220px;
+    grid-auto-flow:dense;
     gap:10px;
   }
+  .gallery-grid .g-item:nth-child(9n+1){grid-column:span 2;grid-row:span 2;}
+  .gallery-grid .g-item:nth-child(9n+5){grid-row:span 2;}
+  .g-item.g-hidden{display:none;}
+  .gallery-more{text-align:center;margin-top:40px;}
+  .btn-more{
+    background:transparent;
+    border-color:#d6d1c5;
+    color:var(--ink);
+  }
+  .btn-more:hover{border-color:var(--ink);background:rgba(28,27,25,0.05);}
   @media(max-width:900px){
     .gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:200px;}
     .g-item.wide{grid-column:span 2;}
@@ -539,6 +550,8 @@
   }
   @media(max-width:520px){
     .gallery-grid{grid-template-columns:1fr 1fr;grid-auto-rows:150px;gap:8px;}
+    .gallery-grid .g-item:nth-child(9n+1),
+    .gallery-grid .g-item:nth-child(9n+5){grid-column:span 1;grid-row:span 1;}
     .g-item.wide{grid-column:span 2;grid-row:span 1;}
     .g-caption{font-size:11px;padding:10px 12px;opacity:1;transform:none;background:linear-gradient(0deg, rgba(15,14,13,0.75), transparent);}
   }
@@ -866,6 +879,22 @@
     border:1px solid rgba(255,255,255,0.4);
     padding:8px 16px;cursor:pointer;background:transparent;
   }
+  .lightbox-nav{
+    position:absolute;top:50%;transform:translateY(-50%);
+    width:52px;height:52px;border-radius:50%;
+    background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.3);
+    color:var(--white);font-size:24px;line-height:1;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    transition:background .15s;
+  }
+  .lightbox-nav:hover{background:rgba(255,255,255,0.2);}
+  .lightbox-prev{left:20px;}
+  .lightbox-next{right:20px;}
+  @media(max-width:640px){
+    .lightbox-nav{width:42px;height:42px;font-size:18px;}
+    .lightbox-prev{left:6px;}
+    .lightbox-next{right:6px;}
+  }
 
   /* reveal on scroll */
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease;}
@@ -1079,47 +1108,426 @@
         <h2>Skutočné ploty.<br>Žiadne fotomontáže.</h2>
         <p>Výber z plotov, ktoré stoja na skutočných pozemkoch v okolí Ružomberka — fotené hneď po montáži.</p>
       </div>
-      <div class="gallery-grid">
-        <div class="g-item wide tall reveal" onclick="openLightbox(this.querySelector('img').src)">
-          <img src="images/hero.webp" width="1179" height="705" alt="Kamenný dekor plotu s kolibou v pozadí" loading="lazy" decoding="async">
-          <div class="g-caption">Kamenný dekor · rodinný dom</div>
+      <div class="gallery-grid" id="galleryGrid">
+        <div class="g-item reveal" onclick="openLightbox(0)">
+          <img src="images/realizacie/realizacia-001-thumb.webp" width="640" height="853" alt="Realizácia BP ploty — Ružomberok a okolie" loading="lazy" decoding="async">
+          <div class="g-caption">Realizácia BP ploty — Ružomberok a okolie</div>
         </div>
-        <div class="g-item reveal" onclick="openLightbox(this.querySelector('img').src)">
-          <img src="images/material-kamen.webp" width="590" height="1204" alt="Plot na svahovitom pozemku" loading="lazy" decoding="async">
-          <div class="g-caption">Svahovitý pozemok</div>
+        <div class="g-item reveal" onclick="openLightbox(1)">
+          <img src="images/realizacie/realizacia-002-thumb.webp" width="640" height="480" alt="Hotový plot z našej dielne" loading="lazy" decoding="async">
+          <div class="g-caption">Hotový plot z našej dielne</div>
         </div>
-        <div class="g-item reveal" onclick="openLightbox(this.querySelector('img').src)">
-          <img src="images/gallery-3.webp" width="583" height="600" alt="Plot lemujúci trávnatú záhradu" loading="lazy" decoding="async">
-          <div class="g-caption">Obvod záhrady</div>
+        <div class="g-item reveal" onclick="openLightbox(2)">
+          <img src="images/realizacie/realizacia-003-thumb.webp" width="640" height="480" alt="Ukážka z nedávnej montáže" loading="lazy" decoding="async">
+          <div class="g-caption">Ukážka z nedávnej montáže</div>
         </div>
-        <div class="g-item tall reveal" onclick="openLightbox(this.querySelector('img').src)">
-          <img src="images/gallery-4.webp" width="585" height="550" alt="Drevodekor plot medzi kvetinovým záhonom" loading="lazy" decoding="async">
-          <div class="g-caption">Drevodekor · záhon</div>
+        <div class="g-item reveal" onclick="openLightbox(3)">
+          <img src="images/realizacie/realizacia-004-thumb.webp" width="640" height="480" alt="Betónový plot na kľúč" loading="lazy" decoding="async">
+          <div class="g-caption">Betónový plot na kľúč</div>
         </div>
-        <div class="g-item reveal" onclick="openLightbox(this.querySelector('img').src)">
-          <img src="images/material-drevo.webp" width="583" height="550" alt="Detail štruktúry drevodekoru" loading="lazy" decoding="async">
-          <div class="g-caption">Detail štruktúry</div>
+        <div class="g-item reveal" onclick="openLightbox(4)">
+          <img src="images/realizacie/realizacia-005-thumb.webp" width="640" height="480" alt="Realizácia u zákazníka v okolí Ružomberka" loading="lazy" decoding="async">
+          <div class="g-caption">Realizácia u zákazníka v okolí Ružomberka</div>
         </div>
-        <div class="g-item wide reveal" onclick="openLightbox(this.querySelector('img').src)">
-          <img src="images/gallery-6.webp" width="390" height="492" alt="Plot za rodinným domom so slnečnými panelmi" loading="lazy" decoding="async">
-          <div class="g-caption">Realizácia · Ružomberok a okolie</div>
+        <div class="g-item reveal" onclick="openLightbox(5)">
+          <img src="images/realizacie/realizacia-006-thumb.webp" width="640" height="853" alt="Plot postavený naším tímom" loading="lazy" decoding="async">
+          <div class="g-caption">Plot postavený naším tímom</div>
         </div>
-        <div class="g-item reveal" onclick="openLightbox(this.querySelector('img').src)">
-          <img src="images/material-tehla.webp" width="391" height="340" alt="Tehlový dekor plotu pri terase" loading="lazy" decoding="async">
-          <div class="g-caption">Tehlový dekor</div>
+        <div class="g-item reveal" onclick="openLightbox(6)">
+          <img src="images/realizacie/realizacia-007-thumb.webp" width="640" height="480" alt="Realizácia BP ploty — Ružomberok a okolie" loading="lazy" decoding="async">
+          <div class="g-caption">Realizácia BP ploty — Ružomberok a okolie</div>
         </div>
-        <div class="g-item reveal" onclick="openLightbox(this.querySelector('img').src)">
-          <img src="images/gallery-8.webp" width="390" height="492" alt="Drevodekor plot popri strešnej konštrukcii" loading="lazy" decoding="async">
-          <div class="g-caption">Popri hospodárskej budove</div>
+        <div class="g-item reveal" onclick="openLightbox(7)">
+          <img src="images/realizacie/realizacia-008-thumb.webp" width="640" height="480" alt="Hotový plot z našej dielne" loading="lazy" decoding="async">
+          <div class="g-caption">Hotový plot z našej dielne</div>
         </div>
-        <div class="g-item wide reveal" onclick="openLightbox(this.querySelector('img').src)">
-          <img src="images/gallery-9.webp" width="376" height="340" alt="Kamenný dekor plot v pozdĺžnom zábere" loading="lazy" decoding="async">
-          <div class="g-caption">Kamenný dekor · pohľad pozdĺž plota</div>
+        <div class="g-item reveal" onclick="openLightbox(8)">
+          <img src="images/realizacie/realizacia-009-thumb.webp" width="640" height="480" alt="Ukážka z nedávnej montáže" loading="lazy" decoding="async">
+          <div class="g-caption">Ukážka z nedávnej montáže</div>
         </div>
-        <div class="g-item reveal" onclick="openLightbox(this.querySelector('img').src)">
-          <img src="images/gallery-10.webp" width="388" height="492" alt="Drevodekor plot pri stodole" loading="lazy" decoding="async">
-          <div class="g-caption">Pri stodole</div>
+        <div class="g-item reveal" onclick="openLightbox(9)">
+          <img src="images/realizacie/realizacia-010-thumb.webp" width="640" height="480" alt="Betónový plot na kľúč" loading="lazy" decoding="async">
+          <div class="g-caption">Betónový plot na kľúč</div>
         </div>
+        <div class="g-item reveal" onclick="openLightbox(10)">
+          <img src="images/realizacie/realizacia-011-thumb.webp" width="640" height="480" alt="Realizácia u zákazníka v okolí Ružomberka" loading="lazy" decoding="async">
+          <div class="g-caption">Realizácia u zákazníka v okolí Ružomberka</div>
+        </div>
+        <div class="g-item reveal" onclick="openLightbox(11)">
+          <img src="images/realizacie/realizacia-012-thumb.webp" width="640" height="480" alt="Plot postavený naším tímom" loading="lazy" decoding="async">
+          <div class="g-caption">Plot postavený naším tímom</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(12)">
+          <img src="images/realizacie/realizacia-013-thumb.webp" width="640" height="480" alt="Realizácia BP ploty — Ružomberok a okolie" loading="lazy" decoding="async">
+          <div class="g-caption">Realizácia BP ploty — Ružomberok a okolie</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(13)">
+          <img src="images/realizacie/realizacia-014-thumb.webp" width="640" height="480" alt="Hotový plot z našej dielne" loading="lazy" decoding="async">
+          <div class="g-caption">Hotový plot z našej dielne</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(14)">
+          <img src="images/realizacie/realizacia-015-thumb.webp" width="640" height="480" alt="Ukážka z nedávnej montáže" loading="lazy" decoding="async">
+          <div class="g-caption">Ukážka z nedávnej montáže</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(15)">
+          <img src="images/realizacie/realizacia-016-thumb.webp" width="640" height="480" alt="Betónový plot na kľúč" loading="lazy" decoding="async">
+          <div class="g-caption">Betónový plot na kľúč</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(16)">
+          <img src="images/realizacie/realizacia-017-thumb.webp" width="640" height="480" alt="Realizácia u zákazníka v okolí Ružomberka" loading="lazy" decoding="async">
+          <div class="g-caption">Realizácia u zákazníka v okolí Ružomberka</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(17)">
+          <img src="images/realizacie/realizacia-018-thumb.webp" width="640" height="480" alt="Plot postavený naším tímom" loading="lazy" decoding="async">
+          <div class="g-caption">Plot postavený naším tímom</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(18)">
+          <img src="images/realizacie/realizacia-019-thumb.webp" width="640" height="853" alt="Realizácia BP ploty — Ružomberok a okolie" loading="lazy" decoding="async">
+          <div class="g-caption">Realizácia BP ploty — Ružomberok a okolie</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(19)">
+          <img src="images/realizacie/realizacia-020-thumb.webp" width="640" height="480" alt="Hotový plot z našej dielne" loading="lazy" decoding="async">
+          <div class="g-caption">Hotový plot z našej dielne</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(20)">
+          <img src="images/realizacie/realizacia-021-thumb.webp" width="640" height="480" alt="Ukážka z nedávnej montáže" loading="lazy" decoding="async">
+          <div class="g-caption">Ukážka z nedávnej montáže</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(21)">
+          <img src="images/realizacie/realizacia-022-thumb.webp" width="640" height="480" alt="Betónový plot na kľúč" loading="lazy" decoding="async">
+          <div class="g-caption">Betónový plot na kľúč</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(22)">
+          <img src="images/realizacie/realizacia-023-thumb.webp" width="640" height="480" alt="Realizácia u zákazníka v okolí Ružomberka" loading="lazy" decoding="async">
+          <div class="g-caption">Realizácia u zákazníka v okolí Ružomberka</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(23)">
+          <img src="images/realizacie/realizacia-024-thumb.webp" width="640" height="480" alt="Plot postavený naším tímom" loading="lazy" decoding="async">
+          <div class="g-caption">Plot postavený naším tímom</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(24)">
+          <img src="images/realizacie/realizacia-025-thumb.webp" width="640" height="480" alt="Realizácia BP ploty — Ružomberok a okolie" loading="lazy" decoding="async">
+          <div class="g-caption">Realizácia BP ploty — Ružomberok a okolie</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(25)">
+          <img src="images/realizacie/realizacia-026-thumb.webp" width="640" height="480" alt="Hotový plot z našej dielne" loading="lazy" decoding="async">
+          <div class="g-caption">Hotový plot z našej dielne</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(26)">
+          <img src="images/realizacie/realizacia-027-thumb.webp" width="640" height="480" alt="Ukážka z nedávnej montáže" loading="lazy" decoding="async">
+          <div class="g-caption">Ukážka z nedávnej montáže</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(27)">
+          <img src="images/realizacie/realizacia-028-thumb.webp" width="640" height="480" alt="Betónový plot na kľúč" loading="lazy" decoding="async">
+          <div class="g-caption">Betónový plot na kľúč</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(28)">
+          <img src="images/realizacie/realizacia-029-thumb.webp" width="640" height="480" alt="Realizácia u zákazníka v okolí Ružomberka" loading="lazy" decoding="async">
+          <div class="g-caption">Realizácia u zákazníka v okolí Ružomberka</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(29)">
+          <img src="images/realizacie/realizacia-030-thumb.webp" width="640" height="480" alt="Plot postavený naším tímom" loading="lazy" decoding="async">
+          <div class="g-caption">Plot postavený naším tímom</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(30)">
+          <img src="images/realizacie/realizacia-031-thumb.webp" width="640" height="480" alt="Realizácia BP ploty — Ružomberok a okolie" loading="lazy" decoding="async">
+          <div class="g-caption">Realizácia BP ploty — Ružomberok a okolie</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(31)">
+          <img src="images/realizacie/realizacia-032-thumb.webp" width="640" height="480" alt="Hotový plot z našej dielne" loading="lazy" decoding="async">
+          <div class="g-caption">Hotový plot z našej dielne</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(32)">
+          <img src="images/realizacie/realizacia-033-thumb.webp" width="640" height="480" alt="Ukážka z nedávnej montáže" loading="lazy" decoding="async">
+          <div class="g-caption">Ukážka z nedávnej montáže</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(33)">
+          <img src="images/realizacie/realizacia-034-thumb.webp" width="640" height="480" alt="Betónový plot na kľúč" loading="lazy" decoding="async">
+          <div class="g-caption">Betónový plot na kľúč</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(34)">
+          <img src="images/realizacie/realizacia-035-thumb.webp" width="640" height="480" alt="Realizácia u zákazníka v okolí Ružomberka" loading="lazy" decoding="async">
+          <div class="g-caption">Realizácia u zákazníka v okolí Ružomberka</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(35)">
+          <img src="images/realizacie/realizacia-036-thumb.webp" width="640" height="484" alt="Plot postavený naším tímom" loading="lazy" decoding="async">
+          <div class="g-caption">Plot postavený naším tímom</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(36)">
+          <img src="images/realizacie/realizacia-037-thumb.webp" width="640" height="480" alt="Realizácia BP ploty — Ružomberok a okolie" loading="lazy" decoding="async">
+          <div class="g-caption">Realizácia BP ploty — Ružomberok a okolie</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(37)">
+          <img src="images/realizacie/realizacia-038-thumb.webp" width="640" height="480" alt="Hotový plot z našej dielne" loading="lazy" decoding="async">
+          <div class="g-caption">Hotový plot z našej dielne</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(38)">
+          <img src="images/realizacie/realizacia-039-thumb.webp" width="640" height="480" alt="Ukážka z nedávnej montáže" loading="lazy" decoding="async">
+          <div class="g-caption">Ukážka z nedávnej montáže</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(39)">
+          <img src="images/realizacie/realizacia-040-thumb.webp" width="640" height="480" alt="Betónový plot na kľúč" loading="lazy" decoding="async">
+          <div class="g-caption">Betónový plot na kľúč</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(40)">
+          <img src="images/realizacie/realizacia-041-thumb.webp" width="640" height="480" alt="Realizácia u zákazníka v okolí Ružomberka" loading="lazy" decoding="async">
+          <div class="g-caption">Realizácia u zákazníka v okolí Ružomberka</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(41)">
+          <img src="images/realizacie/realizacia-042-thumb.webp" width="640" height="480" alt="Plot postavený naším tímom" loading="lazy" decoding="async">
+          <div class="g-caption">Plot postavený naším tímom</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(42)">
+          <img src="images/realizacie/realizacia-043-thumb.webp" width="640" height="480" alt="Realizácia BP ploty — Ružomberok a okolie" loading="lazy" decoding="async">
+          <div class="g-caption">Realizácia BP ploty — Ružomberok a okolie</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(43)">
+          <img src="images/realizacie/realizacia-044-thumb.webp" width="640" height="638" alt="Hotový plot z našej dielne" loading="lazy" decoding="async">
+          <div class="g-caption">Hotový plot z našej dielne</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(44)">
+          <img src="images/realizacie/realizacia-045-thumb.webp" width="640" height="480" alt="Ukážka z nedávnej montáže" loading="lazy" decoding="async">
+          <div class="g-caption">Ukážka z nedávnej montáže</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(45)">
+          <img src="images/realizacie/realizacia-046-thumb.webp" width="640" height="480" alt="Betónový plot na kľúč" loading="lazy" decoding="async">
+          <div class="g-caption">Betónový plot na kľúč</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(46)">
+          <img src="images/realizacie/realizacia-047-thumb.webp" width="640" height="480" alt="Realizácia u zákazníka v okolí Ružomberka" loading="lazy" decoding="async">
+          <div class="g-caption">Realizácia u zákazníka v okolí Ružomberka</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(47)">
+          <img src="images/realizacie/realizacia-048-thumb.webp" width="640" height="480" alt="Plot postavený naším tímom" loading="lazy" decoding="async">
+          <div class="g-caption">Plot postavený naším tímom</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(48)">
+          <img src="images/realizacie/realizacia-049-thumb.webp" width="640" height="480" alt="Realizácia BP ploty — Ružomberok a okolie" loading="lazy" decoding="async">
+          <div class="g-caption">Realizácia BP ploty — Ružomberok a okolie</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(49)">
+          <img src="images/realizacie/realizacia-050-thumb.webp" width="640" height="853" alt="Hotový plot z našej dielne" loading="lazy" decoding="async">
+          <div class="g-caption">Hotový plot z našej dielne</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(50)">
+          <img src="images/realizacie/realizacia-051-thumb.webp" width="640" height="853" alt="Ukážka z nedávnej montáže" loading="lazy" decoding="async">
+          <div class="g-caption">Ukážka z nedávnej montáže</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(51)">
+          <img src="images/realizacie/realizacia-052-thumb.webp" width="640" height="853" alt="Betónový plot na kľúč" loading="lazy" decoding="async">
+          <div class="g-caption">Betónový plot na kľúč</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(52)">
+          <img src="images/realizacie/realizacia-053-thumb.webp" width="640" height="853" alt="Realizácia u zákazníka v okolí Ružomberka" loading="lazy" decoding="async">
+          <div class="g-caption">Realizácia u zákazníka v okolí Ružomberka</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(53)">
+          <img src="images/realizacie/realizacia-054-thumb.webp" width="640" height="480" alt="Plot postavený naším tímom" loading="lazy" decoding="async">
+          <div class="g-caption">Plot postavený naším tímom</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(54)">
+          <img src="images/realizacie/realizacia-055-thumb.webp" width="640" height="853" alt="Realizácia BP ploty — Ružomberok a okolie" loading="lazy" decoding="async">
+          <div class="g-caption">Realizácia BP ploty — Ružomberok a okolie</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(55)">
+          <img src="images/realizacie/realizacia-056-thumb.webp" width="640" height="480" alt="Hotový plot z našej dielne" loading="lazy" decoding="async">
+          <div class="g-caption">Hotový plot z našej dielne</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(56)">
+          <img src="images/realizacie/realizacia-057-thumb.webp" width="640" height="480" alt="Ukážka z nedávnej montáže" loading="lazy" decoding="async">
+          <div class="g-caption">Ukážka z nedávnej montáže</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(57)">
+          <img src="images/realizacie/realizacia-058-thumb.webp" width="640" height="480" alt="Betónový plot na kľúč" loading="lazy" decoding="async">
+          <div class="g-caption">Betónový plot na kľúč</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(58)">
+          <img src="images/realizacie/realizacia-059-thumb.webp" width="640" height="480" alt="Realizácia u zákazníka v okolí Ružomberka" loading="lazy" decoding="async">
+          <div class="g-caption">Realizácia u zákazníka v okolí Ružomberka</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(59)">
+          <img src="images/realizacie/realizacia-060-thumb.webp" width="640" height="480" alt="Plot postavený naším tímom" loading="lazy" decoding="async">
+          <div class="g-caption">Plot postavený naším tímom</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(60)">
+          <img src="images/realizacie/realizacia-061-thumb.webp" width="640" height="480" alt="Realizácia BP ploty — Ružomberok a okolie" loading="lazy" decoding="async">
+          <div class="g-caption">Realizácia BP ploty — Ružomberok a okolie</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(61)">
+          <img src="images/realizacie/realizacia-062-thumb.webp" width="640" height="480" alt="Hotový plot z našej dielne" loading="lazy" decoding="async">
+          <div class="g-caption">Hotový plot z našej dielne</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(62)">
+          <img src="images/realizacie/realizacia-063-thumb.webp" width="640" height="480" alt="Ukážka z nedávnej montáže" loading="lazy" decoding="async">
+          <div class="g-caption">Ukážka z nedávnej montáže</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(63)">
+          <img src="images/realizacie/realizacia-064-thumb.webp" width="640" height="480" alt="Betónový plot na kľúč" loading="lazy" decoding="async">
+          <div class="g-caption">Betónový plot na kľúč</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(64)">
+          <img src="images/realizacie/realizacia-065-thumb.webp" width="640" height="480" alt="Realizácia u zákazníka v okolí Ružomberka" loading="lazy" decoding="async">
+          <div class="g-caption">Realizácia u zákazníka v okolí Ružomberka</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(65)">
+          <img src="images/realizacie/realizacia-066-thumb.webp" width="640" height="853" alt="Plot postavený naším tímom" loading="lazy" decoding="async">
+          <div class="g-caption">Plot postavený naším tímom</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(66)">
+          <img src="images/realizacie/realizacia-067-thumb.webp" width="640" height="480" alt="Realizácia BP ploty — Ružomberok a okolie" loading="lazy" decoding="async">
+          <div class="g-caption">Realizácia BP ploty — Ružomberok a okolie</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(67)">
+          <img src="images/realizacie/realizacia-068-thumb.webp" width="640" height="480" alt="Hotový plot z našej dielne" loading="lazy" decoding="async">
+          <div class="g-caption">Hotový plot z našej dielne</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(68)">
+          <img src="images/realizacie/realizacia-069-thumb.webp" width="640" height="480" alt="Ukážka z nedávnej montáže" loading="lazy" decoding="async">
+          <div class="g-caption">Ukážka z nedávnej montáže</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(69)">
+          <img src="images/realizacie/realizacia-070-thumb.webp" width="640" height="480" alt="Betónový plot na kľúč" loading="lazy" decoding="async">
+          <div class="g-caption">Betónový plot na kľúč</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(70)">
+          <img src="images/realizacie/realizacia-071-thumb.webp" width="640" height="853" alt="Realizácia u zákazníka v okolí Ružomberka" loading="lazy" decoding="async">
+          <div class="g-caption">Realizácia u zákazníka v okolí Ružomberka</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(71)">
+          <img src="images/realizacie/realizacia-072-thumb.webp" width="640" height="480" alt="Plot postavený naším tímom" loading="lazy" decoding="async">
+          <div class="g-caption">Plot postavený naším tímom</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(72)">
+          <img src="images/realizacie/realizacia-073-thumb.webp" width="640" height="480" alt="Realizácia BP ploty — Ružomberok a okolie" loading="lazy" decoding="async">
+          <div class="g-caption">Realizácia BP ploty — Ružomberok a okolie</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(73)">
+          <img src="images/realizacie/realizacia-074-thumb.webp" width="640" height="853" alt="Hotový plot z našej dielne" loading="lazy" decoding="async">
+          <div class="g-caption">Hotový plot z našej dielne</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(74)">
+          <img src="images/realizacie/realizacia-075-thumb.webp" width="640" height="480" alt="Ukážka z nedávnej montáže" loading="lazy" decoding="async">
+          <div class="g-caption">Ukážka z nedávnej montáže</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(75)">
+          <img src="images/realizacie/realizacia-076-thumb.webp" width="640" height="480" alt="Betónový plot na kľúč" loading="lazy" decoding="async">
+          <div class="g-caption">Betónový plot na kľúč</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(76)">
+          <img src="images/realizacie/realizacia-077-thumb.webp" width="640" height="480" alt="Realizácia u zákazníka v okolí Ružomberka" loading="lazy" decoding="async">
+          <div class="g-caption">Realizácia u zákazníka v okolí Ružomberka</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(77)">
+          <img src="images/realizacie/realizacia-078-thumb.webp" width="640" height="853" alt="Plot postavený naším tímom" loading="lazy" decoding="async">
+          <div class="g-caption">Plot postavený naším tímom</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(78)">
+          <img src="images/realizacie/realizacia-079-thumb.webp" width="640" height="480" alt="Realizácia BP ploty — Ružomberok a okolie" loading="lazy" decoding="async">
+          <div class="g-caption">Realizácia BP ploty — Ružomberok a okolie</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(79)">
+          <img src="images/realizacie/realizacia-080-thumb.webp" width="640" height="480" alt="Hotový plot z našej dielne" loading="lazy" decoding="async">
+          <div class="g-caption">Hotový plot z našej dielne</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(80)">
+          <img src="images/realizacie/realizacia-081-thumb.webp" width="640" height="480" alt="Ukážka z nedávnej montáže" loading="lazy" decoding="async">
+          <div class="g-caption">Ukážka z nedávnej montáže</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(81)">
+          <img src="images/realizacie/realizacia-082-thumb.webp" width="640" height="480" alt="Betónový plot na kľúč" loading="lazy" decoding="async">
+          <div class="g-caption">Betónový plot na kľúč</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(82)">
+          <img src="images/realizacie/realizacia-083-thumb.webp" width="640" height="853" alt="Realizácia u zákazníka v okolí Ružomberka" loading="lazy" decoding="async">
+          <div class="g-caption">Realizácia u zákazníka v okolí Ružomberka</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(83)">
+          <img src="images/realizacie/realizacia-084-thumb.webp" width="640" height="480" alt="Plot postavený naším tímom" loading="lazy" decoding="async">
+          <div class="g-caption">Plot postavený naším tímom</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(84)">
+          <img src="images/realizacie/realizacia-085-thumb.webp" width="640" height="853" alt="Realizácia BP ploty — Ružomberok a okolie" loading="lazy" decoding="async">
+          <div class="g-caption">Realizácia BP ploty — Ružomberok a okolie</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(85)">
+          <img src="images/realizacie/realizacia-086-thumb.webp" width="640" height="480" alt="Hotový plot z našej dielne" loading="lazy" decoding="async">
+          <div class="g-caption">Hotový plot z našej dielne</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(86)">
+          <img src="images/realizacie/realizacia-087-thumb.webp" width="640" height="480" alt="Ukážka z nedávnej montáže" loading="lazy" decoding="async">
+          <div class="g-caption">Ukážka z nedávnej montáže</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(87)">
+          <img src="images/realizacie/realizacia-088-thumb.webp" width="640" height="850" alt="Betónový plot na kľúč" loading="lazy" decoding="async">
+          <div class="g-caption">Betónový plot na kľúč</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(88)">
+          <img src="images/realizacie/realizacia-089-thumb.webp" width="640" height="850" alt="Realizácia u zákazníka v okolí Ružomberka" loading="lazy" decoding="async">
+          <div class="g-caption">Realizácia u zákazníka v okolí Ružomberka</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(89)">
+          <img src="images/realizacie/realizacia-090-thumb.webp" width="640" height="850" alt="Plot postavený naším tímom" loading="lazy" decoding="async">
+          <div class="g-caption">Plot postavený naším tímom</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(90)">
+          <img src="images/realizacie/realizacia-091-thumb.webp" width="640" height="480" alt="Realizácia BP ploty — Ružomberok a okolie" loading="lazy" decoding="async">
+          <div class="g-caption">Realizácia BP ploty — Ružomberok a okolie</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(91)">
+          <img src="images/realizacie/realizacia-092-thumb.webp" width="640" height="480" alt="Hotový plot z našej dielne" loading="lazy" decoding="async">
+          <div class="g-caption">Hotový plot z našej dielne</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(92)">
+          <img src="images/realizacie/realizacia-093-thumb.webp" width="640" height="480" alt="Ukážka z nedávnej montáže" loading="lazy" decoding="async">
+          <div class="g-caption">Ukážka z nedávnej montáže</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(93)">
+          <img src="images/realizacie/realizacia-094-thumb.webp" width="640" height="480" alt="Betónový plot na kľúč" loading="lazy" decoding="async">
+          <div class="g-caption">Betónový plot na kľúč</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(94)">
+          <img src="images/realizacie/realizacia-095-thumb.webp" width="640" height="480" alt="Realizácia u zákazníka v okolí Ružomberka" loading="lazy" decoding="async">
+          <div class="g-caption">Realizácia u zákazníka v okolí Ružomberka</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(95)">
+          <img src="images/realizacie/realizacia-096-thumb.webp" width="640" height="853" alt="Plot postavený naším tímom" loading="lazy" decoding="async">
+          <div class="g-caption">Plot postavený naším tímom</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(96)">
+          <img src="images/realizacie/realizacia-097-thumb.webp" width="640" height="853" alt="Realizácia BP ploty — Ružomberok a okolie" loading="lazy" decoding="async">
+          <div class="g-caption">Realizácia BP ploty — Ružomberok a okolie</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(97)">
+          <img src="images/realizacie/realizacia-098-thumb.webp" width="640" height="480" alt="Hotový plot z našej dielne" loading="lazy" decoding="async">
+          <div class="g-caption">Hotový plot z našej dielne</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(98)">
+          <img src="images/realizacie/realizacia-099-thumb.webp" width="640" height="853" alt="Ukážka z nedávnej montáže" loading="lazy" decoding="async">
+          <div class="g-caption">Ukážka z nedávnej montáže</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(99)">
+          <img src="images/realizacie/realizacia-100-thumb.webp" width="640" height="480" alt="Betónový plot na kľúč" loading="lazy" decoding="async">
+          <div class="g-caption">Betónový plot na kľúč</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(100)">
+          <img src="images/realizacie/realizacia-101-thumb.webp" width="640" height="853" alt="Realizácia u zákazníka v okolí Ružomberka" loading="lazy" decoding="async">
+          <div class="g-caption">Realizácia u zákazníka v okolí Ružomberka</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(101)">
+          <img src="images/realizacie/realizacia-102-thumb.webp" width="640" height="480" alt="Plot postavený naším tímom" loading="lazy" decoding="async">
+          <div class="g-caption">Plot postavený naším tímom</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(102)">
+          <img src="images/realizacie/realizacia-103-thumb.webp" width="640" height="480" alt="Realizácia BP ploty — Ružomberok a okolie" loading="lazy" decoding="async">
+          <div class="g-caption">Realizácia BP ploty — Ružomberok a okolie</div>
+        </div>
+        <div class="g-item reveal g-hidden" onclick="openLightbox(103)">
+          <img src="images/realizacie/realizacia-104-thumb.webp" width="640" height="853" alt="Hotový plot z našej dielne" loading="lazy" decoding="async">
+          <div class="g-caption">Hotový plot z našej dielne</div>
+        </div>
+      </div>
+      <div class="gallery-more">
+        <button class="btn btn-more" id="loadMoreBtn">Zobraziť viac ↓</button>
       </div>
     </div>
   </section>
@@ -1261,7 +1669,9 @@
 
 <div class="lightbox" id="lightbox">
   <button class="lightbox-close" onclick="closeLightbox()">Zavrieť ✕</button>
+  <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)" aria-label="Predchádzajúca fotka">‹</button>
   <img id="lightboxImg" src="" alt="">
+  <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)" aria-label="Ďalšia fotka">›</button>
 </div>
 
 <div class="mobile-cta-bar" id="mobileCtaBar">
@@ -1293,20 +1703,152 @@
     });
   });
 
-  // Lightbox
-  function openLightbox(src){
-    document.getElementById('lightboxImg').src = src;
+  // Gallery data + lightbox with prev/next navigation
+  const galleryData = [
+    {full:'images/realizacie/realizacia-001-full.webp', alt:'Realizácia BP ploty — Ružomberok a okolie'},
+    {full:'images/realizacie/realizacia-002-full.webp', alt:'Hotový plot z našej dielne'},
+    {full:'images/realizacie/realizacia-003-full.webp', alt:'Ukážka z nedávnej montáže'},
+    {full:'images/realizacie/realizacia-004-full.webp', alt:'Betónový plot na kľúč'},
+    {full:'images/realizacie/realizacia-005-full.webp', alt:'Realizácia u zákazníka v okolí Ružomberka'},
+    {full:'images/realizacie/realizacia-006-full.webp', alt:'Plot postavený naším tímom'},
+    {full:'images/realizacie/realizacia-007-full.webp', alt:'Realizácia BP ploty — Ružomberok a okolie'},
+    {full:'images/realizacie/realizacia-008-full.webp', alt:'Hotový plot z našej dielne'},
+    {full:'images/realizacie/realizacia-009-full.webp', alt:'Ukážka z nedávnej montáže'},
+    {full:'images/realizacie/realizacia-010-full.webp', alt:'Betónový plot na kľúč'},
+    {full:'images/realizacie/realizacia-011-full.webp', alt:'Realizácia u zákazníka v okolí Ružomberka'},
+    {full:'images/realizacie/realizacia-012-full.webp', alt:'Plot postavený naším tímom'},
+    {full:'images/realizacie/realizacia-013-full.webp', alt:'Realizácia BP ploty — Ružomberok a okolie'},
+    {full:'images/realizacie/realizacia-014-full.webp', alt:'Hotový plot z našej dielne'},
+    {full:'images/realizacie/realizacia-015-full.webp', alt:'Ukážka z nedávnej montáže'},
+    {full:'images/realizacie/realizacia-016-full.webp', alt:'Betónový plot na kľúč'},
+    {full:'images/realizacie/realizacia-017-full.webp', alt:'Realizácia u zákazníka v okolí Ružomberka'},
+    {full:'images/realizacie/realizacia-018-full.webp', alt:'Plot postavený naším tímom'},
+    {full:'images/realizacie/realizacia-019-full.webp', alt:'Realizácia BP ploty — Ružomberok a okolie'},
+    {full:'images/realizacie/realizacia-020-full.webp', alt:'Hotový plot z našej dielne'},
+    {full:'images/realizacie/realizacia-021-full.webp', alt:'Ukážka z nedávnej montáže'},
+    {full:'images/realizacie/realizacia-022-full.webp', alt:'Betónový plot na kľúč'},
+    {full:'images/realizacie/realizacia-023-full.webp', alt:'Realizácia u zákazníka v okolí Ružomberka'},
+    {full:'images/realizacie/realizacia-024-full.webp', alt:'Plot postavený naším tímom'},
+    {full:'images/realizacie/realizacia-025-full.webp', alt:'Realizácia BP ploty — Ružomberok a okolie'},
+    {full:'images/realizacie/realizacia-026-full.webp', alt:'Hotový plot z našej dielne'},
+    {full:'images/realizacie/realizacia-027-full.webp', alt:'Ukážka z nedávnej montáže'},
+    {full:'images/realizacie/realizacia-028-full.webp', alt:'Betónový plot na kľúč'},
+    {full:'images/realizacie/realizacia-029-full.webp', alt:'Realizácia u zákazníka v okolí Ružomberka'},
+    {full:'images/realizacie/realizacia-030-full.webp', alt:'Plot postavený naším tímom'},
+    {full:'images/realizacie/realizacia-031-full.webp', alt:'Realizácia BP ploty — Ružomberok a okolie'},
+    {full:'images/realizacie/realizacia-032-full.webp', alt:'Hotový plot z našej dielne'},
+    {full:'images/realizacie/realizacia-033-full.webp', alt:'Ukážka z nedávnej montáže'},
+    {full:'images/realizacie/realizacia-034-full.webp', alt:'Betónový plot na kľúč'},
+    {full:'images/realizacie/realizacia-035-full.webp', alt:'Realizácia u zákazníka v okolí Ružomberka'},
+    {full:'images/realizacie/realizacia-036-full.webp', alt:'Plot postavený naším tímom'},
+    {full:'images/realizacie/realizacia-037-full.webp', alt:'Realizácia BP ploty — Ružomberok a okolie'},
+    {full:'images/realizacie/realizacia-038-full.webp', alt:'Hotový plot z našej dielne'},
+    {full:'images/realizacie/realizacia-039-full.webp', alt:'Ukážka z nedávnej montáže'},
+    {full:'images/realizacie/realizacia-040-full.webp', alt:'Betónový plot na kľúč'},
+    {full:'images/realizacie/realizacia-041-full.webp', alt:'Realizácia u zákazníka v okolí Ružomberka'},
+    {full:'images/realizacie/realizacia-042-full.webp', alt:'Plot postavený naším tímom'},
+    {full:'images/realizacie/realizacia-043-full.webp', alt:'Realizácia BP ploty — Ružomberok a okolie'},
+    {full:'images/realizacie/realizacia-044-full.webp', alt:'Hotový plot z našej dielne'},
+    {full:'images/realizacie/realizacia-045-full.webp', alt:'Ukážka z nedávnej montáže'},
+    {full:'images/realizacie/realizacia-046-full.webp', alt:'Betónový plot na kľúč'},
+    {full:'images/realizacie/realizacia-047-full.webp', alt:'Realizácia u zákazníka v okolí Ružomberka'},
+    {full:'images/realizacie/realizacia-048-full.webp', alt:'Plot postavený naším tímom'},
+    {full:'images/realizacie/realizacia-049-full.webp', alt:'Realizácia BP ploty — Ružomberok a okolie'},
+    {full:'images/realizacie/realizacia-050-full.webp', alt:'Hotový plot z našej dielne'},
+    {full:'images/realizacie/realizacia-051-full.webp', alt:'Ukážka z nedávnej montáže'},
+    {full:'images/realizacie/realizacia-052-full.webp', alt:'Betónový plot na kľúč'},
+    {full:'images/realizacie/realizacia-053-full.webp', alt:'Realizácia u zákazníka v okolí Ružomberka'},
+    {full:'images/realizacie/realizacia-054-full.webp', alt:'Plot postavený naším tímom'},
+    {full:'images/realizacie/realizacia-055-full.webp', alt:'Realizácia BP ploty — Ružomberok a okolie'},
+    {full:'images/realizacie/realizacia-056-full.webp', alt:'Hotový plot z našej dielne'},
+    {full:'images/realizacie/realizacia-057-full.webp', alt:'Ukážka z nedávnej montáže'},
+    {full:'images/realizacie/realizacia-058-full.webp', alt:'Betónový plot na kľúč'},
+    {full:'images/realizacie/realizacia-059-full.webp', alt:'Realizácia u zákazníka v okolí Ružomberka'},
+    {full:'images/realizacie/realizacia-060-full.webp', alt:'Plot postavený naším tímom'},
+    {full:'images/realizacie/realizacia-061-full.webp', alt:'Realizácia BP ploty — Ružomberok a okolie'},
+    {full:'images/realizacie/realizacia-062-full.webp', alt:'Hotový plot z našej dielne'},
+    {full:'images/realizacie/realizacia-063-full.webp', alt:'Ukážka z nedávnej montáže'},
+    {full:'images/realizacie/realizacia-064-full.webp', alt:'Betónový plot na kľúč'},
+    {full:'images/realizacie/realizacia-065-full.webp', alt:'Realizácia u zákazníka v okolí Ružomberka'},
+    {full:'images/realizacie/realizacia-066-full.webp', alt:'Plot postavený naším tímom'},
+    {full:'images/realizacie/realizacia-067-full.webp', alt:'Realizácia BP ploty — Ružomberok a okolie'},
+    {full:'images/realizacie/realizacia-068-full.webp', alt:'Hotový plot z našej dielne'},
+    {full:'images/realizacie/realizacia-069-full.webp', alt:'Ukážka z nedávnej montáže'},
+    {full:'images/realizacie/realizacia-070-full.webp', alt:'Betónový plot na kľúč'},
+    {full:'images/realizacie/realizacia-071-full.webp', alt:'Realizácia u zákazníka v okolí Ružomberka'},
+    {full:'images/realizacie/realizacia-072-full.webp', alt:'Plot postavený naším tímom'},
+    {full:'images/realizacie/realizacia-073-full.webp', alt:'Realizácia BP ploty — Ružomberok a okolie'},
+    {full:'images/realizacie/realizacia-074-full.webp', alt:'Hotový plot z našej dielne'},
+    {full:'images/realizacie/realizacia-075-full.webp', alt:'Ukážka z nedávnej montáže'},
+    {full:'images/realizacie/realizacia-076-full.webp', alt:'Betónový plot na kľúč'},
+    {full:'images/realizacie/realizacia-077-full.webp', alt:'Realizácia u zákazníka v okolí Ružomberka'},
+    {full:'images/realizacie/realizacia-078-full.webp', alt:'Plot postavený naším tímom'},
+    {full:'images/realizacie/realizacia-079-full.webp', alt:'Realizácia BP ploty — Ružomberok a okolie'},
+    {full:'images/realizacie/realizacia-080-full.webp', alt:'Hotový plot z našej dielne'},
+    {full:'images/realizacie/realizacia-081-full.webp', alt:'Ukážka z nedávnej montáže'},
+    {full:'images/realizacie/realizacia-082-full.webp', alt:'Betónový plot na kľúč'},
+    {full:'images/realizacie/realizacia-083-full.webp', alt:'Realizácia u zákazníka v okolí Ružomberka'},
+    {full:'images/realizacie/realizacia-084-full.webp', alt:'Plot postavený naším tímom'},
+    {full:'images/realizacie/realizacia-085-full.webp', alt:'Realizácia BP ploty — Ružomberok a okolie'},
+    {full:'images/realizacie/realizacia-086-full.webp', alt:'Hotový plot z našej dielne'},
+    {full:'images/realizacie/realizacia-087-full.webp', alt:'Ukážka z nedávnej montáže'},
+    {full:'images/realizacie/realizacia-088-full.webp', alt:'Betónový plot na kľúč'},
+    {full:'images/realizacie/realizacia-089-full.webp', alt:'Realizácia u zákazníka v okolí Ružomberka'},
+    {full:'images/realizacie/realizacia-090-full.webp', alt:'Plot postavený naším tímom'},
+    {full:'images/realizacie/realizacia-091-full.webp', alt:'Realizácia BP ploty — Ružomberok a okolie'},
+    {full:'images/realizacie/realizacia-092-full.webp', alt:'Hotový plot z našej dielne'},
+    {full:'images/realizacie/realizacia-093-full.webp', alt:'Ukážka z nedávnej montáže'},
+    {full:'images/realizacie/realizacia-094-full.webp', alt:'Betónový plot na kľúč'},
+    {full:'images/realizacie/realizacia-095-full.webp', alt:'Realizácia u zákazníka v okolí Ružomberka'},
+    {full:'images/realizacie/realizacia-096-full.webp', alt:'Plot postavený naším tímom'},
+    {full:'images/realizacie/realizacia-097-full.webp', alt:'Realizácia BP ploty — Ružomberok a okolie'},
+    {full:'images/realizacie/realizacia-098-full.webp', alt:'Hotový plot z našej dielne'},
+    {full:'images/realizacie/realizacia-099-full.webp', alt:'Ukážka z nedávnej montáže'},
+    {full:'images/realizacie/realizacia-100-full.webp', alt:'Betónový plot na kľúč'},
+    {full:'images/realizacie/realizacia-101-full.webp', alt:'Realizácia u zákazníka v okolí Ružomberka'},
+    {full:'images/realizacie/realizacia-102-full.webp', alt:'Plot postavený naším tímom'},
+    {full:'images/realizacie/realizacia-103-full.webp', alt:'Realizácia BP ploty — Ružomberok a okolie'},
+    {full:'images/realizacie/realizacia-104-full.webp', alt:'Hotový plot z našej dielne'}
+  ];
+  let lightboxIndex = 0;
+  function showLightboxImage(i){
+    lightboxIndex = (i + galleryData.length) % galleryData.length;
+    const item = galleryData[lightboxIndex];
+    document.getElementById('lightboxImg').src = item.full;
+    document.getElementById('lightboxImg').alt = item.alt;
+  }
+  function openLightbox(i){
+    showLightboxImage(i);
     document.getElementById('lightbox').classList.add('show');
   }
   function closeLightbox(){
     document.getElementById('lightbox').classList.remove('show');
   }
+  function navLightbox(dir){
+    showLightboxImage(lightboxIndex + dir);
+  }
   document.getElementById('lightbox').addEventListener('click', function(e){
     if(e.target === this) closeLightbox();
   });
   document.addEventListener('keydown', function(e){
+    if(!document.getElementById('lightbox').classList.contains('show')) return;
     if(e.key === 'Escape') closeLightbox();
+    if(e.key === 'ArrowLeft') navLightbox(-1);
+    if(e.key === 'ArrowRight') navLightbox(1);
   });
+
+  // Gallery "load more"
+  const loadMoreBtn = document.getElementById('loadMoreBtn');
+  const GALLERY_BATCH = 12;
+  if(loadMoreBtn){
+    loadMoreBtn.addEventListener('click', () => {
+      const hidden = document.querySelectorAll('.g-item.g-hidden');
+      Array.from(hidden).slice(0, GALLERY_BATCH).forEach(el => el.classList.remove('g-hidden'));
+      if(document.querySelectorAll('.g-item.g-hidden').length === 0){
+        loadMoreBtn.style.display = 'none';
+      }
+    });
+  }
 
   // Form -> mailto
   document.getElementById('quoteForm').addEventListener('submit', function(e){
