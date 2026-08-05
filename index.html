@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>BP ploty — Betónové a 3D ploty na mieru | Ružomberok a okolie</title>
+<meta name="description" content="Predaj, dovoz a montáž betónových a 3D plotov na kľúč. Ružomberok a okolie. Nezáväzná cenová ponuka do 24 hodín.">
+<link rel="canonical" href="https://www.bpploty.sk/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#1C1B19">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="sk_SK">
+<meta property="og:site_name" content="BP ploty">
+<meta property="og:title" content="BP ploty — Betónové a 3D ploty na mieru | Ružomberok a okolie">
+<meta property="og:description" content="Predaj, dovoz a montáž betónových a 3D plotov na kľúč. Ružomberok a okolie. Nezáväzná cenová ponuka do 24 hodín.">
+<meta property="og:image" content="https://www.bpploty.sk/images/hero.webp">
+<meta property="og:url" content="https://www.bpploty.sk/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BP ploty — Betónové a 3D ploty na mieru">
+<meta name="twitter:description" content="Predaj, dovoz a montáž betónových a 3D plotov na kľúč. Ružomberok a okolie.">
+<meta name="twitter:image" content="https://www.bpploty.sk/images/hero.webp">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "BP ploty",
+  "image": "https://www.bpploty.sk/images/hero.webp",
+  "description": "Predaj, dovoz a montáž betónových a 3D plotov na kľúč.",
+  "telephone": "+421951565717",
+  "email": "bpploty@gmail.com",
+  "areaServed": "Ružomberok a okolie",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Ružomberok",
+    "addressCountry": "SK"
+  },
+  "sameAs": ["https://www.instagram.com/bpploty"]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1C1B19;
+    --concrete-dark:#2B2A27;
+    --concrete:#8D8A82;
+    --concrete-light:#CFCAC0;
+    --stone:#EDE9E0;
+    --paper:#F6F4EF;
+    --amber:#F0A21E;
+    --amber-dark:#C57F0E;
+    --clay:#A23E2E;
+    --moss:#5C6A4F;
+    --white:#FFFFFF;
+    --radius-s:6px;
+    --radius-m:12px;
+    --maxw:1240px;
+    --safe-b: env(safe-area-inset-bottom, 0px);
+    --safe-t: env(safe-area-inset-top, 0px);
+    --display: 'Unbounded', sans-serif;
+    --body: 'Plus Jakarta Sans', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--body);
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
+  @media(max-width:640px){.wrap{padding:0 20px;}}
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;scroll-behavior:auto !important;}
+  }
+
+  :focus-visible{outline:3px solid var(--amber);outline-offset:2px;}
+
+  /* Subtle grain texture — ties to the concrete/material subject */
+  .grain{position:relative;isolation:isolate;}
+  .grain::after{
+    content:"";
+    position:absolute;inset:0;
+    pointer-events:none;
+    z-index:5;
+    opacity:0.05;
+    mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    background-size:170px;
+  }
+
+  /* ---------- Eyebrow / labels ---------- */
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--amber-dark);
+    font-weight:600;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px;height:2px;background:var(--amber);display:inline-block;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;top:0;z-index:200;
+    padding-top:var(--safe-t);
+    background:rgba(24,23,21,0.88);
+    backdrop-filter:blur(10px) saturate(1.1);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .nav{
+    max-width:var(--maxw);margin:0 auto;padding:16px 32px;
+    display:flex;align-items:center;justify-content:space-between;
+    gap:16px;
+  }
+  @media(max-width:640px){.nav{padding:13px 18px;}}
+  .logo{
+    font-family:var(--display);
+    font-weight:900;
+    font-size:26px;
+    color:var(--white);
+    letter-spacing:.01em;
+    display:flex;align-items:baseline;gap:8px;
+    flex-shrink:0;
+  }
+  @media(max-width:400px){.logo{font-size:22px;}}
+  .logo span{color:var(--amber);}
+  .nav-links{display:flex;gap:32px;align-items:center;}
+  .nav-links a{
+    color:var(--concrete-light);
+    font-size:14.5px;
+    font-weight:500;
+    transition:color .15s;
+  }
+  .nav-links a:hover{color:var(--amber);}
+  .nav-cta{
+    font-family:var(--mono);
+    font-weight:600;
+    font-size:14px;
+    color:var(--ink) !important;
+    background:var(--amber);
+    padding:11px 20px;
+    border-radius:var(--radius-s);
+    transition:background .15s, transform .15s;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{background:var(--white);}
+
+  /* mobile-only quick call icon */
+  .nav-call{
+    display:none;
+    width:40px;height:40px;
+    border:1.5px solid rgba(255,255,255,0.25);
+    border-radius:50%;
+    color:var(--white);
+    align-items:center;justify-content:center;
+    font-size:16px;
+    flex-shrink:0;
+  }
+
+  .hamburger{
+    display:none;
+    flex-direction:column;
+    justify-content:center;
+    gap:5px;
+    width:40px;height:40px;
+    border:none;background:transparent;cursor:pointer;
+    flex-shrink:0;
+    padding:0;
+  }
+  .hamburger span{
+    display:block;width:22px;height:2px;background:var(--white);
+    transition:transform .25s ease, opacity .2s ease;
+    margin:0 auto;
+  }
+  .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .hamburger.open span:nth-child(2){opacity:0;}
+  .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+  .mobile-menu{
+    position:fixed;inset:0;
+    top:0;
+    background:var(--ink);
+    z-index:190;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:100px 32px 40px;
+    transform:translateY(-100%);
+    transition:transform .35s cubic-bezier(.4,0,.2,1);
+  }
+  .mobile-menu.open{transform:translateY(0);}
+  .mobile-menu a{
+    font-family:var(--display);
+    font-weight:800;
+    text-transform:uppercase;
+    font-size:38px;
+    color:var(--white);
+    padding:14px 0;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+  }
+  .mobile-menu a.mm-cta{color:var(--amber);}
+  .mobile-menu-footer{
+    margin-top:36px;
+    display:flex;flex-direction:column;gap:14px;
+    font-family:var(--mono);color:var(--concrete-light);font-size:15px;
+  }
+  .mobile-menu-footer a{color:var(--white);font-weight:600;border:none;padding:0;font-family:var(--mono);text-transform:none;font-size:16px;}
+
+  @media(max-width:860px){
+    .nav-links a:not(.nav-cta){display:none;}
+    .nav-links{gap:10px;}
+    .hamburger{display:flex;}
+    .nav-call{display:flex;}
+  }
+  @media(max-width:520px){
+    .nav-cta{display:none;}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    min-height:92vh;
+    display:flex;
+    align-items:flex-end;
+    overflow:hidden;
+    background:var(--concrete-dark);
+  }
+  .hero-img{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    filter:saturate(0.92) contrast(1.02);
+  }
+  .hero-scrim{
+    position:absolute;inset:0;
+    background:
+      linear-gradient(180deg, rgba(20,19,17,0.6) 0%, rgba(20,19,17,0.3) 30%, rgba(20,19,17,0.4) 55%, rgba(18,17,15,0.96) 100%);
+  }
+  .hero-content{
+    position:relative;z-index:2;
+    width:100%;
+    padding-top:120px;
+    padding-bottom:64px;
+  }
+  @media(max-width:760px){
+    .hero-content{padding-top:96px;padding-bottom:40px;}
+  }
+  @media(max-height:720px) and (max-width:760px){
+    .hero-content{padding-top:84px;}
+  }
+  .hero-tape{
+    font-family:var(--mono);
+    color:var(--amber);
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    margin-bottom:22px;
+    display:flex;align-items:center;gap:10px;
+  }
+  @media(max-width:520px){
+    .hero-tape{font-size:11px;letter-spacing:.1em;margin-bottom:18px;line-height:1.6;}
+  }
+  .hero-tape::before{content:"";width:34px;height:2px;background:var(--amber);flex-shrink:0;}
+  h1.hero-title{
+    font-family:var(--display);
+    font-weight:900;
+    color:var(--white);
+    font-size:clamp(46px, 11vw, 108px);
+    line-height:0.94;
+    letter-spacing:-0.01em;
+    text-transform:uppercase;
+    max-width:15ch;
+  }
+  h1.hero-title em{
+    font-style:normal;
+    color:var(--amber);
+  }
+  .hero-sub{
+    margin-top:24px;
+    font-size:clamp(16px,2vw,19px);
+    color:var(--concrete-light);
+    max-width:46ch;
+    font-weight:400;
+    line-height:1.6;
+  }
+  .hero-actions{
+    margin-top:34px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+    align-items:center;
+  }
+  @media(max-width:560px){
+    .hero-actions{flex-direction:column;align-items:stretch;gap:12px;}
+  }
+  .btn{
+    font-family:var(--mono);
+    font-weight:600;
+    font-size:15px;
+    padding:17px 28px;
+    border-radius:var(--radius-s);
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    transition:transform .15s ease, background .15s, box-shadow .15s;
+    border:1.5px solid transparent;
+    cursor:pointer;
+    min-height:54px;
+  }
+  .btn-primary{
+    background:var(--amber);
+    color:var(--ink);
+    box-shadow:0 4px 18px rgba(240,162,30,0.22);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(240,162,30,0.38);}
+  .btn-ghost{
+    background:rgba(255,255,255,0.06);
+    border-color:rgba(255,255,255,0.4);
+    color:var(--white);
+  }
+  .btn-ghost:hover{border-color:var(--white);background:rgba(255,255,255,0.1);}
+  .hero-meta{
+    margin-top:48px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+    border-top:1px solid rgba(255,255,255,0.16);
+    padding-top:24px;
+  }
+  @media(max-width:560px){
+    .hero-meta{gap:10px;}
+  }
+  .hero-meta-item{
+    color:var(--concrete-light);
+    flex:1 1 150px;
+  }
+  .hero-meta-item b{
+    display:block;font-family:var(--mono);color:var(--white);font-size:14px;font-weight:600;
+    line-height:1.4;
+  }
+  .hero-meta-item span{font-size:12px;color:var(--concrete);line-height:1.4;}
+
+  /* ---------- Marquee strip ---------- */
+  .marquee{
+    background:var(--amber);
+    overflow:hidden;
+    white-space:nowrap;
+    padding:11px 0;
+    border-bottom:1px solid rgba(0,0,0,.08);
+  }
+  .marquee-track{
+    display:inline-block;
+    animation:scroll-left 34s linear infinite;
+    font-family:var(--mono);
+    font-weight:700;
+    font-size:13.5px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--ink);
+  }
+  .marquee-track span{margin:0 26px;}
+  .marquee-track span::after{content:"◆";margin-left:26px;opacity:.5;font-size:10px;position:relative;top:-2px;}
+  @keyframes scroll-left{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+
+  /* ---------- Section shells ---------- */
+  section{padding:100px 0;}
+  @media(max-width:640px){section{padding:64px 0;}}
+  .section-head{
+    max-width:640px;
+    margin-bottom:56px;
+  }
+  .section-head h2{
+    font-family:var(--display);
+    font-weight:800;
+    font-size:clamp(32px,4.4vw,50px);
+    text-transform:uppercase;
+    line-height:1.02;
+    margin-top:14px;
+    letter-spacing:-0.005em;
+  }
+  .section-head p{
+    margin-top:16px;
+    font-size:16.5px;
+    color:#4b4944;
+    max-width:56ch;
+  }
+
+  /* ---------- Benefits ---------- */
+  .benefits{background:var(--ink);color:var(--stone);}
+  .benefits .eyebrow{color:var(--amber);}
+  .benefits .section-head h2{color:var(--white);}
+  .benefits .section-head p{color:var(--concrete-light);}
+  .benefit-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.12);
+  }
+  @media(max-width:900px){.benefit-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:520px){.benefit-grid{grid-template-columns:1fr;}}
+  .benefit{
+    background:var(--ink);
+    padding:34px 28px;
+  }
+  .benefit .num{
+    font-family:var(--mono);
+    color:var(--amber);
+    font-size:13px;
+    font-weight:700;
+  }
+  .benefit h3{
+    font-family:var(--display);
+    font-size:23px;
+    font-weight:700;
+    text-transform:uppercase;
+    margin-top:14px;
+    color:var(--white);
+  }
+  .benefit p{
+    margin-top:10px;
+    font-size:14.5px;
+    color:var(--concrete-light);
+  }
+
+  /* ---------- Materials / signature swatch selector ---------- */
+  .materials{background:var(--stone);}
+  .material-tabs{
+    display:flex;
+    gap:0;
+    border-bottom:2px solid var(--ink);
+    margin-bottom:0;
+    flex-wrap:wrap;
+  }
+  .material-tabs-wrap{position:relative;}
+  @media(max-width:640px){
+    .material-tabs{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+    .material-tabs::-webkit-scrollbar{display:none;}
+    .material-tabs-wrap::after{
+      content:"";
+      position:absolute;top:0;right:0;bottom:2px;width:36px;
+      background:linear-gradient(90deg, transparent, var(--stone));
+      pointer-events:none;
+    }
+  }
+  .material-tab{
+    font-family:var(--mono);
+    font-weight:600;
+    font-size:14px;
+    padding:16px 24px;
+    background:transparent;
+    border:none;
+    cursor:pointer;
+    color:#6b6862;
+    position:relative;
+    text-transform:uppercase;
+    letter-spacing:.03em;
+    transition:color .15s;
+    flex-shrink:0;
+    min-height:48px;
+  }
+  .material-tab .tag{
+    display:block;font-family:var(--body);text-transform:none;font-weight:400;font-size:12px;color:#9b978d;margin-top:3px;letter-spacing:0;
+  }
+  .material-tab.active{color:var(--ink);}
+  .material-tab.active::after{
+    content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--amber);
+  }
+  .material-panel{
+    display:none;
+    padding:44px 0 0;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap:56px;
+    align-items:center;
+  }
+  .material-panel.active{display:grid;}
+  @media(max-width:800px){.material-panel.active{grid-template-columns:1fr;gap:28px;}}
+  .material-panel img{
+    border-radius:var(--radius-m);
+    width:100%;
+    aspect-ratio:4/3;
+    object-fit:cover;
+    box-shadow:0 18px 40px -12px rgba(20,19,17,0.35);
+  }
+  .material-copy .eyebrow{margin-bottom:16px;}
+  .material-copy h3{
+    font-family:var(--display);
+    font-size:clamp(28px,3vw,38px);
+    text-transform:uppercase;
+    font-weight:800;
+  }
+  .material-copy p{
+    margin-top:14px;
+    color:#4b4944;
+    font-size:15.5px;
+  }
+  .spec-list{margin-top:24px;display:flex;flex-direction:column;gap:10px;}
+  .spec-row{
+    display:flex;justify-content:space-between;
+    font-family:var(--mono);font-size:13px;
+    padding:9px 0;
+    border-bottom:1px dashed #d6d1c5;
+    color:#4b4944;
+  }
+  .spec-row b{color:var(--ink);font-weight:600;}
+
+  /* ---------- Gallery ---------- */
+  .gallery{background:var(--paper);}
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    grid-auto-rows:220px;
+    gap:10px;
+  }
+  @media(max-width:900px){
+    .gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:200px;}
+    .g-item.wide{grid-column:span 2;}
+    .g-item.tall{grid-row:span 1;}
+  }
+  @media(max-width:520px){
+    .gallery-grid{grid-template-columns:1fr 1fr;grid-auto-rows:150px;gap:8px;}
+    .g-item.wide{grid-column:span 2;grid-row:span 1;}
+    .g-caption{font-size:11px;padding:10px 12px;opacity:1;transform:none;background:linear-gradient(0deg, rgba(15,14,13,0.75), transparent);}
+  }
+  .g-item{
+    position:relative;
+    overflow:hidden;
+    border-radius:var(--radius-s);
+    background:var(--concrete);
+    cursor:pointer;
+  }
+  .g-item img{
+    width:100%;height:100%;object-fit:cover;
+    transition:transform .5s ease;
+  }
+  .g-item:hover img{transform:scale(1.06);}
+  .g-item.tall{grid-row:span 2;}
+  .g-item.wide{grid-column:span 2;}
+  .g-caption{
+    position:absolute;left:0;right:0;bottom:0;
+    padding:14px 16px 12px;
+    background:linear-gradient(0deg, rgba(15,14,13,0.82), transparent);
+    color:var(--white);
+    font-family:var(--mono);
+    font-size:12px;
+    opacity:0;
+    transform:translateY(6px);
+    transition:opacity .2s, transform .2s;
+  }
+  .g-item:hover .g-caption{opacity:1;transform:translateY(0);}
+
+  /* ---------- Process ---------- */
+  .process{background:var(--concrete-dark);color:var(--white);}
+  .process .section-head h2{color:var(--white);}
+  .process .section-head p{color:var(--concrete-light);}
+  .process-list{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:0;
+    counter-reset:step;
+    border-top:1px solid rgba(255,255,255,0.14);
+  }
+  @media(max-width:900px){
+    .process-list{grid-template-columns:repeat(2,1fr);}
+    .process-step:nth-child(2n){border-right:none !important;}
+    .process-step:nth-child(n+3){border-top:1px solid rgba(255,255,255,0.14);}
+  }
+  @media(max-width:560px){
+    .process-list{grid-template-columns:1fr;}
+    .process-step{border-right:none !important;border-top:1px solid rgba(255,255,255,0.14) !important;}
+    .process-step:first-child{border-top:none !important;}
+  }
+  .process-step{
+    padding:30px 26px 30px 0;
+    border-right:1px solid rgba(255,255,255,0.14);
+    counter-increment:step;
+  }
+  @media(max-width:560px){.process-step{padding:26px 0;}}
+  .process-list .process-step:last-child{border-right:none;}
+  .process-step::before{
+    content: counter(step, decimal-leading-zero);
+    font-family:var(--mono);
+    color:var(--amber);
+    font-size:14px;
+    font-weight:700;
+    display:block;
+    margin-bottom:14px;
+  }
+  .process-step h4{
+    font-family:var(--display);
+    font-size:20px;
+    text-transform:uppercase;
+    font-weight:700;
+  }
+  .process-step p{
+    margin-top:10px;
+    font-size:14px;
+    color:var(--concrete-light);
+  }
+
+  /* ---------- Testimonial-ish trust strip / area ---------- */
+  .area{
+    background:var(--stone);
+    padding:70px 0;
+  }
+  .area-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:40px;
+    flex-wrap:wrap;
+  }
+  .area-text .eyebrow{margin-bottom:12px;}
+  .area-text h3{
+    font-family:var(--display);
+    font-size:clamp(24px,3vw,34px);
+    text-transform:uppercase;
+    font-weight:800;
+    max-width:16ch;
+  }
+  .area-map{
+    font-family:var(--mono);
+    font-size:13px;
+    color:#4b4944;
+    max-width:340px;
+    line-height:1.7;
+  }
+
+  /* ---------- Contact / Form ---------- */
+  .contact{
+    background:var(--ink);
+    color:var(--white);
+  }
+  .contact-grid{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:64px;
+  }
+  @media(max-width:900px){.contact-grid{grid-template-columns:1fr;gap:44px;}}
+  .contact-info h2{
+    font-family:var(--display);
+    font-size:clamp(30px,4vw,46px);
+    text-transform:uppercase;
+    font-weight:800;
+    line-height:1.03;
+    color:var(--white);
+  }
+  .contact-info p{
+    margin-top:16px;
+    color:var(--concrete-light);
+    font-size:15.5px;
+    max-width:42ch;
+  }
+  .contact-details{
+    margin-top:36px;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+  }
+  .contact-detail{
+    display:flex;
+    gap:16px;
+    align-items:flex-start;
+    padding-bottom:18px;
+    border-bottom:1px solid rgba(255,255,255,0.12);
+  }
+  .contact-detail .icon{
+    width:38px;height:38px;
+    border:1.5px solid var(--amber);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--amber);
+    flex-shrink:0;
+    font-family:var(--mono);
+    font-size:15px;
+  }
+  .contact-detail a, .contact-detail div.val{
+    font-family:var(--mono);
+    font-size:15.5px;
+    font-weight:600;
+    color:var(--white);
+  }
+  .contact-detail .label{
+    font-size:12px;
+    color:var(--concrete);
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    margin-bottom:3px;
+  }
+  .socials{margin-top:8px;display:flex;gap:12px;}
+  .social-link{
+    font-family:var(--mono);font-size:13px;
+    border:1px solid rgba(255,255,255,0.25);
+    padding:9px 16px;border-radius:var(--radius-s);
+    color:var(--concrete-light);
+    transition:border-color .15s,color .15s;
+  }
+  .social-link:hover{border-color:var(--amber);color:var(--amber);}
+
+  .form-card{
+    background:var(--stone);
+    color:var(--ink);
+    border-radius:var(--radius-m);
+    padding:40px;
+  }
+  @media(max-width:520px){.form-card{padding:26px;}}
+  .form-card h3{
+    font-family:var(--display);
+    font-size:24px;
+    text-transform:uppercase;
+    font-weight:800;
+  }
+  .form-card > p{
+    margin-top:8px;
+    color:#5a564e;
+    font-size:14px;
+  }
+  .form-row{margin-top:22px;}
+  .form-row label{
+    display:block;
+    font-family:var(--mono);
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    color:#5a564e;
+    margin-bottom:8px;
+  }
+  .form-row input,
+  .form-row textarea,
+  .form-row select{
+    width:100%;
+    border:1.5px solid #d6d1c5;
+    background:var(--white);
+    padding:14px 14px;
+    font-family:var(--body);
+    font-size:16px;
+    color:var(--ink);
+    border-radius:var(--radius-s);
+    transition:border-color .15s;
+    min-height:50px;
+  }
+  .form-row textarea{min-height:110px;}
+  .form-row input:focus,
+  .form-row textarea:focus,
+  .form-row select:focus{
+    border-color:var(--amber-dark);
+    outline:none;
+  }
+  .form-row textarea{resize:vertical;min-height:100px;}
+  .form-two{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  @media(max-width:520px){.form-two{grid-template-columns:1fr;}}
+  .form-contact-pref{
+    display:flex;gap:10px;margin-top:10px;flex-wrap:wrap;
+  }
+  .pref-option{
+    font-family:var(--mono);
+    font-size:12.5px;
+    border:1.5px solid #d6d1c5;
+    padding:9px 14px;
+    border-radius:var(--radius-s);
+    cursor:pointer;
+    color:#5a564e;
+    transition:all .15s;
+  }
+  .pref-option input{display:none;}
+  .pref-option.checked{
+    background:var(--ink);
+    border-color:var(--ink);
+    color:var(--white);
+  }
+  .form-submit{
+    margin-top:26px;
+    width:100%;
+    background:var(--amber);
+    color:var(--ink);
+    border:none;
+    font-family:var(--mono);
+    font-weight:700;
+    font-size:15px;
+    padding:17px;
+    border-radius:var(--radius-s);
+    cursor:pointer;
+    text-transform:uppercase;
+    letter-spacing:.03em;
+    transition:background .15s, transform .15s;
+  }
+  .form-submit:hover{background:var(--ink);color:var(--white);transform:translateY(-1px);}
+  .form-note{
+    margin-top:14px;
+    font-size:12px;
+    color:#8a867c;
+    font-family:var(--mono);
+  }
+  .form-success{
+    display:none;
+    margin-top:22px;
+    padding:16px 18px;
+    background:#e7f1e3;
+    border:1.5px solid var(--moss);
+    border-radius:var(--radius-s);
+    font-size:14px;
+    color:#33482b;
+    font-family:var(--mono);
+  }
+  .form-success.show{display:block;}
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:var(--concrete-dark);
+    color:var(--concrete-light);
+    padding:46px 0 28px;
+  }
+  .footer-top{
+    display:flex;justify-content:space-between;align-items:flex-start;
+    flex-wrap:wrap;gap:24px;
+    padding-bottom:30px;
+    border-bottom:1px solid rgba(255,255,255,0.12);
+  }
+  .footer-logo{
+    font-family:var(--display);font-weight:900;font-size:22px;color:var(--white);
+  }
+  .footer-logo span{color:var(--amber);}
+  .footer-links{display:flex;gap:28px;flex-wrap:wrap;font-size:13.5px;}
+  .footer-bottom{
+    margin-top:22px;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+    font-family:var(--mono);font-size:12px;color:#77746c;
+  }
+  @media(max-width:520px){
+    footer{padding-top:40px;}
+    .footer-bottom{flex-direction:column;gap:6px;}
+    .footer-links{gap:18px 24px;font-size:13px;}
+  }
+
+  /* Lightbox */
+  .lightbox{
+    position:fixed;inset:0;background:rgba(10,10,9,0.94);
+    display:none;align-items:center;justify-content:center;z-index:1000;
+    padding:40px;
+  }
+  .lightbox.show{display:flex;}
+  .lightbox img{max-width:90vw;max-height:85vh;object-fit:contain;border-radius:2px;}
+  .lightbox-close{
+    position:absolute;top:24px;right:32px;
+    color:var(--white);font-family:var(--mono);font-size:14px;
+    border:1px solid rgba(255,255,255,0.4);
+    padding:8px 16px;cursor:pointer;background:transparent;
+  }
+
+  /* reveal on scroll */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* Sticky mobile action bar */
+  .mobile-cta-bar{
+    display:none;
+    position:fixed;
+    left:0;right:0;bottom:0;
+    z-index:150;
+    background:rgba(24,23,21,0.97);
+    backdrop-filter:blur(10px);
+    border-top:1px solid rgba(255,255,255,0.12);
+    padding:10px 14px calc(10px + var(--safe-b));
+    gap:10px;
+    transform:translateY(0);
+    transition:transform .3s ease;
+  }
+  .mobile-cta-bar.hide{transform:translateY(110%);}
+  @media(max-width:760px){
+    .mobile-cta-bar{display:flex;}
+    footer{padding-bottom:calc(28px + 74px + var(--safe-b));}
+  }
+  .mobile-cta-bar a{
+    flex:1;
+    display:flex;align-items:center;justify-content:center;
+    gap:8px;
+    font-family:var(--mono);
+    font-weight:600;
+    font-size:13.5px;
+    padding:14px 10px;
+    border-radius:var(--radius-s);
+    min-height:50px;
+  }
+  .mobile-cta-bar .call{
+    background:transparent;
+    border:1.5px solid rgba(255,255,255,0.3);
+    color:var(--white);
+  }
+  .mobile-cta-bar .quote{
+    background:var(--amber);
+    color:var(--ink);
+  }
+
+  /* Back to top */
+  .to-top{
+    position:fixed;
+    right:20px;
+    bottom:90px;
+    width:44px;height:44px;
+    border-radius:50%;
+    background:var(--ink);
+    color:var(--amber);
+    border:1px solid rgba(255,255,255,0.15);
+    display:flex;align-items:center;justify-content:center;
+    font-size:16px;
+    cursor:pointer;
+    opacity:0;
+    pointer-events:none;
+    transform:translateY(10px);
+    transition:opacity .25s, transform .25s;
+    z-index:140;
+  }
+  .to-top.show{opacity:1;pointer-events:auto;transform:translateY(0);}
+  @media(min-width:761px){.to-top{bottom:32px;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="#top" class="logo">BP<span>·</span>PLOTY</a>
+    <div class="nav-links">
+      <a href="#materialy">Materiály</a>
+      <a href="#realizacie">Realizácie</a>
+      <a href="#postup">Postup</a>
+      <a href="#kontakt" class="nav-cta">Cenová ponuka</a>
+    </div>
+    <a href="tel:+421951565717" class="nav-call" aria-label="Zavolať">☎</a>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#materialy">Materiály</a>
+  <a href="#realizacie">Realizácie</a>
+  <a href="#postup">Postup</a>
+  <a href="#kontakt" class="mm-cta">Cenová ponuka</a>
+  <div class="mobile-menu-footer">
+    <a href="tel:+421951565717">☎ +421 951 565 717</a>
+    <a href="mailto:bpploty@gmail.com">✉ bpploty@gmail.com</a>
+  </div>
+</div>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" style="padding:0;">
+    <img class="hero-img" src="images/hero.webp" width="1179" height="705" alt="Realizovaný betónový plot s kamenným dekorom, BP ploty Ružomberok" fetchpriority="high">
+    <div class="hero-scrim"></div>
+    <div class="hero-content wrap">
+      <div class="hero-tape">Ružomberok a okolie · Predaj · Dovoz · Montáž</div>
+      <h1 class="hero-title">Plot, ktorý<br>naozaj <em>vydrží.</em></h1>
+      <p class="hero-sub">Betónové a 3D ploty na mieru — navrhnuté, dovezené a postavené jednou partiou od základu po poslednú tvárnicu. Bez sprostredkovateľov, bez prekvapení vo faktúre.</p>
+      <div class="hero-actions">
+        <a href="#kontakt" class="btn btn-primary">Chcem cenovú ponuku →</a>
+        <a href="tel:+421951565717" class="btn btn-ghost">📞 +421 951 565 717</a>
+      </div>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><b>Betón · 3D panely</b><span>Kameň / drevo / hladký dekor</span></div>
+        <div class="hero-meta-item"><b>Montáž na kľúč</b><span>Zameranie → realizácia</span></div>
+        <div class="hero-meta-item"><b>Ružomberok a okolie</b><span>Výjazd a obhliadka zdarma</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>PREDAJ BETÓNOVÝCH PLOTOV</span><span>DOVOZ NA STAVBU</span><span>MONTÁŽ NA KĽÚČ</span><span>3D PLOTY</span><span>ZÁMKOVÁ DLAŽBA</span><span>RUŽOMBEROK A OKOLIE</span>
+      <span>PREDAJ BETÓNOVÝCH PLOTOV</span><span>DOVOZ NA STAVBU</span><span>MONTÁŽ NA KĽÚČ</span><span>3D PLOTY</span><span>ZÁMKOVÁ DLAŽBA</span><span>RUŽOMBEROK A OKOLIE</span>
+    </div>
+  </div>
+
+  <!-- BENEFITS -->
+  <section class="benefits grain">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Prečo BP ploty</div>
+        <h2>Raz postavíme.<br>Vy sa oň nestaráte.</h2>
+        <p>Žiadne natieranie, žiadne opravy, žiadne telefonáty o pár rokov. Staviame na základoch, ktoré vydržia ďalších 30 rokov bez toho, aby ste sa nimi museli zaoberať.</p>
+      </div>
+      <div class="benefit-grid">
+        <div class="benefit reveal"><div class="num">01</div><h3>Moderný dizajn</h3><p>Kamenný, drevený aj hladký dekor — panely, ktoré ladia s fasádou aj strechou, nie proti nej.</p></div>
+        <div class="benefit reveal"><div class="num">02</div><h3>Dlhá životnosť</h3><p>Vibrolisovaný betón odolný mrazu, vlhkosti aj slnku. Stavia sa raz, drží desaťročia.</p></div>
+        <div class="benefit reveal"><div class="num">03</div><h3>Bezúdržbové riešenie</h3><p>Žiadne natieranie, žiadna impregnácia každý druhý rok. Umyje ho dážď.</p></div>
+        <div class="benefit reveal"><div class="num">04</div><h3>Montáž na kľúč</h3><p>Zameriame, dovezieme, postavíme. Jeden dodávateľ, jedna zodpovednosť.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MATERIALS (signature interactive element) -->
+  <section class="materials" id="materialy">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Vzorkovník</div>
+        <h2>Tri dekory,<br>jedna pevnosť.</h2>
+        <p>Každý panel je vibrolisovaný betón s reliéfnym povrchom. Rozdiel je len v tom, akú štruktúru mu dá forma. Vyberte si, čo bude sedieť k vášmu domu.</p>
+      </div>
+
+      <div class="material-tabs-wrap">
+        <div class="material-tabs" role="tablist">
+          <button class="material-tab active" data-tab="kamen" role="tab">Kameň<span class="tag">Štiepaný reliéf</span></button>
+          <button class="material-tab" data-tab="drevo" role="tab">Drevo<span class="tag">Dosková štruktúra</span></button>
+          <button class="material-tab" data-tab="tehla" role="tab">Tehla<span class="tag">Murovaný vzor</span></button>
+        </div>
+      </div>
+
+      <div class="material-panel active" data-panel="kamen">
+        <img src="images/material-kamen.webp" width="590" height="1204" alt="Betónový plot s dekorom štiepaného kameňa" loading="lazy" decoding="async">
+        <div class="material-copy">
+          <div class="eyebrow">01 · Kameň</div>
+          <h3>Štiepaný kameň</h3>
+          <p>Hlboký reliéf pripomínajúci ručne kladený lomový kameň. Najžiadanejší dekor — pôsobí masívne, no montuje sa rovnako rýchlo ako hladký panel.</p>
+          <div class="spec-list">
+            <div class="spec-row"><span>Povrch</span><b>Reliéfny, obojstranný</b></div>
+            <div class="spec-row"><span>Farebnosť</span><b>Prírodná šedá, štrk-biela</b></div>
+            <div class="spec-row"><span>Odporúčaná výška</span><b>150 – 200 cm</b></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="material-panel" data-panel="drevo">
+        <img src="images/material-drevo.webp" width="583" height="550" alt="Betónový plot s dekorom dreva" loading="lazy" decoding="async">
+        <div class="material-copy">
+          <div class="eyebrow">02 · Drevo</div>
+          <h3>Drevodekor</h3>
+          <p>Kresba dreveného laťovania odliata priamo do betónu — vzhľad dreveného plota bez natierania, hnitia a výmeny lát po rokoch.</p>
+          <div class="spec-list">
+            <div class="spec-row"><span>Povrch</span><b>Štruktúra dosiek, sukovitá kresba</b></div>
+            <div class="spec-row"><span>Farebnosť</span><b>Svetlý dub, šedodrevo</b></div>
+            <div class="spec-row"><span>Odporúčaná výška</span><b>150 – 180 cm</b></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="material-panel" data-panel="tehla">
+        <img src="images/material-tehla.webp" width="391" height="340" alt="Betónový plot s dekorom tehly" loading="lazy" decoding="async">
+        <div class="material-copy">
+          <div class="eyebrow">03 · Tehla</div>
+          <h3>Murovaný vzor</h3>
+          <p>Pravidelná tehlová väzba pre klasickejší, upravený výraz. Dobre ladí s plnými murovanými bránami a stĺpikmi.</p>
+          <div class="spec-list">
+            <div class="spec-row"><span>Povrch</span><b>Pravidelný, jemný reliéf</b></div>
+            <div class="spec-row"><span>Farebnosť</span><b>Šedá, pieskovo-béžová</b></div>
+            <div class="spec-row"><span>Odporúčaná výška</span><b>150 – 200 cm</b></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery" id="realizacie">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Realizácie</div>
+        <h2>Skutočné ploty.<br>Žiadne fotomontáže.</h2>
+        <p>Výber z plotov, ktoré stoja na skutočných pozemkoch v okolí Ružomberka — fotené hneď po montáži.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="g-item wide tall reveal" onclick="openLightbox(this.querySelector('img').src)">
+          <img src="images/hero.webp" width="1179" height="705" alt="Kamenný dekor plotu s kolibou v pozadí" loading="lazy" decoding="async">
+          <div class="g-caption">Kamenný dekor · rodinný dom</div>
+        </div>
+        <div class="g-item reveal" onclick="openLightbox(this.querySelector('img').src)">
+          <img src="images/material-kamen.webp" width="590" height="1204" alt="Plot na svahovitom pozemku" loading="lazy" decoding="async">
+          <div class="g-caption">Svahovitý pozemok</div>
+        </div>
+        <div class="g-item reveal" onclick="openLightbox(this.querySelector('img').src)">
+          <img src="images/gallery-3.webp" width="583" height="600" alt="Plot lemujúci trávnatú záhradu" loading="lazy" decoding="async">
+          <div class="g-caption">Obvod záhrady</div>
+        </div>
+        <div class="g-item tall reveal" onclick="openLightbox(this.querySelector('img').src)">
+          <img src="images/gallery-4.webp" width="585" height="550" alt="Drevodekor plot medzi kvetinovým záhonom" loading="lazy" decoding="async">
+          <div class="g-caption">Drevodekor · záhon</div>
+        </div>
+        <div class="g-item reveal" onclick="openLightbox(this.querySelector('img').src)">
+          <img src="images/material-drevo.webp" width="583" height="550" alt="Detail štruktúry drevodekoru" loading="lazy" decoding="async">
+          <div class="g-caption">Detail štruktúry</div>
+        </div>
+        <div class="g-item wide reveal" onclick="openLightbox(this.querySelector('img').src)">
+          <img src="images/gallery-6.webp" width="390" height="492" alt="Plot za rodinným domom so slnečnými panelmi" loading="lazy" decoding="async">
+          <div class="g-caption">Realizácia · Ružomberok a okolie</div>
+        </div>
+        <div class="g-item reveal" onclick="openLightbox(this.querySelector('img').src)">
+          <img src="images/material-tehla.webp" width="391" height="340" alt="Tehlový dekor plotu pri terase" loading="lazy" decoding="async">
+          <div class="g-caption">Tehlový dekor</div>
+        </div>
+        <div class="g-item reveal" onclick="openLightbox(this.querySelector('img').src)">
+          <img src="images/gallery-8.webp" width="390" height="492" alt="Drevodekor plot popri strešnej konštrukcii" loading="lazy" decoding="async">
+          <div class="g-caption">Popri hospodárskej budove</div>
+        </div>
+        <div class="g-item wide reveal" onclick="openLightbox(this.querySelector('img').src)">
+          <img src="images/gallery-9.webp" width="376" height="340" alt="Kamenný dekor plot v pozdĺžnom zábere" loading="lazy" decoding="async">
+          <div class="g-caption">Kamenný dekor · pohľad pozdĺž plota</div>
+        </div>
+        <div class="g-item reveal" onclick="openLightbox(this.querySelector('img').src)">
+          <img src="images/gallery-10.webp" width="388" height="492" alt="Drevodekor plot pri stodole" loading="lazy" decoding="async">
+          <div class="g-caption">Pri stodole</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process grain" id="postup">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Ako to prebieha</div>
+        <h2>Od telefonátu<br>po hotový plot.</h2>
+      </div>
+      <div class="process-list">
+        <div class="process-step reveal"><h4>Konzultácia</h4><p>Zavoláte alebo napíšete cez formulár. Do 24 hodín sa ozveme a prejdeme predstavu aj rozpočet.</p></div>
+        <div class="process-step reveal"><h4>Zameranie</h4><p>Prídeme na pozemok, zmeriame terén, prekonzultujeme dekor, výšku a osadenie brány.</p></div>
+        <div class="process-step reveal"><h4>Cenová ponuka</h4><p>Pošleme presnú kalkuláciu na mieru — materiál, dovoz aj montáž v jednej sume.</p></div>
+        <div class="process-step reveal"><h4>Montáž</h4><p>Dovezieme, postavíme, upraceme po sebe. Plot preberáte hotový, pripravený na roky.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AREA -->
+  <section class="area">
+    <div class="wrap area-inner">
+      <div class="area-text reveal">
+        <div class="eyebrow">Pôsobnosť</div>
+        <h3>Ružomberok a celé okolie.</h3>
+      </div>
+      <div class="area-map reveal">
+        Realizujeme v Ružomberku a okolitých obciach v Žilinskom kraji. Pri väčších zákazkách vieme vyraziť aj ďalej — stačí napísať, kde stavbu plánujete.
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / FORM -->
+  <section class="contact grain" id="kontakt">
+    <div class="wrap contact-grid">
+      <div class="contact-info reveal">
+        <div class="eyebrow" style="margin-bottom:16px;">Cenová ponuka</div>
+        <h2>Chcete presnú cenu?<br>Napíšte nám.</h2>
+        <p>Vyplňte formulár alebo nás rovno kontaktujte — obhliadku aj cenovú ponuku pripravujeme bezplatne a nezáväzne.</p>
+
+        <div class="contact-details">
+          <div class="contact-detail">
+            <div class="icon">☎</div>
+            <div>
+              <div class="label">Telefón</div>
+              <a href="tel:+421951565717">+421 951 565 717</a>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="icon">✉</div>
+            <div>
+              <div class="label">E-mail</div>
+              <a href="mailto:bpploty@gmail.com">bpploty@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="icon">◎</div>
+            <div>
+              <div class="label">Oblasť pôsobenia</div>
+              <div class="val">Ružomberok a okolie</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="socials">
+          <a class="social-link" href="https://www.instagram.com/bpploty" target="_blank" rel="noopener">Instagram @bpploty</a>
+          <a class="social-link" href="#" target="_blank" rel="noopener">Facebook BP ploty</a>
+        </div>
+      </div>
+
+      <div class="form-card reveal">
+        <h3>Nezáväzná cenová ponuka</h3>
+        <p>Stačí meno a jeden kontakt — ozveme sa my.</p>
+
+        <form id="quoteForm">
+          <div class="form-two">
+            <div class="form-row">
+              <label for="name">Meno a priezvisko</label>
+              <input type="text" id="name" name="name" placeholder="Ján Novák" required>
+            </div>
+            <div class="form-row">
+              <label for="phone">Telefón</label>
+              <input type="tel" id="phone" name="phone" placeholder="+421 9xx xxx xxx">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="jan.novak@email.sk">
+          </div>
+
+          <div class="form-row">
+            <label>Preferovaný spôsob kontaktu</label>
+            <div class="form-contact-pref" id="prefGroup">
+              <label class="pref-option checked"><input type="radio" name="pref" value="Telefón" checked>Telefonicky</label>
+              <label class="pref-option"><input type="radio" name="pref" value="E-mail">E-mailom</label>
+              <label class="pref-option"><input type="radio" name="pref" value="Bez preferencie">Je mi to jedno</label>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label for="location">Obec / mesto realizácie</label>
+            <input type="text" id="location" name="location" placeholder="napr. Ružomberok">
+          </div>
+
+          <div class="form-row">
+            <label for="message">Popis zákazky (dĺžka plota, dekor, termín...)</label>
+            <textarea id="message" name="message" placeholder="Napríklad: cca 40 bm plota, kamenný dekor, výška 180 cm, realizácia na jar."></textarea>
+          </div>
+
+          <button type="submit" class="form-submit">Odoslať dopyt →</button>
+          <div class="form-note">Odoslaním sa vám otvorí e-mail so správou adresovanou na bpploty@gmail.com — nič sa neodošle bez vášho potvrdenia.</div>
+          <div class="form-success" id="formSuccess">✓ Správa je pripravená vo vašom e-mailovom klientovi. Po odoslaní sa vám ozveme do 24 hodín.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-logo">BP<span>·</span>PLOTY</div>
+      <div class="footer-links">
+        <a href="#materialy">Materiály</a>
+        <a href="#realizacie">Realizácie</a>
+        <a href="#postup">Postup</a>
+        <a href="#kontakt">Kontakt</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 BP ploty — Predaj, dovoz a montáž betónových a 3D plotov. Ružomberok a okolie.</div>
+      <div>+421 951 565 717 · bpploty@gmail.com</div>
+    </div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">Zavrieť ✕</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<div class="mobile-cta-bar" id="mobileCtaBar">
+  <a href="tel:+421951565717" class="call">☎ Zavolať</a>
+  <a href="#kontakt" class="quote">Cenová ponuka →</a>
+</div>
+
+<button class="to-top" id="toTopBtn" aria-label="Späť hore">↑</button>
+
+<script>
+  // Material tabs
+  const tabs = document.querySelectorAll('.material-tab');
+  const panels = document.querySelectorAll('.material-panel');
+  tabs.forEach(tab=>{
+    tab.addEventListener('click', ()=>{
+      tabs.forEach(t=>t.classList.remove('active'));
+      panels.forEach(p=>p.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelector('.material-panel[data-panel="'+tab.dataset.tab+'"]').classList.add('active');
+    });
+  });
+
+  // Contact pref pills
+  document.querySelectorAll('.pref-option').forEach(opt=>{
+    opt.addEventListener('click', ()=>{
+      document.querySelectorAll('.pref-option').forEach(o=>o.classList.remove('checked'));
+      opt.classList.add('checked');
+      opt.querySelector('input').checked = true;
+    });
+  });
+
+  // Lightbox
+  function openLightbox(src){
+    document.getElementById('lightboxImg').src = src;
+    document.getElementById('lightbox').classList.add('show');
+  }
+  function closeLightbox(){
+    document.getElementById('lightbox').classList.remove('show');
+  }
+  document.getElementById('lightbox').addEventListener('click', function(e){
+    if(e.target === this) closeLightbox();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeLightbox();
+  });
+
+  // Form -> mailto
+  document.getElementById('quoteForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const location = document.getElementById('location').value.trim();
+    const message = document.getElementById('message').value.trim();
+    const pref = document.querySelector('input[name="pref"]:checked').value;
+
+    const subject = encodeURIComponent('Dopyt na cenovú ponuku — ' + name);
+    const body = encodeURIComponent(
+      'Meno: ' + name + '\n' +
+      'Telefón: ' + (phone || '-') + '\n' +
+      'E-mail: ' + (email || '-') + '\n' +
+      'Preferovaný kontakt: ' + pref + '\n' +
+      'Obec / mesto: ' + (location || '-') + '\n\n' +
+      'Popis zákazky:\n' + (message || '-')
+    );
+    window.location.href = 'mailto:bpploty@gmail.com?subject=' + subject + '&body=' + body;
+
+    document.getElementById('formSuccess').classList.add('show');
+  });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.12});
+  revealEls.forEach(el=>io.observe(el));
+
+  // Hamburger / mobile menu
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  function toggleMenu(open){
+    const isOpen = open !== undefined ? open : !mobileMenu.classList.contains('open');
+    mobileMenu.classList.toggle('open', isOpen);
+    hamburgerBtn.classList.toggle('open', isOpen);
+    hamburgerBtn.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  }
+  hamburgerBtn.addEventListener('click', ()=>toggleMenu());
+  mobileMenu.querySelectorAll('a').forEach(a=>{
+    a.addEventListener('click', ()=>toggleMenu(false));
+  });
+
+  // Sticky mobile CTA bar — hide near the contact form / footer
+  const mobileCtaBar = document.getElementById('mobileCtaBar');
+  const contactSection = document.getElementById('kontakt');
+  if(mobileCtaBar && contactSection){
+    const barIo = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        mobileCtaBar.classList.toggle('hide', entry.isIntersecting);
+      });
+    }, {threshold:0.05});
+    barIo.observe(contactSection);
+  }
+
+  // Back to top
+  const toTopBtn = document.getElementById('toTopBtn');
+  window.addEventListener('scroll', ()=>{
+    toTopBtn.classList.toggle('show', window.scrollY > window.innerHeight * 0.9);
+  }, {passive:true});
+  toTopBtn.addEventListener('click', ()=>{
+    window.scrollTo({top:0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+  });
+</script>
+
+</body>
+</html>
