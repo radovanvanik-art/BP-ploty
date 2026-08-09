@@ -23,19 +23,89 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": "HomeAndConstructionBusiness",
+  "@id": "https://www.bpploty.sk/#business",
   "name": "BP ploty",
   "image": "https://www.bpploty.sk/images/hero.webp",
-  "description": "Predaj, dovoz a montáž betónových a 3D plotov na kľúč.",
+  "description": "Predaj, dovoz a montáž betónových a 3D plotov na kľúč. Pôsobíme v Ružomberku a okolí.",
   "telephone": "+421951565717",
   "email": "bpploty@gmail.com",
-  "areaServed": "Ružomberok a okolie",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Ružomberok",
-    "addressCountry": "SK"
+  "url": "https://www.bpploty.sk/",
+  "areaServed": [
+    {"@type": "City", "name": "Ružomberok"},
+    {"@type": "AdministrativeArea", "name": "Žilinský kraj"}
+  ],
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    "opens": "07:00",
+    "closes": "16:00"
   },
   "sameAs": ["https://www.instagram.com/bpploty"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Koľko stojí betónový plot?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cena závisí od dĺžky, výšky a zvoleného dekoru. Po telefonáte alebo obhliadke pripravíme presnú kalkuláciu — materiál, dovoz aj montáž v jednej sume, bezplatne a nezáväzne."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ako dlho trvá montáž plota?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Podľa dĺžky plota a terénu — presný termín dohodneme po zameraní pozemku. Dovezieme, postavíme a upraceme po sebe, plot preberáte hotový."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Pôsobíte aj mimo Ružomberka?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Áno, realizujeme v Ružomberku a okolitých obciach Žilinského kraja. Pri väčších zákazkách vieme vyraziť aj ďalej — stačí napísať, kde stavbu plánujete."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Aké dekory ponúkate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tri základné dekory — štiepaný kameň, drevodekor a murovaný tehlový vzor. Všetky sú vibrolisovaný betón s reliéfnym povrchom, odolný mrazu aj vlhkosti."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ako prebieha objednávka?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Zavoláte alebo napíšete e-mail, do 24 hodín sa ozveme. Prídeme na bezplatnú obhliadku, pošleme cenovú ponuku a po odsúhlasení dovezieme a postavíme plot na kľúč."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Treba pri betónovom plote údržba?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nie. Vibrolisovaný betón nevyžaduje natieranie ani impregnáciu — stačí ho umyť dažďom. Je to bezúdržbové riešenie na desaťročia."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Akú maximálnu výšku plota viete postaviť?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Betónové ploty realizujeme do maximálnej výšky 200 cm. Presnú výšku prispôsobíme vášmu pozemku pri obhliadke."
+      }
+    }
+  ]
 }
 </script>
 
@@ -659,18 +729,17 @@
     line-height:1.7;
   }
 
-  /* ---------- Contact / Form ---------- */
+  /* ---------- Contact ---------- */
   .contact{
     background:var(--ink);
     color:var(--white);
   }
-  .contact-grid{
-    display:grid;
-    grid-template-columns:0.85fr 1.15fr;
-    gap:64px;
+  .contact-center{
+    max-width:720px;
+    margin:0 auto;
+    text-align:center;
   }
-  @media(max-width:900px){.contact-grid{grid-template-columns:1fr;gap:44px;}}
-  .contact-info h2{
+  .contact .section-head h2{
     font-family:var(--display);
     font-size:clamp(30px,4vw,46px);
     text-transform:uppercase;
@@ -678,24 +747,37 @@
     line-height:1.03;
     color:var(--white);
   }
-  .contact-info p{
-    margin-top:16px;
+  .contact .section-head p{
     color:var(--concrete-light);
     font-size:15.5px;
     max-width:42ch;
   }
-  .contact-details{
-    margin-top:36px;
+  .contact-cta{
     display:flex;
-    flex-direction:column;
-    gap:20px;
+    justify-content:center;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .btn-big{
+    font-size:17px;
+    padding:22px 34px;
+    min-height:64px;
+  }
+  @media(max-width:560px){.contact-cta{flex-direction:column;}}
+  .contact-details{
+    margin-top:56px;
+    padding-top:32px;
+    border-top:1px solid rgba(255,255,255,0.14);
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:40px;
   }
   .contact-detail{
     display:flex;
-    gap:16px;
+    gap:14px;
     align-items:flex-start;
-    padding-bottom:18px;
-    border-bottom:1px solid rgba(255,255,255,0.12);
+    text-align:left;
   }
   .contact-detail .icon{
     width:38px;height:38px;
@@ -720,7 +802,7 @@
     letter-spacing:.06em;
     margin-bottom:3px;
   }
-  .socials{margin-top:8px;display:flex;gap:12px;}
+  .socials{margin-top:28px;display:flex;gap:12px;}
   .social-link{
     font-family:var(--mono);font-size:13px;
     border:1px solid rgba(255,255,255,0.25);
@@ -730,112 +812,49 @@
   }
   .social-link:hover{border-color:var(--amber);color:var(--amber);}
 
-  .form-card{
-    background:var(--stone);
-    color:var(--ink);
-    border-radius:var(--radius-m);
-    padding:40px;
+  /* ---------- FAQ ---------- */
+  .faq{background:var(--paper);}
+  .faq-list{max-width:800px;}
+  .faq-item{
+    border-bottom:1px solid #d6d1c5;
   }
-  @media(max-width:520px){.form-card{padding:26px;}}
-  .form-card h3{
-    font-family:var(--display);
-    font-size:24px;
-    text-transform:uppercase;
-    font-weight:800;
-  }
-  .form-card > p{
-    margin-top:8px;
-    color:#5a564e;
-    font-size:14px;
-  }
-  .form-row{margin-top:22px;}
-  .form-row label{
-    display:block;
-    font-family:var(--mono);
-    font-size:12px;
-    text-transform:uppercase;
-    letter-spacing:.05em;
-    color:#5a564e;
-    margin-bottom:8px;
-  }
-  .form-row input,
-  .form-row textarea,
-  .form-row select{
+  .faq-item:first-child{border-top:1px solid #d6d1c5;}
+  .faq-q{
     width:100%;
-    border:1.5px solid #d6d1c5;
-    background:var(--white);
-    padding:14px 14px;
-    font-family:var(--body);
-    font-size:16px;
-    color:var(--ink);
-    border-radius:var(--radius-s);
-    transition:border-color .15s;
-    min-height:50px;
-  }
-  .form-row textarea{min-height:110px;}
-  .form-row input:focus,
-  .form-row textarea:focus,
-  .form-row select:focus{
-    border-color:var(--amber-dark);
-    outline:none;
-  }
-  .form-row textarea{resize:vertical;min-height:100px;}
-  .form-two{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
-  @media(max-width:520px){.form-two{grid-template-columns:1fr;}}
-  .form-contact-pref{
-    display:flex;gap:10px;margin-top:10px;flex-wrap:wrap;
-  }
-  .pref-option{
-    font-family:var(--mono);
-    font-size:12.5px;
-    border:1.5px solid #d6d1c5;
-    padding:9px 14px;
-    border-radius:var(--radius-s);
-    cursor:pointer;
-    color:#5a564e;
-    transition:all .15s;
-  }
-  .pref-option input{display:none;}
-  .pref-option.checked{
-    background:var(--ink);
-    border-color:var(--ink);
-    color:var(--white);
-  }
-  .form-submit{
-    margin-top:26px;
-    width:100%;
-    background:var(--amber);
-    color:var(--ink);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    text-align:left;
+    background:none;
     border:none;
-    font-family:var(--mono);
-    font-weight:700;
-    font-size:15px;
-    padding:17px;
-    border-radius:var(--radius-s);
     cursor:pointer;
+    padding:22px 4px;
+    font-family:var(--display);
+    font-size:18px;
+    font-weight:700;
+    color:var(--ink);
     text-transform:uppercase;
-    letter-spacing:.03em;
-    transition:background .15s, transform .15s;
   }
-  .form-submit:hover{background:var(--ink);color:var(--white);transform:translateY(-1px);}
-  .form-note{
-    margin-top:14px;
-    font-size:12px;
-    color:#8a867c;
+  .faq-q .plus{
     font-family:var(--mono);
+    color:var(--amber-dark);
+    font-size:22px;
+    flex-shrink:0;
+    transition:transform .2s;
   }
-  .form-success{
-    display:none;
-    margin-top:22px;
-    padding:16px 18px;
-    background:#e7f1e3;
-    border:1.5px solid var(--moss);
-    border-radius:var(--radius-s);
-    font-size:14px;
-    color:#33482b;
-    font-family:var(--mono);
+  .faq-item.open .faq-q .plus{transform:rotate(45deg);}
+  .faq-a{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .25s ease;
   }
-  .form-success.show{display:block;}
+  .faq-a p{
+    padding:0 4px 22px;
+    color:#4b4944;
+    font-size:15px;
+    max-width:64ch;
+  }
 
   /* ---------- Footer ---------- */
   footer{
@@ -971,7 +990,7 @@
     <div class="nav-links">
       <a href="#materialy">Materiály</a>
       <a href="#realizacie">Realizácie</a>
-      <a href="#postup">Postup</a>
+      <a href="#faq">FAQ</a>
       <a href="#kontakt" class="nav-cta">Cenová ponuka</a>
     </div>
     <a href="tel:+421951565717" class="nav-call" aria-label="Zavolať">☎</a>
@@ -984,7 +1003,7 @@
 <div class="mobile-menu" id="mobileMenu">
   <a href="#materialy">Materiály</a>
   <a href="#realizacie">Realizácie</a>
-  <a href="#postup">Postup</a>
+  <a href="#faq">FAQ</a>
   <a href="#kontakt" class="mm-cta">Cenová ponuka</a>
   <div class="mobile-menu-footer">
     <a href="tel:+421951565717">☎ +421 951 565 717</a>
@@ -1001,7 +1020,7 @@
     <div class="hero-content wrap">
       <div class="hero-tape">Ružomberok a okolie · Predaj · Dovoz · Montáž</div>
       <h1 class="hero-title">Plot, ktorý<br>naozaj <em>vydrží.</em></h1>
-      <p class="hero-sub">Betónové a 3D ploty na mieru — navrhnuté, dovezené a postavené jednou partiou od základu po poslednú tvárnicu. Bez sprostredkovateľov, bez prekvapení vo faktúre.</p>
+      <p class="hero-sub">Betónové a 3D ploty na mieru — zamerané, dovezené a postavené jednou partiou od základu po poslednú tvárnicu. Bez sprostredkovateľov, bez prekvapení vo faktúre.</p>
       <div class="hero-actions">
         <a href="#kontakt" class="btn btn-primary">Chcem cenovú ponuku →</a>
         <a href="tel:+421951565717" class="btn btn-ghost">📞 +421 951 565 717</a>
@@ -1540,7 +1559,7 @@
         <h2>Od telefonátu<br>po hotový plot.</h2>
       </div>
       <div class="process-list">
-        <div class="process-step reveal"><h4>Konzultácia</h4><p>Zavoláte alebo napíšete cez formulár. Do 24 hodín sa ozveme a prejdeme predstavu aj rozpočet.</p></div>
+        <div class="process-step reveal"><h4>Konzultácia</h4><p>Zavoláte alebo napíšete e-mail. Do 24 hodín sa ozveme a prejdeme predstavu aj rozpočet.</p></div>
         <div class="process-step reveal"><h4>Zameranie</h4><p>Prídeme na pozemok, zmeriame terén, prekonzultujeme dekor, výšku a osadenie brány.</p></div>
         <div class="process-step reveal"><h4>Cenová ponuka</h4><p>Pošleme presnú kalkuláciu na mieru — materiál, dovoz aj montáž v jednej sume.</p></div>
         <div class="process-step reveal"><h4>Montáž</h4><p>Dovezieme, postavíme, upraceme po sebe. Plot preberáte hotový, pripravený na roky.</p></div>
@@ -1561,88 +1580,87 @@
     </div>
   </section>
 
-  <!-- CONTACT / FORM -->
-  <section class="contact grain" id="kontakt">
-    <div class="wrap contact-grid">
-      <div class="contact-info reveal">
-        <div class="eyebrow" style="margin-bottom:16px;">Cenová ponuka</div>
-        <h2>Chcete presnú cenu?<br>Napíšte nám.</h2>
-        <p>Vyplňte formulár alebo nás rovno kontaktujte — obhliadku aj cenovú ponuku pripravujeme bezplatne a nezáväzne.</p>
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Časté otázky</div>
+        <h2>Skôr než<br>zavoláte.</h2>
+      </div>
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <button class="faq-q">Koľko stojí betónový plot?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Cena závisí od dĺžky, výšky a zvoleného dekoru. Po telefonáte alebo obhliadke pripravíme presnú kalkuláciu — materiál, dovoz aj montáž v jednej sume, bezplatne a nezáväzne.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Ako dlho trvá montáž plota?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Podľa dĺžky plota a terénu — presný termín dohodneme po zameraní pozemku. Dovezieme, postavíme a upraceme po sebe, plot preberáte hotový.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Pôsobíte aj mimo Ružomberka?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Áno, realizujeme v Ružomberku a okolitých obciach Žilinského kraja. Pri väčších zákazkách vieme vyraziť aj ďalej — stačí napísať, kde stavbu plánujete.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Aké dekory ponúkate?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Tri základné dekory — štiepaný kameň, drevodekor a murovaný tehlový vzor. Všetky sú vibrolisovaný betón s reliéfnym povrchom, odolný mrazu aj vlhkosti.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Ako prebieha objednávka?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Zavoláte alebo napíšete e-mail, do 24 hodín sa ozveme. Prídeme na bezplatnú obhliadku, pošleme cenovú ponuku a po odsúhlasení dovezieme a postavíme plot na kľúč.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Treba pri betónovom plote údržba?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Nie. Vibrolisovaný betón nevyžaduje natieranie ani impregnáciu — stačí ho umyť dažďom. Je to bezúdržbové riešenie na desaťročia.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Akú maximálnu výšku plota viete postaviť?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Betónové ploty realizujeme do maximálnej výšky 200 cm. Presnú výšku prispôsobíme vášmu pozemku pri obhliadke.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="contact-details">
-          <div class="contact-detail">
-            <div class="icon">☎</div>
-            <div>
-              <div class="label">Telefón</div>
-              <a href="tel:+421951565717">+421 951 565 717</a>
-            </div>
-          </div>
-          <div class="contact-detail">
-            <div class="icon">✉</div>
-            <div>
-              <div class="label">E-mail</div>
-              <a href="mailto:bpploty@gmail.com">bpploty@gmail.com</a>
-            </div>
-          </div>
-          <div class="contact-detail">
-            <div class="icon">◎</div>
-            <div>
-              <div class="label">Oblasť pôsobenia</div>
-              <div class="val">Ružomberok a okolie</div>
-            </div>
+  <!-- CONTACT -->
+  <section class="contact grain" id="kontakt">
+    <div class="wrap contact-center">
+      <div class="section-head reveal" style="margin:0 auto 36px;text-align:center;">
+        <div class="eyebrow" style="margin:0 auto 16px;justify-content:center;">Cenová ponuka</div>
+        <h2>Chcete presnú cenu?<br>Zavolajte alebo napíšte.</h2>
+        <p style="margin-left:auto;margin-right:auto;">Obhliadku aj cenovú ponuku pripravujeme bezplatne a nezáväzne — ozveme sa do 24 hodín.</p>
+      </div>
+
+      <div class="contact-cta reveal">
+        <a href="tel:+421951565717" class="btn btn-primary btn-big">☎ Zavolať +421 951 565 717</a>
+        <a href="mailto:bpploty@gmail.com" class="btn btn-ghost btn-big">✉ Napísať e-mail</a>
+      </div>
+
+      <div class="contact-details reveal">
+        <div class="contact-detail">
+          <div class="icon">☎</div>
+          <div>
+            <div class="label">Telefón</div>
+            <a href="tel:+421951565717">+421 951 565 717</a>
           </div>
         </div>
-
-        <div class="socials">
-          <a class="social-link" href="https://www.instagram.com/bpploty" target="_blank" rel="noopener">Instagram @bpploty</a>
-          <a class="social-link" href="#" target="_blank" rel="noopener">Facebook BP ploty</a>
+        <div class="contact-detail">
+          <div class="icon">✉</div>
+          <div>
+            <div class="label">E-mail</div>
+            <a href="mailto:bpploty@gmail.com">bpploty@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="icon">◎</div>
+          <div>
+            <div class="label">Oblasť pôsobenia</div>
+            <div class="val">Ružomberok a okolie</div>
+          </div>
         </div>
       </div>
 
-      <div class="form-card reveal">
-        <h3>Nezáväzná cenová ponuka</h3>
-        <p>Stačí meno a jeden kontakt — ozveme sa my.</p>
-
-        <form id="quoteForm">
-          <div class="form-two">
-            <div class="form-row">
-              <label for="name">Meno a priezvisko</label>
-              <input type="text" id="name" name="name" placeholder="Ján Novák" required>
-            </div>
-            <div class="form-row">
-              <label for="phone">Telefón</label>
-              <input type="tel" id="phone" name="phone" placeholder="+421 9xx xxx xxx">
-            </div>
-          </div>
-
-          <div class="form-row">
-            <label for="email">E-mail</label>
-            <input type="email" id="email" name="email" placeholder="jan.novak@email.sk">
-          </div>
-
-          <div class="form-row">
-            <label>Preferovaný spôsob kontaktu</label>
-            <div class="form-contact-pref" id="prefGroup">
-              <label class="pref-option checked"><input type="radio" name="pref" value="Telefón" checked>Telefonicky</label>
-              <label class="pref-option"><input type="radio" name="pref" value="E-mail">E-mailom</label>
-              <label class="pref-option"><input type="radio" name="pref" value="Bez preferencie">Je mi to jedno</label>
-            </div>
-          </div>
-
-          <div class="form-row">
-            <label for="location">Obec / mesto realizácie</label>
-            <input type="text" id="location" name="location" placeholder="napr. Ružomberok">
-          </div>
-
-          <div class="form-row">
-            <label for="message">Popis zákazky (dĺžka plota, dekor, termín...)</label>
-            <textarea id="message" name="message" placeholder="Napríklad: cca 40 bm plota, kamenný dekor, výška 180 cm, realizácia na jar."></textarea>
-          </div>
-
-          <button type="submit" class="form-submit">Odoslať dopyt →</button>
-          <div class="form-note">Odoslaním sa vám otvorí e-mail so správou adresovanou na bpploty@gmail.com — nič sa neodošle bez vášho potvrdenia.</div>
-          <div class="form-success" id="formSuccess">✓ Správa je pripravená vo vašom e-mailovom klientovi. Po odoslaní sa vám ozveme do 24 hodín.</div>
-        </form>
+      <div class="socials" style="justify-content:center;">
+        <a class="social-link" href="https://www.instagram.com/bpploty" target="_blank" rel="noopener">Instagram @bpploty</a>
+        <a class="social-link" href="#" target="_blank" rel="noopener">Facebook BP ploty</a>
       </div>
     </div>
   </section>
@@ -1657,6 +1675,7 @@
         <a href="#materialy">Materiály</a>
         <a href="#realizacie">Realizácie</a>
         <a href="#postup">Postup</a>
+        <a href="#faq">FAQ</a>
         <a href="#kontakt">Kontakt</a>
       </div>
     </div>
@@ -1691,15 +1710,6 @@
       panels.forEach(p=>p.classList.remove('active'));
       tab.classList.add('active');
       document.querySelector('.material-panel[data-panel="'+tab.dataset.tab+'"]').classList.add('active');
-    });
-  });
-
-  // Contact pref pills
-  document.querySelectorAll('.pref-option').forEach(opt=>{
-    opt.addEventListener('click', ()=>{
-      document.querySelectorAll('.pref-option').forEach(o=>o.classList.remove('checked'));
-      opt.classList.add('checked');
-      opt.querySelector('input').checked = true;
     });
   });
 
@@ -1850,28 +1860,21 @@
     });
   }
 
-  // Form -> mailto
-  document.getElementById('quoteForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    const name = document.getElementById('name').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const location = document.getElementById('location').value.trim();
-    const message = document.getElementById('message').value.trim();
-    const pref = document.querySelector('input[name="pref"]:checked').value;
-
-    const subject = encodeURIComponent('Dopyt na cenovú ponuku — ' + name);
-    const body = encodeURIComponent(
-      'Meno: ' + name + '\n' +
-      'Telefón: ' + (phone || '-') + '\n' +
-      'E-mail: ' + (email || '-') + '\n' +
-      'Preferovaný kontakt: ' + pref + '\n' +
-      'Obec / mesto: ' + (location || '-') + '\n\n' +
-      'Popis zákazky:\n' + (message || '-')
-    );
-    window.location.href = 'mailto:bpploty@gmail.com?subject=' + subject + '&body=' + body;
-
-    document.getElementById('formSuccess').classList.add('show');
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const item = btn.closest('.faq-item');
+      const answer = item.querySelector('.faq-a');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(openItem=>{
+        openItem.classList.remove('open');
+        openItem.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if(!isOpen){
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
   });
 
   // Scroll reveal
