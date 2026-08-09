@@ -812,6 +812,127 @@
   }
   .social-link:hover{border-color:var(--amber);color:var(--amber);}
 
+  .contact-form-wrap{
+    margin-top:64px;
+    padding-top:56px;
+    border-top:1px solid rgba(255,255,255,0.14);
+    text-align:left;
+  }
+  .contact-form-wrap .form-lead{
+    text-align:center;
+    max-width:520px;
+    margin:0 auto 32px;
+  }
+  .contact-form-wrap .form-lead .eyebrow{justify-content:center;margin-bottom:12px;}
+  .form-card{
+    background:var(--stone);
+    color:var(--ink);
+    border-radius:var(--radius-m);
+    padding:40px;
+    max-width:640px;
+    margin:0 auto;
+  }
+  @media(max-width:520px){.form-card{padding:26px;}}
+  .form-card h3{
+    font-family:var(--display);
+    font-size:24px;
+    text-transform:uppercase;
+    font-weight:800;
+  }
+  .form-card > p{
+    margin-top:8px;
+    color:#5a564e;
+    font-size:14px;
+  }
+  .form-row{margin-top:22px;}
+  .form-row label{
+    display:block;
+    font-family:var(--mono);
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    color:#5a564e;
+    margin-bottom:8px;
+  }
+  .form-row input,
+  .form-row textarea,
+  .form-row select{
+    width:100%;
+    border:1.5px solid #d6d1c5;
+    background:var(--white);
+    padding:14px 14px;
+    font-family:var(--body);
+    font-size:16px;
+    color:var(--ink);
+    border-radius:var(--radius-s);
+    transition:border-color .15s;
+    min-height:50px;
+  }
+  .form-row textarea{min-height:110px;}
+  .form-row input:focus,
+  .form-row textarea:focus,
+  .form-row select:focus{
+    border-color:var(--amber-dark);
+    outline:none;
+  }
+  .form-row textarea{resize:vertical;min-height:100px;}
+  .form-two{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  @media(max-width:520px){.form-two{grid-template-columns:1fr;}}
+  .form-contact-pref{
+    display:flex;gap:10px;margin-top:10px;flex-wrap:wrap;
+  }
+  .pref-option{
+    font-family:var(--mono);
+    font-size:12.5px;
+    border:1.5px solid #d6d1c5;
+    padding:9px 14px;
+    border-radius:var(--radius-s);
+    cursor:pointer;
+    color:#5a564e;
+    transition:all .15s;
+  }
+  .pref-option input{display:none;}
+  .pref-option.checked{
+    background:var(--ink);
+    border-color:var(--ink);
+    color:var(--white);
+  }
+  .form-submit{
+    margin-top:26px;
+    width:100%;
+    background:var(--amber);
+    color:var(--ink);
+    border:none;
+    font-family:var(--mono);
+    font-weight:700;
+    font-size:15px;
+    padding:17px;
+    border-radius:var(--radius-s);
+    cursor:pointer;
+    text-transform:uppercase;
+    letter-spacing:.03em;
+    transition:background .15s, transform .15s;
+  }
+  .form-submit:hover{background:var(--ink);color:var(--white);transform:translateY(-1px);}
+  .form-note{
+    margin-top:14px;
+    font-size:12px;
+    color:#8a867c;
+    font-family:var(--mono);
+  }
+  .form-success{
+    display:none;
+    margin-top:22px;
+    padding:16px 18px;
+    background:#e7f1e3;
+    border:1.5px solid var(--moss);
+    border-radius:var(--radius-s);
+    font-size:14px;
+    color:#33482b;
+    font-family:var(--mono);
+  }
+  .form-success.show{display:block;}
+
   /* ---------- FAQ ---------- */
   .faq{background:var(--paper);}
   .faq-list{max-width:800px;}
@@ -1559,7 +1680,7 @@
         <h2>Od telefonátu<br>po hotový plot.</h2>
       </div>
       <div class="process-list">
-        <div class="process-step reveal"><h4>Konzultácia</h4><p>Zavoláte alebo napíšete e-mail. Do 24 hodín sa ozveme a prejdeme predstavu aj rozpočet.</p></div>
+        <div class="process-step reveal"><h4>Konzultácia</h4><p>Zavoláte, napíšete e-mail alebo vyplníte formulár. Do 24 hodín sa ozveme a prejdeme predstavu aj rozpočet.</p></div>
         <div class="process-step reveal"><h4>Zameranie</h4><p>Prídeme na pozemok, zmeriame terén, prekonzultujeme dekor, výšku a osadenie brány.</p></div>
         <div class="process-step reveal"><h4>Cenová ponuka</h4><p>Pošleme presnú kalkuláciu na mieru — materiál, dovoz aj montáž v jednej sume.</p></div>
         <div class="process-step reveal"><h4>Montáž</h4><p>Dovezieme, postavíme, upraceme po sebe. Plot preberáte hotový, pripravený na roky.</p></div>
@@ -1661,6 +1782,58 @@
       <div class="socials" style="justify-content:center;">
         <a class="social-link" href="https://www.instagram.com/bpploty" target="_blank" rel="noopener">Instagram @bpploty</a>
         <a class="social-link" href="#" target="_blank" rel="noopener">Facebook BP ploty</a>
+      </div>
+
+      <div class="contact-form-wrap reveal">
+        <div class="form-lead">
+          <div class="eyebrow">Alebo napíšte</div>
+          <p style="margin-top:12px;color:var(--concrete-light);">Radšej opíšete zákazku písomne? Vyplňte formulár — ozveme sa my.</p>
+        </div>
+        <div class="form-card">
+          <h3>Nezáväzná cenová ponuka</h3>
+          <p>Stačí meno a jeden kontakt — ozveme sa my.</p>
+
+          <form id="quoteForm">
+            <div class="form-two">
+              <div class="form-row">
+                <label for="name">Meno a priezvisko</label>
+                <input type="text" id="name" name="name" placeholder="Ján Novák" required>
+              </div>
+              <div class="form-row">
+                <label for="phone">Telefón</label>
+                <input type="tel" id="phone" name="phone" placeholder="+421 9xx xxx xxx">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" placeholder="jan.novak@email.sk">
+            </div>
+
+            <div class="form-row">
+              <label>Preferovaný spôsob kontaktu</label>
+              <div class="form-contact-pref" id="prefGroup">
+                <label class="pref-option checked"><input type="radio" name="pref" value="Telefón" checked>Telefonicky</label>
+                <label class="pref-option"><input type="radio" name="pref" value="E-mail">E-mailom</label>
+                <label class="pref-option"><input type="radio" name="pref" value="Bez preferencie">Je mi to jedno</label>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <label for="location">Obec / mesto realizácie</label>
+              <input type="text" id="location" name="location" placeholder="napr. Ružomberok">
+            </div>
+
+            <div class="form-row">
+              <label for="message">Popis zákazky (dĺžka plota, dekor, termín...)</label>
+              <textarea id="message" name="message" placeholder="Napríklad: cca 40 bm plota, kamenný dekor, výška 180 cm, realizácia na jar."></textarea>
+            </div>
+
+            <button type="submit" class="form-submit">Odoslať dopyt →</button>
+            <div class="form-note">Odoslaním sa vám otvorí e-mail so správou adresovanou na bpploty@gmail.com — nič sa neodošle bez vášho potvrdenia.</div>
+            <div class="form-success" id="formSuccess">✓ Správa je pripravená vo vašom e-mailovom klientovi. Po odoslaní sa vám ozveme do 24 hodín.</div>
+          </form>
+        </div>
       </div>
     </div>
   </section>
@@ -1875,6 +2048,39 @@
         answer.style.maxHeight = answer.scrollHeight + 'px';
       }
     });
+  });
+
+  // Contact pref pills
+  document.querySelectorAll('.pref-option').forEach(opt=>{
+    opt.addEventListener('click', ()=>{
+      document.querySelectorAll('.pref-option').forEach(o=>o.classList.remove('checked'));
+      opt.classList.add('checked');
+      opt.querySelector('input').checked = true;
+    });
+  });
+
+  // Form -> mailto
+  document.getElementById('quoteForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const location = document.getElementById('location').value.trim();
+    const message = document.getElementById('message').value.trim();
+    const pref = document.querySelector('input[name="pref"]:checked').value;
+
+    const subject = encodeURIComponent('Dopyt na cenovú ponuku — ' + name);
+    const body = encodeURIComponent(
+      'Meno: ' + name + '\n' +
+      'Telefón: ' + (phone || '-') + '\n' +
+      'E-mail: ' + (email || '-') + '\n' +
+      'Preferovaný kontakt: ' + pref + '\n' +
+      'Obec / mesto: ' + (location || '-') + '\n\n' +
+      'Popis zákazky:\n' + (message || '-')
+    );
+    window.location.href = 'mailto:bpploty@gmail.com?subject=' + subject + '&body=' + body;
+
+    document.getElementById('formSuccess').classList.add('show');
   });
 
   // Scroll reveal
