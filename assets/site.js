@@ -93,4 +93,28 @@
       window.scrollTo({top:0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
     });
   }
+
+  // Cookie consent (Google Consent Mode v2 — analytics_storage only, no ads/marketing cookies used)
+  const cookieBanner = document.getElementById('cookieBanner');
+  if(cookieBanner){
+    const CONSENT_KEY = 'bp_cookie_consent';
+    const stored = localStorage.getItem(CONSENT_KEY);
+    function applyConsent(value){
+      if(window.gtag){
+        gtag('consent', 'update', {analytics_storage: value === 'granted' ? 'granted' : 'denied'});
+      }
+    }
+    function chooseConsent(value){
+      localStorage.setItem(CONSENT_KEY, value);
+      applyConsent(value);
+      cookieBanner.classList.remove('show');
+    }
+    if(stored){
+      applyConsent(stored);
+    } else {
+      cookieBanner.classList.add('show');
+    }
+    document.getElementById('cookieAccept')?.addEventListener('click', ()=>chooseConsent('granted'));
+    document.getElementById('cookieDecline')?.addEventListener('click', ()=>chooseConsent('denied'));
+  }
 })();

@@ -116,12 +116,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="assets/style.css">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-FCX9F0HGDW"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {analytics_storage: 'denied'});
   gtag('js', new Date());
   gtag('config', 'G-FCX9F0HGDW');
+  function bpLoadGA(){
+    if(window.bpGaLoaded) return;
+    window.bpGaLoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-FCX9F0HGDW';
+    document.head.appendChild(s);
+  }
+  if(document.readyState === 'complete'){ bpLoadGA(); }
+  else { window.addEventListener('load', bpLoadGA); }
 </script>
 </head>
 <body>
@@ -448,6 +458,14 @@
 </div>
 
 <button class="to-top" id="toTopBtn" aria-label="Späť hore">↑</button>
+
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cookie-banner-text">Táto stránka používa cookies len na anonymnú webovú analytiku (Google Analytics), aby sme videli, čo funguje. Žiadne reklamné ani marketingové sledovanie.</div>
+  <div class="cookie-banner-actions">
+    <button class="cookie-btn cookie-decline" id="cookieDecline">Odmietnuť</button>
+    <button class="cookie-btn cookie-accept" id="cookieAccept">Prijať</button>
+  </div>
+</div>
 
 <script>
   // Material tabs
