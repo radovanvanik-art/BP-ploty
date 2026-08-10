@@ -2130,8 +2130,16 @@
 
   // Back to top
   const toTopBtn = document.getElementById('toTopBtn');
+  let viewportH = window.innerHeight;
+  window.addEventListener('resize', ()=>{ viewportH = window.innerHeight; }, {passive:true});
+  let toTopTicking = false;
   window.addEventListener('scroll', ()=>{
-    toTopBtn.classList.toggle('show', window.scrollY > window.innerHeight * 0.9);
+    if(toTopTicking) return;
+    toTopTicking = true;
+    requestAnimationFrame(()=>{
+      toTopBtn.classList.toggle('show', window.scrollY > viewportH * 0.9);
+      toTopTicking = false;
+    });
   }, {passive:true});
   toTopBtn.addEventListener('click', ()=>{
     window.scrollTo({top:0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
