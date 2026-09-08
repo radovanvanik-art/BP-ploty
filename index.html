@@ -579,6 +579,33 @@
     object-fit:cover;
     box-shadow:0 18px 40px -12px rgba(20,19,17,0.35);
   }
+  .material-3d-swatches{
+    display:flex;
+    width:100%;
+    aspect-ratio:4/3;
+    border-radius:var(--radius-m);
+    overflow:hidden;
+    box-shadow:0 18px 40px -12px rgba(20,19,17,0.35);
+  }
+  .material-3d-swatches .swatch{
+    flex:1;
+    display:flex;
+    align-items:flex-end;
+    padding:18px 14px;
+    border-left:1px solid rgba(255,255,255,0.14);
+  }
+  .material-3d-swatches .swatch:first-child{border-left:none;}
+  .material-3d-swatches .swatch span{
+    font-family:var(--mono);
+    font-size:12px;
+    font-weight:600;
+    color:rgba(255,255,255,0.92);
+    text-transform:uppercase;
+    letter-spacing:.04em;
+  }
+  .swatch-zeleny{background:#4B5D3A;}
+  .swatch-hnedy{background:#5B4632;}
+  .swatch-antracit{background:#2B2A27;}
   .material-copy .eyebrow{margin-bottom:16px;}
   .material-copy h3{
     font-family:var(--display);
@@ -1266,8 +1293,8 @@
     <div class="wrap">
       <div class="section-head reveal">
         <div class="eyebrow">Vzorkovník</div>
-        <h2>Tri dekory,<br>jedna pevnosť.</h2>
-        <p>Každý panel je vibrolisovaný betón s reliéfnym povrchom. Rozdiel je len v tom, akú štruktúru mu dá forma. Vyberte si, čo bude sedieť k vášmu domu.</p>
+        <h2>Štyri dekory,<br>jedna pevnosť.</h2>
+        <p>Tri betónové dekory a jeden 3D plotový systém. Vyberte si, čo bude sedieť k vášmu domu.</p>
       </div>
 
       <div class="material-tabs-wrap">
@@ -1275,6 +1302,7 @@
           <button class="material-tab active" data-tab="kamen" role="tab">Kameň<span class="tag">Štiepaný reliéf</span></button>
           <button class="material-tab" data-tab="drevo" role="tab">Drevo<span class="tag">Dosková štruktúra</span></button>
           <button class="material-tab" data-tab="tehla" role="tab">Tehla<span class="tag">Murovaný vzor</span></button>
+          <button class="material-tab" data-tab="3d" role="tab">3D Ploty<span class="tag">Farebný panel</span></button>
         </div>
       </div>
 
@@ -1316,6 +1344,25 @@
             <div class="spec-row"><span>Povrch</span><b>Hrubší reliéf, murovaná väzba</b></div>
             <div class="spec-row"><span>Farebnosť</span><b>Prírodná šedá</b></div>
             <div class="spec-row"><span>Odporúčaná výška</span><b>200 cm</b></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="material-panel" data-panel="3d">
+        <div class="material-3d-swatches">
+          <div class="swatch swatch-zeleny"><span>Zelená</span></div>
+          <div class="swatch swatch-hnedy"><span>Hnedá</span></div>
+          <div class="swatch swatch-antracit"><span>Antracit</span></div>
+        </div>
+        <div class="material-copy">
+          <div class="eyebrow">04 · 3D Ploty</div>
+          <h3>3D plotové panely</h3>
+          <p>Zvárané plotové panely z pozinkovaného, práškovo lakovaného drôtu. Ľahká a rýchla montáž, priehľadný moderný vzhľad, tri farby na výber.</p>
+          <div class="spec-list">
+            <div class="spec-row"><span>Farby</span><b>Zelená / hnedá / antracit</b></div>
+            <div class="spec-row"><span>Výška panelov</span><b>123 / 153 / 173 / 193 cm</b></div>
+            <div class="spec-row"><span>Podhrabové dosky</span><b>20 / 25 / 30 cm</b></div>
+            <div class="spec-row"><span>Hrúbka drôtu</span><b>4 / 5 mm</b></div>
           </div>
         </div>
       </div>
