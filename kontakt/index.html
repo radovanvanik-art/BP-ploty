@@ -9,6 +9,8 @@
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#1C1B19">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="sk_SK">
 <meta property="og:site_name" content="BP ploty">
@@ -1186,7 +1188,12 @@
           <h2 style="font-family:var(--display);font-size:24px;text-transform:uppercase;font-weight:800;">Nezáväzná cenová ponuka</h2>
           <p>Stačí meno a jeden kontakt — ozveme sa my.</p>
 
-          <form id="quoteForm">
+          <form id="quoteForm" action="https://formsubmit.co/bpploty@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="Nový dopyt z webu — BP ploty">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="https://www.bpploty.sk/kontakt/?odoslane=1">
+            <input type="hidden" name="_autoresponse" value="Ďakujeme za dopyt! Prijali sme vašu správu a ozveme sa vám do 24 hodín. — BP ploty">
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
             <div class="form-two">
               <div class="form-row">
                 <label for="name">Meno a priezvisko</label>
@@ -1223,8 +1230,8 @@
             </div>
 
             <button type="submit" class="form-submit">Odoslať dopyt →</button>
-            <div class="form-note">Odoslaním sa vám otvorí e-mail so správou adresovanou na bpploty@gmail.com — nič sa neodošle bez vášho potvrdenia.</div>
-            <div class="form-success" id="formSuccess">✓ Správa je pripravená vo vašom e-mailovom klientovi. Po odoslaní sa vám ozveme do 24 hodín.</div>
+            <div class="form-note">Odoslaním sa dopyt doručí priamo nám na bpploty@gmail.com — ozveme sa do 24 hodín.</div>
+            <div class="form-success" id="formSuccess">✓ Dopyt bol odoslaný. Ozveme sa do 24 hodín.</div>
           </form>
         </div>
       </div>
@@ -1276,29 +1283,13 @@
     });
   });
 
-  // Form -> mailto
-  document.getElementById('quoteForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    const name = document.getElementById('name').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const location = document.getElementById('location').value.trim();
-    const message = document.getElementById('message').value.trim();
-    const pref = document.querySelector('input[name="pref"]:checked').value;
-
-    const subject = encodeURIComponent('Dopyt na cenovú ponuku — ' + name);
-    const body = encodeURIComponent(
-      'Meno: ' + name + '\n' +
-      'Telefón: ' + (phone || '-') + '\n' +
-      'E-mail: ' + (email || '-') + '\n' +
-      'Preferovaný kontakt: ' + pref + '\n' +
-      'Obec / mesto: ' + (location || '-') + '\n\n' +
-      'Popis zákazky:\n' + (message || '-')
-    );
-    window.location.href = 'mailto:bpploty@gmail.com?subject=' + subject + '&body=' + body;
-
-    document.getElementById('formSuccess').classList.add('show');
-  });
+  // Show success message after FormSubmit redirects back with ?odoslane=1
+  if(new URLSearchParams(window.location.search).get('odoslane') === '1'){
+    const successEl = document.getElementById('formSuccess');
+    successEl.classList.add('show');
+    successEl.scrollIntoView({behavior:'smooth', block:'center'});
+    history.replaceState(null, '', window.location.pathname);
+  }
 </script>
 <script src="/assets/site.js"></script>
 
