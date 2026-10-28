@@ -1169,7 +1169,7 @@ footer.site{background:var(--deep);color:var(--stone-d);border-top:1px solid var
       'Číslo dopytu':ref,'Práce':selected().join(', '),'Miesto':val('o-loc')||'—','Začiatok':val('o-when'),'Objekt':radio('obj'),
       'Popis':val('o-msg')||'—','Meno':val('o-name'),'Telefón':val('o-phone'),'Ozvať sa':radio('pref')};
     if(val('o-email')){data.email=val('o-email');data._autoresponse='Ďakujeme, váš dopyt '+ref+' sme prijali. Ozveme sa do 24 hodín. LIBES s.r.o., 0951 565 717'}
-    fetch('https://formsubmit.co/ajax/libes@gmail.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
+    fetch('https://formsubmit.co/ajax/bpploty@gmail.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
       .then(function(r){return r.json().catch(function(){return {}}).then(function(j){if(!r.ok||String(j.success)==='false')throw new Error(j.message||r.status)})})
       .then(function(){
         form.hidden=true;document.querySelector('.wz-bar').hidden=true;document.querySelector('.wz-labels').hidden=true;

@@ -9,7 +9,7 @@ REPO = '/home/claude/bp-ploty'
 
 # ---------------- konfigurácia firmy ----------------
 SITE = 'https://www.bpploty.sk'          # zmeniť pri prechode na novú doménu (+ CNAME)
-FORM_EMAIL = 'libes@gmail.com'           # kam chodia objednávky (FormSubmit)
+FORM_EMAIL = 'bpploty@gmail.com'          # kam chodia objednávky (FormSubmit) — po aktivácii libes@gmail.com prepnúť
 EMAIL = 'libes@gmail.com'
 PHONE, TEL = '0951 565 717', '+421951565717'
 ICO = '57 955 531'
