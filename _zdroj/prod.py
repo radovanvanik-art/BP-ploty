@@ -14,7 +14,8 @@ EMAIL = 'libes@gmail.com'
 PHONE, TEL = '0951 565 717', '+421951565717'
 ICO = '57 955 531'
 DIC = None                               # doplniť, keď príde (napr. '2123456789')
-SIDLO = '034 01 Ružomberok'
+ULICA = 'Nábrežie M. R. Štefánika 1684/3'
+SIDLO = ULICA + ', 034 01 Ružomberok'
 ZAPIS = '27. 10. 2026'
 GA = 'G-FCX9F0HGDW'
 INSTAGRAM = 'https://www.instagram.com/bpploty'
@@ -78,14 +79,15 @@ COOKIE = '''
 '''
 
 def company_line():
-    s = f'IČO {ICO}'
-    if DIC: s += f' · DIČ {DIC}'
+    nb = lambda x: x.replace(' ', '\u00a0')
+    s = nb(f'IČO {ICO}')
+    if DIC: s += ' · ' + nb(f'DIČ {DIC}')
     return s
 
 def finish(page):
     """Úpravy spoločné pre všetky stránky: koncept preč, údaje firmy, cookies, Instagram."""
     page = page.replace('<span class="concept">KONCEPT</span><span class="hide-sm">&nbsp;·&nbsp;', '<span class="hide-sm">')
-    page = re.sub(r'IČO a sídlo doplníme po zápise s\.r\.o\.', f'LIBES s.r.o. · {company_line()} · {SIDLO} · <button type="button" class="cookie-link" data-cookie-settings>Nastavenia cookies</button>', page)
+    page = re.sub(r'IČO a sídlo doplníme po zápise s\.r\.o\.', f'LIBES s.r.o. · {company_line()} · {SIDLO.replace("034 01", "034\u00a001")} · <button type="button" class="cookie-link" data-cookie-settings>Nastavenia cookies</button>', page)
     page = page.replace('<li>Ružomberok a okolie</li></ul>', f'<li>Ružomberok a okolie</li><li><a href="{INSTAGRAM}" target="_blank" rel="noopener">Instagram @bpploty</a></li></ul>')
     page = page.replace('<li>Ružomberok a okolie</li>\n        </ul>', f'<li>Ružomberok a okolie</li>\n          <li><a href="{INSTAGRAM}" target="_blank" rel="noopener">Instagram @bpploty</a></li>\n        </ul>')
     page = page.replace('<meta name="claude:viewport-fit-sides" content="cover">\n', '')
@@ -148,7 +150,7 @@ biz = {"@context": "https://schema.org", "@type": "HomeAndConstructionBusiness",
        "name": "LIBES s.r.o.", "alternateName": "BP ploty", "url": SITE + "/", "image": SITE + "/img/og.jpg", "logo": SITE + "/apple-touch-icon.png",
        "description": "Murárske a pomocné práce, prenos materiálu, upratovanie stavieb a montáž betónových a 3D plotov v Ružomberku a okolí.",
        "telephone": TEL, "email": EMAIL, "identifier": {"@type": "PropertyValue", "propertyID": "IČO", "value": ICO.replace(' ', '')},
-       "address": {"@type": "PostalAddress", "postalCode": "034 01", "addressLocality": "Ružomberok", "addressCountry": "SK"},
+       "address": {"@type": "PostalAddress", "streetAddress": ULICA, "postalCode": "034 01", "addressLocality": "Ružomberok", "addressCountry": "SK"},
        "areaServed": [{"@type": "City", "name": "Ružomberok"}, {"@type": "AdministrativeArea", "name": "Žilinský kraj"}],
        "openingHoursSpecification": {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "07:00", "closes": "16:00"},
        "sameAs": [INSTAGRAM],
