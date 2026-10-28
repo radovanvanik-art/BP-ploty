@@ -307,6 +307,7 @@ body.menu-open{overflow:hidden}
 
 .wizard{background:var(--bone-2);color:var(--ink);border-radius:10px;padding:36px;box-shadow:0 40px 90px -40px rgba(0,0,0,.8);min-width:0}
 @media (max-width:560px){.wizard{padding:24px 20px}}
+#wizard{scroll-margin-top:96px}
 .wz-top{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
 .wz-top h3{font-family:var(--f-display);font-weight:600;text-transform:uppercase;font-size:1.8rem;line-height:1}
 .wz-count{font-family:var(--f-mono);font-size:.72rem;color:var(--stone-l)}
@@ -1049,6 +1050,13 @@ footer.site{background:var(--deep);color:var(--stone-d);border-top:1px solid var
 
 <script>
 (function(){
+  /* --- „Objednať“ vedie priamo na formulár (na mobile je pod kontaktmi) --- */
+  function toForm(smooth){var w=document.getElementById('wizard');if(w)w.scrollIntoView({behavior:smooth&&!matchMedia('(prefers-reduced-motion: reduce)').matches?'smooth':'auto',block:'start'})}
+  document.addEventListener('click',function(e){var a=e.target.closest('a[href$="#objednavka"]');if(!a)return;
+    var u=new URL(a.getAttribute('href'),location.href);if(u.pathname!==location.pathname)return;
+    e.preventDefault();try{history.replaceState(null,'','#objednavka')}catch(x){}setTimeout(function(){toForm(true)},10)});
+  if(location.hash==='#objednavka')window.addEventListener('load',function(){setTimeout(function(){toForm(false)},50)});
+
   /* --- mobilné menu --- */
   var bg=document.getElementById('burger'), mn=document.getElementById('mnav');
   function menu(o){mn.hidden=!o;bg.setAttribute('aria-expanded',String(o));document.body.classList.toggle('menu-open',o);if(o){var f=mn.querySelector('a');f&&f.focus()}else{bg.focus()}}
