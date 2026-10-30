@@ -252,7 +252,7 @@ def header(active):
     return f'''
 <section class="topbar" aria-label="Kontakt a otváracie hodiny"><div class="wrap">
   <span><i class="dot"></i> Po – Pia <b>7:00 – 16:00</b><span class="hide-sm">&nbsp;· Ružomberok a okolie</span></span>
-  <span><span class="concept">KONCEPT</span><span class="hide-sm">&nbsp;·&nbsp;<a href="mailto:libes@gmail.com" style="text-decoration:none">libes@gmail.com</a>&nbsp;·&nbsp;<a href="tel:{TEL}" style="text-decoration:none;color:var(--bone)">{PHONE}</a></span></span>
+  <span><span class="concept">KONCEPT</span><span class="hide-sm">&nbsp;·&nbsp;<a href="mailto:libes.sro@gmail.com" style="text-decoration:none">libes.sro@gmail.com</a>&nbsp;·&nbsp;<a href="tel:{TEL}" style="text-decoration:none;color:var(--bone)">{PHONE}</a></span></span>
 </div></section>
 <header class="site"><div class="wrap">
   <a class="logo" href="{HOME}"><svg viewBox="0 0 107 163" fill="#EAE5D8" aria-hidden="true"><use href="#mark"/></svg><span class="word">LIBES</span><span class="sro">s.r.o.</span></a>
@@ -283,7 +283,7 @@ def footer():
       <p>Stavebné a pomocné práce, prenos materiálu, upratovanie a montáž plotov. Ružomberok a okolie. Predtým BP ploty.</p></div>
     <div><h2 class="fh">Služby</h2><ul>{svc}</ul></div>
     <div><h2 class="fh">Web</h2><ul><li><a href="{HOME}#planovac">Plánovač plota</a></li><li><a href="{HOME}#realizacie">Realizácie</a></li><li><a href="{HOME}#faq">Časté otázky</a></li><li><a href="{HOME}#objednavka">Objednávka</a></li></ul></div>
-    <div><h2 class="fh">Kontakt</h2><ul><li><a href="tel:{TEL}" style="color:var(--bone);font-family:var(--f-mono)">{PHONE}</a></li><li><a href="mailto:libes@gmail.com">libes@gmail.com</a></li><li>Po – Pia 7:00 – 16:00</li><li>Ružomberok a okolie</li></ul></div>
+    <div><h2 class="fh">Kontakt</h2><ul><li><a href="tel:{TEL}" style="color:var(--bone);font-family:var(--f-mono)">{PHONE}</a></li><li><a href="mailto:libes.sro@gmail.com">libes.sro@gmail.com</a></li><li>Po – Pia 7:00 – 16:00</li><li>Ružomberok a okolie</li></ul></div>
   </div></div>
   <div class="giant" aria-hidden="true"><svg viewBox="-1 -1 109 165"><use href="#mark"/></svg><span>LIBES</span></div>
   <div class="wrap foot-bottom"><span>© 2026 LIBES s.r.o.</span><span><a href="../../ochrana-osobnych-udajov/index.html" style="color:inherit">Ochrana osobných údajov</a> · IČO a sídlo doplníme po zápise s.r.o.</span></div>
@@ -380,7 +380,7 @@ def page(s):
     ld = [
         {"@context": "https://schema.org", "@type": "Service", "name": s['name'], "serviceType": s['name'],
          "description": s['desc'], "areaServed": [{"@type": "City", "name": "Ružomberok"}, {"@type": "AdministrativeArea", "name": "Žilinský kraj"}],
-         "provider": {"@type": "HomeAndConstructionBusiness", "name": "LIBES s.r.o.", "telephone": TEL, "email": "libes@gmail.com"}},
+         "provider": {"@type": "HomeAndConstructionBusiness", "name": "LIBES s.r.o.", "telephone": TEL, "email": "libes.sro@gmail.com"}},
         {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Domov", "item": "/"},
             {"@type": "ListItem", "position": 2, "name": "Služby", "item": "/#sluzby"},
@@ -506,12 +506,12 @@ print('vygenerovaných podstránok:', len(SERVICES))
 # ---------------------------------------------------------------- OCHRANA OSOBNÝCH ÚDAJOV
 def privacy_page():
     sections = [
-        ('Prevádzkovateľ', 'LIBES s.r.o., sídlo: <mark>[doplniť]</mark>, IČO: <mark>[doplniť]</mark>, zapísaná v Obchodnom registri <mark>[doplniť]</mark>. Kontakt: <a href="mailto:libes@gmail.com">libes@gmail.com</a>, <a href="tel:+421951565717">0951 565 717</a>.'),
+        ('Prevádzkovateľ', 'LIBES s.r.o., sídlo: <mark>[doplniť]</mark>, IČO: <mark>[doplniť]</mark>, zapísaná v Obchodnom registri <mark>[doplniť]</mark>. Kontakt: <a href="mailto:libes.sro@gmail.com">libes.sro@gmail.com</a>, <a href="tel:+421951565717">0951 565 717</a>.'),
         ('Aké údaje spracúvame', 'Údaje, ktoré nám pošlete cez objednávkový formulár, e‑mail, telefón, WhatsApp alebo Viber: meno a priezvisko, telefónne číslo, e‑mail, miesto realizácie a popis požadovaných prác vrátane údajov z kalkulačiek na webe.'),
         ('Na aký účel a na akom základe', 'Údaje používame výhradne na vybavenie vášho dopytu — spätný kontakt, obhliadku, prípravu cenovej ponuky a prípadné uzavretie a plnenie zmluvy. Právnym základom je vykonanie opatrení pred uzavretím zmluvy a plnenie zmluvy (čl. 6 ods. 1 písm. b) nariadenia GDPR). Pri účtovných dokladoch je základom splnenie zákonnej povinnosti (čl. 6 ods. 1 písm. c) GDPR).'),
         ('Ako dlho údaje uchovávame', 'Ak zmluva nevznikne, údaje z dopytu vymažeme najneskôr do 12 mesiacov od posledného kontaktu. Ak zmluva vznikne, uchovávame ich po dobu jej plnenia a záručnej doby; účtovné doklady po dobu stanovenú zákonom o účtovníctve.'),
         ('Komu údaje poskytujeme', 'Údaje nepredávame ani neposkytujeme na marketing. K údajom môžu mať prístup len poskytovatelia technických služieb, ktoré používame (poskytovateľ e‑mailu, služba na doručovanie formulára z webu, hosting webu). <mark>[overiť konkrétnych poskytovateľov a prípadný prenos mimo EÚ]</mark>'),
-        ('Vaše práva', 'Máte právo na prístup k svojim údajom, ich opravu, vymazanie, obmedzenie spracúvania, prenosnosť a právo namietať. Stačí nám napísať na libes@gmail.com. Ak sa domnievate, že s údajmi zaobchádzame nesprávne, môžete podať návrh Úradu na ochranu osobných údajov SR, Hraničná 12, 820 07 Bratislava, www.dataprotection.gov.sk.'),
+        ('Vaše práva', 'Máte právo na prístup k svojim údajom, ich opravu, vymazanie, obmedzenie spracúvania, prenosnosť a právo namietať. Stačí nám napísať na libes.sro@gmail.com. Ak sa domnievate, že s údajmi zaobchádzame nesprávne, môžete podať návrh Úradu na ochranu osobných údajov SR, Hraničná 12, 820 07 Bratislava, www.dataprotection.gov.sk.'),
         ('Cookies', 'Tento web nepoužíva reklamné ani analytické cookies. Ak sa v budúcnosti pridá napríklad návštevnosť cez Google Analytics, doplníme lištu so súhlasom a túto časť aktualizujeme.'),
     ]
     body = ''.join(f'<section class="pp-sec"><h2>{t}</h2><p>{c}</p></section>' for t, c in sections)

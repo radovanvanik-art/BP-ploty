@@ -9,8 +9,8 @@ REPO = '/home/claude/bp-ploty'
 
 # ---------------- konfigurácia firmy ----------------
 SITE = 'https://www.bpploty.sk'          # zmeniť pri prechode na novú doménu (+ CNAME)
-FORM_EMAIL = 'bpploty@gmail.com'          # kam chodia objednávky (FormSubmit) — po aktivácii libes@gmail.com prepnúť
-EMAIL = 'libes@gmail.com'
+FORM_EMAIL = 'libes.sro@gmail.com'        # kam chodia objednávky (FormSubmit)
+EMAIL = 'libes.sro@gmail.com'
 PHONE, TEL = '0951 565 717', '+421951565717'
 ICO = '57 955 531'
 DIC = None                               # doplniť, keď príde (napr. '2123456789')
@@ -117,7 +117,7 @@ for s in SLUGS: body = body.replace(f'sluzby/{s}/index.html', f'/sluzby/{s}/')
 body = body.replace('href="ochrana-osobnych-udajov/index.html"', 'href="/ochrana-osobnych-udajov/"')
 body = re.sub(r'(?<=[\s"\'(,])img/', '/img/', body)
 # texty konceptu
-body = body.replace('<p class="wz-note">V ostrej verzii sa objednávka doručí na libes@gmail.com cez FormSubmit (rovnako ako na súčasnom webe) a zákazník dostane automatické potvrdenie. V tomto koncepte sa nič neodosiela.</p>',
+body = body.replace('<p class="wz-note">V ostrej verzii sa objednávka doručí na libes.sro@gmail.com cez FormSubmit (rovnako ako na súčasnom webe) a zákazník dostane automatické potvrdenie. V tomto koncepte sa nič neodosiela.</p>',
     '<p class="send-err" id="sendErr" hidden>Odoslanie sa nepodarilo. Skúste to znova alebo nám zavolajte na <a href="tel:' + TEL + '">' + PHONE + '</a>.</p>\n        <p class="wz-note">Dopyt príde priamo nám. Ozveme sa do 24 hodín.</p>')
 body = body.replace(' <em>(Ukážka — v koncepte sa nič neodoslalo.)</em>', '')
 body = body.replace('<form id="orderForm" novalidate>', '<form id="orderForm" novalidate>\n        <input type="text" name="_honey" id="o-honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">')
