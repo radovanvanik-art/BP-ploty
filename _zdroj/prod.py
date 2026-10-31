@@ -19,7 +19,7 @@ SIDLO = ULICA + ', 034 01 Ružomberok'
 ZAPIS = '27. 10. 2026'
 GA = 'G-FCX9F0HGDW'
 INSTAGRAM = 'https://www.instagram.com/bpploty'
-TODAY = '2026-10-28'
+TODAY = '2026-10-31'
 SLUGS = ['murarske-prace', 'pomocne-prace', 'prenos-materialu', 'upratovacie-prace', 'ploty-betonove', 'ploty-3d']
 
 def esc(t): return html.escape(t, quote=True)
@@ -84,7 +84,32 @@ def company_line():
     if DIC: s += ' · ' + nb(f'DIČ {DIC}')
     return s
 
+# ---------------- fonty z vlastného servera (rýchlosť + GDPR: žiadna IP do Googlu) ----------------
+FONTSRC = os.path.join(os.path.dirname(HERE), 'fonts', 'node_modules', '@fontsource')
+FONT_FACES = [('Antonio', 'antonio', [500, 600, 700]), ('Hanken Grotesk', 'hanken-grotesk', [400, 500, 600, 700]), ('JetBrains Mono', 'jetbrains-mono', [400, 500])]
+RANGES = {'latin': 'U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD',
+          'latin-ext': 'U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF'}
+def font_css():
+    out = []
+    for fam, folder, ws in FONT_FACES:
+        for w in ws:
+            for sub in ['latin', 'latin-ext']:
+                out.append(f"@font-face{{font-family:'{fam}';font-style:normal;font-weight:{w};font-display:swap;src:url(/fonts/{folder}-{sub}-{w}-normal.woff2) format('woff2');unicode-range:{RANGES[sub]}}}")
+    return ''.join(out)
+def copy_fonts():
+    os.makedirs(f'{REPO}/fonts', exist_ok=True)
+    for fam, folder, ws in FONT_FACES:
+        for w in ws:
+            for sub in ['latin', 'latin-ext']:
+                f = f'{folder}-{sub}-{w}-normal.woff2'
+                shutil.copy(os.path.join(FONTSRC, folder, 'files', f), f'{REPO}/fonts/{f}')
+FONT_HEAD = ('<link rel="preload" href="/fonts/antonio-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>\n'
+             '<link rel="preload" href="/fonts/hanken-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>\n'
+             '<style>' + font_css() + '</style>\n')
+
 def finish(page):
+    page = re.sub(r'<link[^>]*fonts\.(?:googleapis|gstatic)\.com[^>]*>\s*', '', page)
+    page = page.replace('<meta charset="UTF-8">', '<meta charset="UTF-8">\n' + FONT_HEAD.rstrip(), 1)
     """Úpravy spoločné pre všetky stránky: koncept preč, údaje firmy, cookies, Instagram."""
     page = page.replace('<span class="concept">KONCEPT</span><span class="hide-sm">&nbsp;·&nbsp;', '<span class="hide-sm">')
     page = re.sub(r'IČO a sídlo doplníme po zápise s\.r\.o\.', f'LIBES s.r.o. · {company_line()} · {SIDLO.replace("034 01", "034\u00a001")} · <button type="button" class="cookie-link" data-cookie-settings>Nastavenia cookies</button>', page)
@@ -151,7 +176,7 @@ biz = {"@context": "https://schema.org", "@type": "HomeAndConstructionBusiness",
        "description": "Murárske a pomocné práce, prenos materiálu, upratovanie stavieb a montáž betónových a 3D plotov v Ružomberku a okolí.",
        "telephone": TEL, "email": EMAIL, "identifier": {"@type": "PropertyValue", "propertyID": "IČO", "value": ICO.replace(' ', '')},
        "address": {"@type": "PostalAddress", "streetAddress": ULICA, "postalCode": "034 01", "addressLocality": "Ružomberok", "addressCountry": "SK"},
-       "areaServed": [{"@type": "City", "name": "Ružomberok"}, {"@type": "AdministrativeArea", "name": "Žilinský kraj"}],
+       "areaServed": [{"@type": "City", "name": "Ružomberok"}, {"@type": "AdministrativeArea", "name": "okres Ružomberok"}, {"@type": "AdministrativeArea", "name": "Liptov"}, {"@type": "City", "name": "Liptovský Mikuláš"}, {"@type": "City", "name": "Dolný Kubín"}, {"@type": "AdministrativeArea", "name": "Žilinský kraj"}],
        "openingHoursSpecification": {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "07:00", "closes": "16:00"},
        "sameAs": [INSTAGRAM],
        "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Služby", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": n, "url": f"{SITE}/sluzby/{s}/"}} for n, s in zip(['Murárske práce', 'Pomocné práce', 'Prenos materiálu', 'Upratovacie práce', 'Betónové ploty', '3D ploty'], SLUGS)]}}
@@ -227,7 +252,7 @@ wr(f'{REPO}/ochrana-osobnych-udajov/index.html', page_from_template('/ochrana-os
 old = rd(f'{REPO}/realizacie/index.html') if os.path.exists(f'{REPO}/realizacie/index.html') else ''
 dims = dict(re.findall(r'realizacia-(\d+)-thumb\.webp" width="\d+" height="(\d+)"', old))
 nums = sorted({n for n in re.findall(r'realizacia-(\d+)-thumb\.webp', ' '.join(os.listdir(f'{REPO}/images/realizacie')))})
-btns = ''.join(f'<button type="button" data-i="{i}"><img src="/images/realizacie/realizacia-{n}-thumb.webp" data-full="/images/realizacie/realizacia-{n}-full.webp" width="640" height="{dims.get(n, "480")}" alt="Realizácia LIBES (BP ploty) č. {int(n)} — Ružomberok a okolie" loading="lazy" decoding="async"></button>' for i, n in enumerate(nums))
+btns = ''.join(f'<button type="button" data-i="{i}"><img src="/images/realizacie/realizacia-{n}-thumb.webp" data-full="/images/realizacie/realizacia-{n}-full.webp" width="640" height="{dims.get(n, "480")}" alt="Plot postavený firmou LIBES (BP ploty) v Ružomberku a okolí — realizácia {int(n)}" loading="lazy" decoding="async"></button>' for i, n in enumerate(nums))
 real_css = '.gal.all{grid-template-columns:repeat(2,1fr);grid-auto-rows:auto}.gal.all button{aspect-ratio:4/3}@media (min-width:700px){.gal.all{grid-template-columns:repeat(3,1fr)}}@media (min-width:1100px){.gal.all{grid-template-columns:repeat(4,1fr)}}'
 real_main = f'''
 <section class="p-hero" style="padding-block:48px 56px"><div class="wrap">
@@ -284,10 +309,158 @@ os.makedirs(f'{REPO}/img/s', exist_ok=True)
 for u in sorted(used):
     if os.path.exists(os.path.join(HERE, 'img', u)): shutil.copy(os.path.join(HERE, 'img', u), f'{REPO}/img/{u}')
 print('obrázkov skopírovaných:', len(used))
+copy_fonts(); print('fonty skopírované:', len(os.listdir(f'{REPO}/fonts')))
 
-urls = [('/', '1.0', 'monthly')] + [(f'/sluzby/{s}/', '0.9', 'monthly') for s in SLUGS] + [('/realizacie/', '0.8', 'weekly'), ('/kontakt/', '0.7', 'yearly')]
-wr(f'{REPO}/sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
-   ''.join(f'  <url><loc>{SITE}{u}</loc><lastmod>{TODAY}</lastmod><changefreq>{c}</changefreq><priority>{p}</priority></url>\n' for u, p, c in urls) + '</urlset>\n')
+# ================= PORADŇA =================
+import sys; sys.path.insert(0, HERE)
+from articles import ARTICLES
+ART_CSS = """.art{max-width:720px}.art h2{font-family:var(--f-display);text-transform:uppercase;font-weight:600;font-size:clamp(1.6rem,3.4vw,2.1rem);line-height:1.2;margin:44px 0 14px}
+.art p,.art li{color:#2F2A23;font-size:1.04rem;line-height:1.75}.art p{margin:0 0 16px}.art ul,.art ol{margin:0 0 18px;padding-left:22px;display:grid;gap:8px}
+.art a:not(.btn){color:var(--brass-deep);font-weight:600}.art strong{color:var(--ink)}
+.art-lead{font-size:1.15rem!important;color:#3D382F!important}
+.art-note{background:#FBF5EA;border:1px dashed rgba(122,86,38,.45);border-radius:6px;padding:14px 16px;font-size:.95rem!important}
+.art-src{font-family:var(--f-mono);font-size:.74rem!important;color:var(--stone-l)!important;margin-top:28px!important}
+.art-fig{margin:26px 0;border-radius:6px;overflow:hidden;background:var(--coal-2)}.art-fig img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+.art-fig figcaption{font-family:var(--f-mono);font-size:.72rem;color:#D3DBD5;padding:10px 14px}
+.tbl-wrap{overflow-x:auto;margin:0 0 20px;border:1px solid var(--line-l);border-radius:6px}
+.cmp{width:100%;border-collapse:collapse;font-size:.92rem;min-width:520px}.cmp th,.cmp td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line-l);vertical-align:top}
+.cmp thead th{background:var(--coal);color:var(--bone);font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;font-weight:500}
+.cmp tbody th{font-weight:600;color:var(--ink);white-space:nowrap}.cmp tr:last-child td,.cmp tr:last-child th{border-bottom:0}
+.art-cta{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;background:var(--coal);color:var(--bone);border-radius:8px;padding:20px 22px;margin:30px 0}
+.art-cta p{color:#D3DBD5!important;margin:0!important;max-width:40ch;font-size:.98rem!important}
+.art-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}.art-meta span{font-family:var(--f-mono);font-size:.72rem;padding:5px 11px;border-radius:999px;border:1px solid var(--line-d);color:var(--bone)}
+.ptiles{display:grid;gap:16px;grid-template-columns:1fr}@media(min-width:800px){.ptiles{grid-template-columns:repeat(3,1fr)}}
+.ptile{display:flex;flex-direction:column;border-radius:6px;overflow:hidden;border:1px solid var(--line-l);background:var(--bone-2);text-decoration:none;color:var(--ink);transition:transform .2s,border-color .2s;min-width:0}
+.ptile:hover{transform:translateY(-3px);border-color:rgba(122,86,38,.45)}.ptile img{width:100%;height:180px;object-fit:cover}
+.ptile .b{padding:18px 18px 20px;display:flex;flex-direction:column;gap:8px;flex:1}.ptile small{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.06em;color:var(--brass-deep);text-transform:uppercase}
+.ptile b{font-family:var(--f-display);text-transform:uppercase;font-weight:600;font-size:1.35rem;line-height:1.2}.ptile span{color:var(--stone-l);font-size:.9rem}
+"""
+def tile(a_):
+    return (f'<a class="ptile" href="/poradna/{a_["slug"]}/"><img src="/img/s/{a_["image"]}" alt="" loading="lazy" width="640" height="480">'
+            f'<span class="b"><small>Poradňa · {a_["minutes"]} min</small><b>{a_["h1"]}</b><span>{a_["desc"][:120].rsplit(" ",1)[0]}…</span></span></a>')
+def fmt_date(d): y, m, dd = d.split('-'); return f'{int(dd)}. {int(m)}. {y}'
+
+for a_ in ARTICLES:
+    path = f'/poradna/{a_["slug"]}/'
+    faq_html = ''.join(f'<details{" open" if i == 0 else ""}><summary><span>{esc(q)}</span><i class="pm"></i></summary><div class="ans">{esc(x)}</div></details>' for i, (q, x) in enumerate(a_['faq']))
+    rel = ''.join(f'<li><a href="/sluzby/{s}/">{n}</a></li>' for s, n in zip(SLUGS, ['Murárske práce', 'Pomocné práce', 'Prenos materiálu', 'Upratovacie práce', 'Betónové ploty', '3D ploty']) if s in a_['related'])
+    others = ''.join(tile(o) for o in ARTICLES if o['slug'] != a_['slug'])
+    main = f"""
+<section class="p-hero" style="padding-block:48px 56px"><div class="wrap">
+  <nav class="crumbs" aria-label="Omrvinky"><a href="/">Domov</a><i>/</i><a href="/poradna/">Poradňa</a><i>/</i><b>{esc(a_['h1'])}</b></nav>
+  <span class="eyebrow"><i class="stripes"></i>Poradňa LIBES</span>
+  <h1 style="font-size:clamp(2.4rem,6vw,4.4rem)">{esc(a_['h1'])}<span>{esc(a_['h1b'])}</span></h1>
+  <div class="art-meta"><span>{a_['minutes']} min čítania</span><span>Aktualizované {fmt_date(a_['modified'])}</span><span>LIBES s.r.o., Ružomberok</span></div>
+</div></section>
+<section class="band light" style="padding-block:48px 64px"><div class="wrap"><article class="art">
+  <p class="art-lead">{esc(a_['lead'])}</p>
+  {a_['body']}
+  <h2>Časté otázky</h2><div class="faq">{faq_html}</div>
+  <h2>Súvisiace služby</h2><ul>{rel}</ul>
+</article></div></section>
+<section class="band light-2" style="padding-block:56px"><div class="wrap"><span class="eyebrow"><i class="stripes"></i>Ďalšie články</span>
+  <div class="ptiles" style="margin-top:22px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">{others}</div></div></section>
+"""
+    ld = [{"@context": "https://schema.org", "@type": "Article", "headline": a_['h1'] + ' — ' + a_['h1b'].rstrip('.'), "description": a_['desc'],
+           "image": f"{SITE}/img/{a_['image'].replace('.webp', '.webp')}", "datePublished": a_['published'], "dateModified": a_['modified'],
+           "inLanguage": "sk", "mainEntityOfPage": SITE + path,
+           "author": {"@type": "Organization", "name": "LIBES s.r.o.", "url": SITE + "/"},
+           "publisher": {"@type": "Organization", "name": "LIBES s.r.o.", "logo": {"@type": "ImageObject", "url": SITE + "/apple-touch-icon.png"}}},
+          {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": x}} for q, x in a_['faq']]},
+          {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Domov", "item": SITE + "/"}, {"@type": "ListItem", "position": 2, "name": "Poradňa", "item": SITE + "/poradna/"}, {"@type": "ListItem", "position": 3, "name": a_['h1'], "item": SITE + path}]}]
+    wr(f'{REPO}{path}index.html', page_from_template(path, a_['title'], a_['desc'], main, extra_css=ART_CSS, ld=ld))
+
+idx_main = f"""
+<section class="p-hero" style="padding-block:48px 56px"><div class="wrap">
+  <nav class="crumbs" aria-label="Omrvinky"><a href="/">Domov</a><i>/</i><b>Poradňa</b></nav>
+  <span class="eyebrow"><i class="stripes"></i>Rady od stavbárov</span>
+  <h1 style="font-size:clamp(2.6rem,6.5vw,4.8rem)">Poradňa<span>ploty a stavba bez prekvapení.</span></h1>
+  <p class="lead" style="margin-top:18px">Praktické články o plotoch, povoleniach a priebehu stavby — z toho, čo denne riešime so zákazníkmi v Ružomberku a okolí.</p>
+</div></section>
+<section class="band light-2" style="padding-block:56px"><div class="wrap"><div class="ptiles">{''.join(tile(a_) for a_ in ARTICLES)}</div></div></section>
+"""
+wr(f'{REPO}/poradna/index.html', page_from_template('/poradna/', 'Poradňa — ploty, povolenia a stavba | LIBES s.r.o. Ružomberok',
+   'Praktické rady o betónových a 3D plotoch, ohlásení plota podľa nového stavebného zákona a priebehu stavby. Poradňa firmy LIBES s.r.o. z Ružomberka.', idx_main, extra_css=ART_CSS,
+   ld=[bc_ld('Poradňa', '/poradna/')]))
+
+# ukážka poradne na úvode + odkazy z podstránok plotov
+teaser = f"""<section class="band light-2" id="poradna"><div class="wrap">
+  <div class="sec-head split"><div><span class="eyebrow"><i class="stripes"></i>Poradňa</span><h2 class="h-sec">Skôr než<br>začnete stavať.</h2></div>
+  <p class="lead">Výška plota a nový stavebný zákon, výber medzi betónom a 3D panelom, priebeh stavby. Krátko a prakticky.</p></div>
+  <div class="ptiles">{''.join(tile(a_) for a_ in ARTICLES)}</div></div></section>
+"""
+h = rd(f'{REPO}/index.html')
+if 'id="poradna"' not in h:
+    h = h.replace('<!-- ================= FAQ ================= -->', teaser + '<!-- ================= FAQ ================= -->', 1)
+    h = h.replace('</style>', ART_CSS + '</style>', 1)
+    wr(f'{REPO}/index.html', h)
+for s in ['ploty-betonove', 'ploty-3d', 'pomocne-prace']:
+    f = f'{REPO}/sluzby/{s}/index.html'; h = rd(f)
+    arts = [a_ for a_ in ARTICLES if s in a_['related']]
+    if arts and 'class="ptiles"' not in h:
+        sec = f'<section class="band light" style="padding-block:56px"><div class="wrap"><span class="eyebrow"><i class="stripes"></i>Z poradne</span><div class="ptiles" style="margin-top:22px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">{"".join(tile(a_) for a_ in arts)}</div></div></section>\n'
+        h = h.replace('<section class="band light-2" style="padding-block:64px">', sec + '<section class="band light-2" style="padding-block:64px">', 1)
+        h = h.replace('</style>', ART_CSS + '</style>', 1)
+        wr(f, h)
+
+# poradňa v navigácii, mobilnom menu a päte všetkých stránok
+for f in glob.glob(f'{REPO}/**/*.html', recursive=True):
+    if '/_zdroj/' in f: continue
+    h = rd(f); o = h
+    h = re.sub(r'<a href="/?#postup">Postup</a>', '<a href="/poradna/">Poradňa</a>', h, count=1)
+    h = re.sub(r'(<a href="/?#objednavka">Objednávka a kontakt</a>)', r'<a href="/poradna/">Poradňa</a>\1', h, count=1) if '<a href="/poradna/">Poradňa</a><a href' not in h else h
+    h = re.sub(r'(<li><a href="/?#realizacie">Realizácie</a></li>)', r'\1<li><a href="/poradna/">Poradňa</a></li>', h, count=1) if '<li><a href="/poradna/">Poradňa</a></li>' not in h else h
+    if h != o: wr(f, h)
+print('poradňa:', len(ARTICLES), 'články + rozcestník')
+
+# ================= POPISNÉ NÁZVY OBRÁZKOV =================
+IMG_NAMES = {'hero': 'betonovy-plot-kamenny-dekor-zahrada-ruzomberok', 'region': 'ruzomberok-vyhlad-stavba-plota',
+  'g-stone-garden': 'betonovy-plot-zahrada-liptov', 'g-wood': 'betonovy-plot-drevodekor-ulica', 'g-detail': 'betonovy-plot-kamenny-dekor-detail',
+  'g-3d-yard': '3d-plot-rodinny-dom-dlazba', 'g-wood-house': 'betonovy-plot-drevodekor-drevostavba', 'g-pergola': 'betonovy-plot-terasa-pergola',
+  'g-stone': 'betonovy-plot-kamenny-dekor-hranica-pozemku', 'g-3d-panel': '3d-plotovy-panel-antracit',
+  'ba-before': 'stavba-plota-osadene-stlpiky-pred', 'ba-after': 'betonovy-plot-hotovy-po',
+  'c3d-zeleny': '3d-plot-zelena-farba', 'c3d-hnedy': '3d-plot-hneda-farba', 'c3d-antracit': '3d-plot-antracitova-farba',
+  'tex-kamen': 'dekor-betonoveho-plota-kamen', 'tex-drevo': 'dekor-betonoveho-plota-drevo', 'tex-tehla': 'dekor-betonoveho-plota-tehla',
+  'r003': 'betonovy-plot-sukromie-terasy', 'r014': 'priprava-patiek-pre-stlpiky', 'r016': 'vykopy-a-osadene-stlpiky',
+  'r029': '3d-plot-pri-rodinnom-dome', 'r037': '3d-plot-pri-dlazbe', 'r039': 'betonovy-plot-drevodekor-stary-dom', 'r045': '3d-plot-zeleny-zahrada',
+  'r054': 'betonovy-plot-kamenny-dekor-reliefe', 'r060': 'betonovy-plot-kamenny-dekor-rodinny-dom', 'r064': 'betonovy-plot-drevodekor-novostavba',
+  'r084': 'material-na-plot-palety', 'r086': 'betonove-dosky-kamenny-dekor-palety', 'r091': 'betonove-dosky-tehlovy-dekor-palety',
+  'r093': 'upraveny-pozemok-po-stavbe-plota', 'r094': 'upraveny-teren-pri-plote', 'r101': 'hotovy-betonovy-plot-zahrada',
+  'r106': '3d-plot-antracit-podhrabova-doska', 'r110': '3d-plot-s-tujami'}
+pages_all = [f for f in glob.glob(f'{REPO}/**/*.html', recursive=True) if '/_zdroj/' not in f]
+for old, new in IMG_NAMES.items():
+    for d in ['img', 'img/s']:
+        src_, dst_ = f'{REPO}/{d}/{old}.webp', f'{REPO}/{d}/{new}.webp'
+        if os.path.exists(src_): os.replace(src_, dst_)
+for f in pages_all:
+    h = rd(f); o = h
+    for old, new in IMG_NAMES.items():
+        h = re.sub(rf'/img/(s/)?{re.escape(old)}\.webp', lambda m, n=new: f'/img/{m.group(1) or ""}{n}.webp', h)
+    if h != o: wr(f, h)
+# nepoužívané staré obrázky preč
+referenced = set()
+for f in pages_all: referenced |= set(re.findall(r'/img/((?:s/)?[\w-]+\.(?:webp|jpg))', rd(f)))
+for d in ['img', 'img/s']:
+    for fn in os.listdir(f'{REPO}/{d}'):
+        rel = (d[4:] + '/' if d != 'img' else '') + fn
+        if os.path.isfile(f'{REPO}/{d}/{fn}') and rel not in referenced and fn != 'og.jpg': os.remove(f'{REPO}/{d}/{fn}')
+print('obrázky premenované:', len(IMG_NAMES))
+
+urls = [('/', '1.0', 'monthly')] + [(f'/sluzby/{s}/', '0.9', 'monthly') for s in SLUGS] + [('/realizacie/', '0.8', 'weekly'), ('/kontakt/', '0.7', 'yearly'), ('/poradna/', '0.7', 'monthly')] + [(f'/poradna/{a_["slug"]}/', '0.7', 'monthly') for a_ in ARTICLES]
+def page_file(u): return f'{REPO}/index.html' if u == '/' else f'{REPO}{u}index.html'
+def page_imgs(u):
+    h = rd(page_file(u))
+    full = re.findall(r'data-full="(/images/realizacie/[\w-]+\.webp)"', h) + re.findall(r'srcset="[^"]*?(/img/[\w-]+\.webp) 1400w"', h)
+    seen, out = set(), []
+    for x in full:
+        if x not in seen: seen.add(x); out.append(x)
+    return out[:1000]
+sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">']
+for u, pr, c in urls:
+    imgs = ''.join(f'<image:image><image:loc>{SITE}{i}</image:loc></image:image>' for i in page_imgs(u))
+    sm.append(f'  <url><loc>{SITE}{u}</loc><lastmod>{TODAY}</lastmod><changefreq>{c}</changefreq><priority>{pr}</priority>{imgs}</url>')
+sm.append('</urlset>')
+wr(f'{REPO}/sitemap.xml', '\n'.join(sm) + '\n')
 wr(f'{REPO}/robots.txt', f'User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n')
 wr(f'{REPO}/llms.txt', f'''# LIBES s.r.o. (predtým BP ploty)
 

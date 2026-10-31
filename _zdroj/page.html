@@ -128,7 +128,8 @@ body.menu-open{overflow:hidden}
   var(--coal);padding-block:72px 0}
 .hero-grid{display:grid;gap:56px;align-items:center}
 @media (min-width:1000px){.hero-grid{grid-template-columns:1.05fr .95fr;gap:64px}}
-.hero h1{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(3.1rem,8.6vw,6.6rem);line-height:1.17;letter-spacing:-.005em;margin-top:22px}
+.hero h1{margin:0}.hero .h1-main{display:block;font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(3.1rem,8.6vw,6.6rem);line-height:1.17;letter-spacing:-.005em;margin-top:22px}
+.hero .h1-kicker{font-weight:400;line-height:1.5}
 .hero h1 .thin{font-weight:500;color:var(--stone-d)}
 .hero h1 .gold{color:var(--brass);position:relative}
 .hero .lead{font-size:1.15rem;color:#C9C1B1;max-width:50ch}
@@ -245,7 +246,7 @@ body.menu-open{overflow:hidden}
 .region .wrap{position:relative;z-index:1;padding-block:72px;width:100%}
 .region h2{font-family:var(--f-display);font-weight:600;text-transform:uppercase;font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.16;max-width:13ch;margin-top:14px}
 .region p{color:#CFC7B7;max-width:46ch;margin-top:16px}
-.region .pins{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.region .pins{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px;max-width:760px}
 .region .pins span{font-family:var(--f-mono);font-size:.72rem;padding:6px 11px;border-radius:999px;border:1px solid rgba(234,229,216,.25);background:rgba(var(--rgb),.4);backdrop-filter:blur(4px)}
 
 /* ---------- prečo / značka ---------- */
@@ -282,6 +283,7 @@ body.menu-open{overflow:hidden}
 .faq details[open] summary .pm{background:var(--ink);border-color:var(--ink)}
 .faq details[open] summary .pm::before,.faq details[open] summary .pm::after{background:var(--bone)}
 .faq details[open] summary .pm::after{transform:translate(-50%,-50%) rotate(0)}
+.faq .ans a{color:var(--brass-deep);font-weight:600}
 .faq .ans{padding:0 50px 24px 0;color:var(--stone-l);font-size:.96rem;max-width:62ch}
 .faq .cat{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--brass-deep);margin-right:10px;font-weight:500}
 
@@ -566,8 +568,7 @@ footer.site{background:var(--deep);color:var(--stone-d);border-top:1px solid var
   <div class="wrap">
     <div class="hero-grid">
       <div>
-        <span class="eyebrow"><i class="stripes"></i>Stavebná firma · Ružomberok a okolie</span>
-        <h1>Od základov<br><span class="thin">až po</span> <span class="gold">plot.</span></h1>
+        <h1><span class="eyebrow h1-kicker"><i class="stripes"></i>Stavebné práce a ploty · Ružomberok a Liptov</span><span class="h1-main">Od základov<br><span class="thin">až po</span> <span class="gold">plot.</span></span></h1>
         <p class="lead" style="margin-top:24px">Murárske a pomocné práce, prenos materiálu, upratovanie stavieb a montáž betónových aj 3D plotov. Jedna partia, jeden termín, jedno telefónne číslo.</p>
         <div class="hero-cta">
           <a class="btn btn-brass" href="#objednavka">Vytvoriť objednávku <svg><use href="#i-arrow"/></svg></a>
@@ -808,8 +809,8 @@ footer.site{background:var(--deep);color:var(--stone-d);border-top:1px solid var
   <div class="wrap">
     <span class="eyebrow" style="color:var(--brass)"><i class="stripes"></i>Kde pôsobíme</span>
     <h2>Ružomberok a celý Liptov.</h2>
-    <p>Pracujeme v Ružomberku a okolitých obciach Žilinského kraja. Pri väčších zákazkách prídeme aj ďalej — stačí napísať, kde stavbu plánujete.</p>
-    <div class="pins"><span>Ružomberok</span><span>okolité obce</span><span>Žilinský kraj</span><span>väčšie zákazky aj ďalej</span></div>
+    <p>Pracujeme v Ružomberku a obciach okresu Ružomberok, pri väčších zákazkách aj v Liptovskom Mikuláši, Dolnom Kubíne a ďalej v Žilinskom kraji. Napíšte, kde stavbu plánujete.</p>
+    <div class="pins"><span>Ružomberok</span><span>Likavka</span><span>Lisková</span><span>Ludrová</span><span>Liptovská Teplá</span><span>Liptovská Štiavnica</span><span>Martinček</span><span>Hubová</span><span>Ľubochňa</span><span>Liptovské Sliače</span><span>Lúčky</span><span>Bešeňová</span><span>Ivachnová</span><span>Liptovská Osada</span><span>Liptovská Lúžna</span><span>Komjatná</span><span>Valaská Dubová</span><span>Švošov</span><span>… a ďalšie obce Liptova</span></div>
   </div>
 </section>
 
@@ -854,9 +855,9 @@ footer.site{background:var(--deep);color:var(--stone-d);border-top:1px solid var
       <details><summary><span><span class="cat">Všeobecné</span>Koľko stojí obhliadka a cenová ponuka?</span><i class="pm"></i></summary><div class="ans">Nič. Obhliadka aj kalkulácia sú bezplatné a nezáväzné.</div></details>
       <details><summary><span><span class="cat">Všeobecné</span>Kde pôsobíte?</span><i class="pm"></i></summary><div class="ans">V Ružomberku a okolitých obciach Žilinského kraja. Pri väčších zákazkách vieme vyraziť aj ďalej — stačí napísať, kde stavbu plánujete.</div></details>
       <details><summary><span><span class="cat">Stavba</span>Dá sa objednať viac prác naraz?</span><i class="pm"></i></summary><div class="ans">Áno, a práve na to sme. Napríklad murovanie, prenos materiálu a záverečné upratanie zvládneme v jednej zákazke s jedným termínom a jednou cenou.</div></details>
-      <details><summary><span><span class="cat">Ploty</span>Akú maximálnu výšku plota viete postaviť?</span><i class="pm"></i></summary><div class="ans">Betónové ploty realizujeme do výšky 200 cm. Pre bežný rodinný dom sa najčastejšie volí 150 – 180 cm, pri väčšom dôraze na súkromie 180 – 200 cm.</div></details>
+      <details><summary><span><span class="cat">Ploty</span>Akú maximálnu výšku plota viete postaviť?</span><i class="pm"></i></summary><div class="ans">Betónové ploty realizujeme do výšky 200 cm. Pre bežný rodinný dom sa najčastejšie volí 150 – 180 cm, pri väčšom dôraze na súkromie 180 – 200 cm. Plot vyšší ako 1,6 m už nie je drobná stavba a potrebuje rozhodnutie o stavebnom zámere.</div></details>
       <details><summary><span><span class="cat">Ploty</span>Aký je rozdiel medzi betónovým a 3D plotom?</span><i class="pm"></i></summary><div class="ans">Betónový plot je z vibrolisovaných dielcov s reliéfnym dekorom a pôsobí masívne a nepriehľadne. 3D plot je zváraný kovový panel — ľahší, priehľadnejší, rýchlejšie sa montuje a je vo viacerých farbách.</div></details>
-      <details><summary><span><span class="cat">Ploty</span>Potrebujem na plot stavebné povolenie?</span><i class="pm"></i></summary><div class="ans">Bežný plot do 2 m výšky spravidla nevyžaduje stavebné povolenie, pravidlá sa však môžu líšiť podľa obce. Odporúčame to overiť na miestnom stavebnom úrade ešte pred realizáciou.</div></details>
+      <details><summary><span><span class="cat">Ploty</span>Potrebujem na plot stavebné povolenie?</span><i class="pm"></i></summary><div class="ans">Od 1. 4. 2025 platí nový stavebný zákon. Plný (nepriehľadný) plot do výšky 1,6 m a priehľadný plot (napríklad 3D panel) do 2 m sú drobné stavby — stačí ich ohlásiť stavebnému úradu. Vyšší betónový plot, napríklad 1,8 – 2 m, už drobnou stavbou nie je a potrebuje rozhodnutie o stavebnom zámere. Podrobnosti nájdete v článku <a href="/poradna/plot-a-stavebne-povolenie/">Plot a stavebný zákon</a>; konkrétne podmienky odporúčame vždy overiť na miestnom stavebnom úrade.</div></details>
       <details><summary><span><span class="cat">Ploty</span>Dá sa stavať aj v zime?</span><i class="pm"></i></summary><div class="ans">Betónovanie vyžaduje teploty nad bodom mrazu, takže pri silných mrazoch práce pozastavíme. Inak pracujeme celý rok a termín prispôsobíme počasiu.</div></details>
     </div>
   </div>
@@ -1219,13 +1220,13 @@ footer.site{background:var(--deep);color:var(--stone-d);border-top:1px solid var
       document.getElementById('bParts').textContent=fields*(P.h/50);
       document.getElementById('bExtraLab').textContent='Dĺžka';
       document.getElementById('bExtra').textContent=P.len+' m';
-      document.getElementById('pNote').textContent='Orientačne pri poli 2,0 m a doske 50 cm. Rohy, svah, bránky a presný počet upresníme na bezplatnej obhliadke.';
+      document.getElementById('pNote').textContent='Orientačne pri poli 2,0 m a doske 50 cm. Rohy, svah, bránky a presný počet upresníme na bezplatnej obhliadke.'+(P.h>160?' Pozor: plný plot vyšší ako 1,6 m nie je drobná stavba — potrebuje rozhodnutie o stavebnom zámere.':'');
     } else {
       document.getElementById('bPartsLab').textContent='Panelov';
       document.getElementById('bParts').textContent=fields;
       document.getElementById('bExtraLab').textContent='Podhrab. dosiek';
       document.getElementById('bExtra').textContent=fields;
-      document.getElementById('pNote').textContent='Orientačne pri paneli 2,5 m s podhrabovou doskou. Rohy, svah, bránky a presný počet upresníme na bezplatnej obhliadke.';
+      document.getElementById('pNote').textContent='Orientačne pri paneli 2,5 m s podhrabovou doskou. Rohy, svah, bránky a presný počet upresníme na bezplatnej obhliadke.'+(P.h>200?' Pozor: priehľadný plot vyšší ako 2 m nie je drobná stavba — potrebuje rozhodnutie o stavebnom zámere.':'');
     }
     document.getElementById('pLenOut').innerHTML=P.len+'<small>m</small>';
     lenIn.style.setProperty('--fill',((P.len-4)/(146)*100)+'%');

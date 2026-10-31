@@ -2,6 +2,29 @@
 <html lang="sk">
 <head>
 <meta charset="UTF-8">
+<link rel="preload" href="/fonts/antonio-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/hanken-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>@font-face{font-family:'Antonio';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/antonio-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Antonio';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/antonio-latin-ext-500-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Antonio';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/antonio-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Antonio';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/antonio-latin-ext-600-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Antonio';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/antonio-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Antonio';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/antonio-latin-ext-700-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Hanken Grotesk';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/hanken-grotesk-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Hanken Grotesk';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/hanken-grotesk-latin-ext-400-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Hanken Grotesk';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/hanken-grotesk-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Hanken Grotesk';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/hanken-grotesk-latin-ext-500-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Hanken Grotesk';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/hanken-grotesk-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Hanken Grotesk';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/hanken-grotesk-latin-ext-600-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Hanken Grotesk';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/hanken-grotesk-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Hanken Grotesk';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/hanken-grotesk-latin-ext-700-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/jetbrains-mono-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/jetbrains-mono-latin-ext-400-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/jetbrains-mono-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/jetbrains-mono-latin-ext-500-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}.art{max-width:720px}.art h2{font-family:var(--f-display);text-transform:uppercase;font-weight:600;font-size:clamp(1.6rem,3.4vw,2.1rem);line-height:1.2;margin:44px 0 14px}
+.art p,.art li{color:#2F2A23;font-size:1.04rem;line-height:1.75}.art p{margin:0 0 16px}.art ul,.art ol{margin:0 0 18px;padding-left:22px;display:grid;gap:8px}
+.art a:not(.btn){color:var(--brass-deep);font-weight:600}.art strong{color:var(--ink)}
+.art-lead{font-size:1.15rem!important;color:#3D382F!important}
+.art-note{background:#FBF5EA;border:1px dashed rgba(122,86,38,.45);border-radius:6px;padding:14px 16px;font-size:.95rem!important}
+.art-src{font-family:var(--f-mono);font-size:.74rem!important;color:var(--stone-l)!important;margin-top:28px!important}
+.art-fig{margin:26px 0;border-radius:6px;overflow:hidden;background:var(--coal-2)}.art-fig img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+.art-fig figcaption{font-family:var(--f-mono);font-size:.72rem;color:#D3DBD5;padding:10px 14px}
+.tbl-wrap{overflow-x:auto;margin:0 0 20px;border:1px solid var(--line-l);border-radius:6px}
+.cmp{width:100%;border-collapse:collapse;font-size:.92rem;min-width:520px}.cmp th,.cmp td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line-l);vertical-align:top}
+.cmp thead th{background:var(--coal);color:var(--bone);font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;font-weight:500}
+.cmp tbody th{font-weight:600;color:var(--ink);white-space:nowrap}.cmp tr:last-child td,.cmp tr:last-child th{border-bottom:0}
+.art-cta{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;background:var(--coal);color:var(--bone);border-radius:8px;padding:20px 22px;margin:30px 0}
+.art-cta p{color:#D3DBD5!important;margin:0!important;max-width:40ch;font-size:.98rem!important}
+.art-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}.art-meta span{font-family:var(--f-mono);font-size:.72rem;padding:5px 11px;border-radius:999px;border:1px solid var(--line-d);color:var(--bone)}
+.ptiles{display:grid;gap:16px;grid-template-columns:1fr}@media(min-width:800px){.ptiles{grid-template-columns:repeat(3,1fr)}}
+.ptile{display:flex;flex-direction:column;border-radius:6px;overflow:hidden;border:1px solid var(--line-l);background:var(--bone-2);text-decoration:none;color:var(--ink);transition:transform .2s,border-color .2s;min-width:0}
+.ptile:hover{transform:translateY(-3px);border-color:rgba(122,86,38,.45)}.ptile img{width:100%;height:180px;object-fit:cover}
+.ptile .b{padding:18px 18px 20px;display:flex;flex-direction:column;gap:8px;flex:1}.ptile small{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.06em;color:var(--brass-deep);text-transform:uppercase}
+.ptile b{font-family:var(--f-display);text-transform:uppercase;font-weight:600;font-size:1.35rem;line-height:1.2}.ptile span{color:var(--stone-l);font-size:.9rem}
+</style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>LIBES s.r.o. — stavebné práce a ploty na kľúč | Ružomberok (BP ploty)</title>
 <meta name="description" content="Murárske a pomocné práce, prenos materiálu, upratovanie stavieb a betónové a 3D ploty na kľúč v Ružomberku a okolí. Obhliadka zdarma, odpoveď do 24 hodín.">
@@ -27,12 +50,9 @@
   gtag('js',new Date());gtag('config','G-FCX9F0HGDW');
   window.addEventListener('load',function(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-FCX9F0HGDW';document.head.appendChild(s)});
 </script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HomeAndConstructionBusiness", "@id": "https://www.bpploty.sk/#business", "name": "LIBES s.r.o.", "alternateName": "BP ploty", "url": "https://www.bpploty.sk/", "image": "https://www.bpploty.sk/img/og.jpg", "logo": "https://www.bpploty.sk/apple-touch-icon.png", "description": "Murárske a pomocné práce, prenos materiálu, upratovanie stavieb a montáž betónových a 3D plotov v Ružomberku a okolí.", "telephone": "+421951565717", "email": "libes.sro@gmail.com", "identifier": {"@type": "PropertyValue", "propertyID": "IČO", "value": "57955531"}, "address": {"@type": "PostalAddress", "streetAddress": "Nábrežie M. R. Štefánika 1684/3", "postalCode": "034 01", "addressLocality": "Ružomberok", "addressCountry": "SK"}, "areaServed": [{"@type": "City", "name": "Ružomberok"}, {"@type": "AdministrativeArea", "name": "Žilinský kraj"}], "openingHoursSpecification": {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "07:00", "closes": "16:00"}, "sameAs": ["https://www.instagram.com/bpploty"], "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Služby", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Murárske práce", "url": "https://www.bpploty.sk/sluzby/murarske-prace/"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Pomocné práce", "url": "https://www.bpploty.sk/sluzby/pomocne-prace/"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Prenos materiálu", "url": "https://www.bpploty.sk/sluzby/prenos-materialu/"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Upratovacie práce", "url": "https://www.bpploty.sk/sluzby/upratovacie-prace/"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Betónové ploty", "url": "https://www.bpploty.sk/sluzby/ploty-betonove/"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "3D ploty", "url": "https://www.bpploty.sk/sluzby/ploty-3d/"}}]}}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Ako prebieha objednávka?", "acceptedAnswer": {"@type": "Answer", "text": "Zavoláte, napíšete alebo vyplníte objednávku na webe. Do 24 hodín sa ozveme, prídeme na bezplatnú obhliadku, pošleme cenovú ponuku a po odsúhlasení dohodneme termín realizácie."}}, {"@type": "Question", "name": "Koľko stojí obhliadka a cenová ponuka?", "acceptedAnswer": {"@type": "Answer", "text": "Nič. Obhliadka aj kalkulácia sú bezplatné a nezáväzné."}}, {"@type": "Question", "name": "Kde pôsobíte?", "acceptedAnswer": {"@type": "Answer", "text": "V Ružomberku a okolitých obciach Žilinského kraja. Pri väčších zákazkách vieme vyraziť aj ďalej — stačí napísať, kde stavbu plánujete."}}, {"@type": "Question", "name": "Dá sa objednať viac prác naraz?", "acceptedAnswer": {"@type": "Answer", "text": "Áno, a práve na to sme. Napríklad murovanie, prenos materiálu a záverečné upratanie zvládneme v jednej zákazke s jedným termínom a jednou cenou."}}, {"@type": "Question", "name": "Akú maximálnu výšku plota viete postaviť?", "acceptedAnswer": {"@type": "Answer", "text": "Betónové ploty realizujeme do výšky 200 cm. Pre bežný rodinný dom sa najčastejšie volí 150 – 180 cm, pri väčšom dôraze na súkromie 180 – 200 cm."}}, {"@type": "Question", "name": "Aký je rozdiel medzi betónovým a 3D plotom?", "acceptedAnswer": {"@type": "Answer", "text": "Betónový plot je z vibrolisovaných dielcov s reliéfnym dekorom a pôsobí masívne a nepriehľadne. 3D plot je zváraný kovový panel — ľahší, priehľadnejší, rýchlejšie sa montuje a je vo viacerých farbách."}}, {"@type": "Question", "name": "Potrebujem na plot stavebné povolenie?", "acceptedAnswer": {"@type": "Answer", "text": "Bežný plot do 2 m výšky spravidla nevyžaduje stavebné povolenie, pravidlá sa však môžu líšiť podľa obce. Odporúčame to overiť na miestnom stavebnom úrade ešte pred realizáciou."}}, {"@type": "Question", "name": "Dá sa stavať aj v zime?", "acceptedAnswer": {"@type": "Answer", "text": "Betónovanie vyžaduje teploty nad bodom mrazu, takže pri silných mrazoch práce pozastavíme. Inak pracujeme celý rok a termín prispôsobíme počasiu."}}]}</script>
-<link rel="preload" as="image" href="/img/s/hero.webp" imagesrcset="/img/s/hero.webp 640w, /img/hero.webp 1400w" imagesizes="(min-width:1000px) 560px, 100vw">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Antonio:wght@500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HomeAndConstructionBusiness", "@id": "https://www.bpploty.sk/#business", "name": "LIBES s.r.o.", "alternateName": "BP ploty", "url": "https://www.bpploty.sk/", "image": "https://www.bpploty.sk/img/og.jpg", "logo": "https://www.bpploty.sk/apple-touch-icon.png", "description": "Murárske a pomocné práce, prenos materiálu, upratovanie stavieb a montáž betónových a 3D plotov v Ružomberku a okolí.", "telephone": "+421951565717", "email": "libes.sro@gmail.com", "identifier": {"@type": "PropertyValue", "propertyID": "IČO", "value": "57955531"}, "address": {"@type": "PostalAddress", "streetAddress": "Nábrežie M. R. Štefánika 1684/3", "postalCode": "034 01", "addressLocality": "Ružomberok", "addressCountry": "SK"}, "areaServed": [{"@type": "City", "name": "Ružomberok"}, {"@type": "AdministrativeArea", "name": "okres Ružomberok"}, {"@type": "AdministrativeArea", "name": "Liptov"}, {"@type": "City", "name": "Liptovský Mikuláš"}, {"@type": "City", "name": "Dolný Kubín"}, {"@type": "AdministrativeArea", "name": "Žilinský kraj"}], "openingHoursSpecification": {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "07:00", "closes": "16:00"}, "sameAs": ["https://www.instagram.com/bpploty"], "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Služby", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Murárske práce", "url": "https://www.bpploty.sk/sluzby/murarske-prace/"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Pomocné práce", "url": "https://www.bpploty.sk/sluzby/pomocne-prace/"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Prenos materiálu", "url": "https://www.bpploty.sk/sluzby/prenos-materialu/"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Upratovacie práce", "url": "https://www.bpploty.sk/sluzby/upratovacie-prace/"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Betónové ploty", "url": "https://www.bpploty.sk/sluzby/ploty-betonove/"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "3D ploty", "url": "https://www.bpploty.sk/sluzby/ploty-3d/"}}]}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Ako prebieha objednávka?", "acceptedAnswer": {"@type": "Answer", "text": "Zavoláte, napíšete alebo vyplníte objednávku na webe. Do 24 hodín sa ozveme, prídeme na bezplatnú obhliadku, pošleme cenovú ponuku a po odsúhlasení dohodneme termín realizácie."}}, {"@type": "Question", "name": "Koľko stojí obhliadka a cenová ponuka?", "acceptedAnswer": {"@type": "Answer", "text": "Nič. Obhliadka aj kalkulácia sú bezplatné a nezáväzné."}}, {"@type": "Question", "name": "Kde pôsobíte?", "acceptedAnswer": {"@type": "Answer", "text": "V Ružomberku a okolitých obciach Žilinského kraja. Pri väčších zákazkách vieme vyraziť aj ďalej — stačí napísať, kde stavbu plánujete."}}, {"@type": "Question", "name": "Dá sa objednať viac prác naraz?", "acceptedAnswer": {"@type": "Answer", "text": "Áno, a práve na to sme. Napríklad murovanie, prenos materiálu a záverečné upratanie zvládneme v jednej zákazke s jedným termínom a jednou cenou."}}, {"@type": "Question", "name": "Akú maximálnu výšku plota viete postaviť?", "acceptedAnswer": {"@type": "Answer", "text": "Betónové ploty realizujeme do výšky 200 cm. Pre bežný rodinný dom sa najčastejšie volí 150 – 180 cm, pri väčšom dôraze na súkromie 180 – 200 cm. Plot vyšší ako 1,6 m už nie je drobná stavba a potrebuje rozhodnutie o stavebnom zámere."}}, {"@type": "Question", "name": "Aký je rozdiel medzi betónovým a 3D plotom?", "acceptedAnswer": {"@type": "Answer", "text": "Betónový plot je z vibrolisovaných dielcov s reliéfnym dekorom a pôsobí masívne a nepriehľadne. 3D plot je zváraný kovový panel — ľahší, priehľadnejší, rýchlejšie sa montuje a je vo viacerých farbách."}}, {"@type": "Question", "name": "Potrebujem na plot stavebné povolenie?", "acceptedAnswer": {"@type": "Answer", "text": "Od 1. 4. 2025 platí nový stavebný zákon. Plný (nepriehľadný) plot do výšky 1,6 m a priehľadný plot (napríklad 3D panel) do 2 m sú drobné stavby — stačí ich ohlásiť stavebnému úradu. Vyšší betónový plot, napríklad 1,8 – 2 m, už drobnou stavbou nie je a potrebuje rozhodnutie o stavebnom zámere. Podrobnosti nájdete v článku Plot a stavebný zákon; konkrétne podmienky odporúčame vždy overiť na miestnom stavebnom úrade."}}, {"@type": "Question", "name": "Dá sa stavať aj v zime?", "acceptedAnswer": {"@type": "Answer", "text": "Betónovanie vyžaduje teploty nad bodom mrazu, takže pri silných mrazoch práce pozastavíme. Inak pracujeme celý rok a termín prispôsobíme počasiu."}}]}</script>
+<link rel="preload" as="image" href="/img/s/betonovy-plot-kamenny-dekor-zahrada-ruzomberok.webp" imagesrcset="/img/s/betonovy-plot-kamenny-dekor-zahrada-ruzomberok.webp 640w, /img/betonovy-plot-kamenny-dekor-zahrada-ruzomberok.webp 1400w" imagesizes="(min-width:1000px) 560px, 100vw">
 <style>
 /* =================================================================
    LIBES s.r.o. — koncept hlavnej stránky v3
@@ -158,7 +178,8 @@ body.menu-open{overflow:hidden}
   var(--coal);padding-block:72px 0}
 .hero-grid{display:grid;gap:56px;align-items:center}
 @media (min-width:1000px){.hero-grid{grid-template-columns:1.05fr .95fr;gap:64px}}
-.hero h1{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(3.1rem,8.6vw,6.6rem);line-height:1.17;letter-spacing:-.005em;margin-top:22px}
+.hero h1{margin:0}.hero .h1-main{display:block;font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(3.1rem,8.6vw,6.6rem);line-height:1.17;letter-spacing:-.005em;margin-top:22px}
+.hero .h1-kicker{font-weight:400;line-height:1.5}
 .hero h1 .thin{font-weight:500;color:var(--stone-d)}
 .hero h1 .gold{color:var(--brass);position:relative}
 .hero .lead{font-size:1.15rem;color:#C9C1B1;max-width:50ch}
@@ -275,7 +296,7 @@ body.menu-open{overflow:hidden}
 .region .wrap{position:relative;z-index:1;padding-block:72px;width:100%}
 .region h2{font-family:var(--f-display);font-weight:600;text-transform:uppercase;font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.16;max-width:13ch;margin-top:14px}
 .region p{color:#CFC7B7;max-width:46ch;margin-top:16px}
-.region .pins{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.region .pins{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px;max-width:760px}
 .region .pins span{font-family:var(--f-mono);font-size:.72rem;padding:6px 11px;border-radius:999px;border:1px solid rgba(234,229,216,.25);background:rgba(var(--rgb),.4);backdrop-filter:blur(4px)}
 
 /* ---------- prečo / značka ---------- */
@@ -312,6 +333,7 @@ body.menu-open{overflow:hidden}
 .faq details[open] summary .pm{background:var(--ink);border-color:var(--ink)}
 .faq details[open] summary .pm::before,.faq details[open] summary .pm::after{background:var(--bone)}
 .faq details[open] summary .pm::after{transform:translate(-50%,-50%) rotate(0)}
+.faq .ans a{color:var(--brass-deep);font-weight:600}
 .faq .ans{padding:0 50px 24px 0;color:var(--stone-l);font-size:.96rem;max-width:62ch}
 .faq .cat{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--brass-deep);margin-right:10px;font-weight:500}
 
@@ -575,7 +597,7 @@ footer.site{background:var(--deep);color:var(--stone-d);border-top:1px solid var
     <nav class="nav" aria-label="Hlavná navigácia">
       <a href="#sluzby">Služby</a>
       <a href="#planovac">Plánovač</a>
-      <a href="#postup">Postup</a>
+      <a href="/poradna/">Poradňa</a>
       <a href="#realizacie">Realizácie</a>
       <a href="#faq">Otázky</a>
       <a href="#objednavka">Kontakt</a>
@@ -590,7 +612,7 @@ footer.site{background:var(--deep);color:var(--stone-d);border-top:1px solid var
 
 <div class="mnav" id="mnav" hidden>
   <nav aria-label="Mobilná navigácia">
-    <a href="#sluzby">Služby</a><a href="#planovac">Plánovač plota</a><a href="#realizacie">Realizácie</a><a href="#postup">Ako to prebieha</a><a href="#faq">Časté otázky</a><a href="#objednavka">Objednávka a kontakt</a>
+    <a href="#sluzby">Služby</a><a href="#planovac">Plánovač plota</a><a href="#realizacie">Realizácie</a><a href="#postup">Ako to prebieha</a><a href="#faq">Časté otázky</a><a href="/poradna/">Poradňa</a><a href="#objednavka">Objednávka a kontakt</a>
   </nav>
   <div class="mnav-foot">
     <a class="btn btn-brass" href="tel:+421951565717"><svg><use href="#i-phone"/></svg>0951 565 717</a>
@@ -606,8 +628,7 @@ footer.site{background:var(--deep);color:var(--stone-d);border-top:1px solid var
   <div class="wrap">
     <div class="hero-grid">
       <div>
-        <span class="eyebrow"><i class="stripes"></i>Stavebná firma · Ružomberok a okolie</span>
-        <h1>Od základov<br><span class="thin">až po</span> <span class="gold">plot.</span></h1>
+        <h1><span class="eyebrow h1-kicker"><i class="stripes"></i>Stavebné práce a ploty · Ružomberok a Liptov</span><span class="h1-main">Od základov<br><span class="thin">až po</span> <span class="gold">plot.</span></span></h1>
         <p class="lead" style="margin-top:24px">Murárske a pomocné práce, prenos materiálu, upratovanie stavieb a montáž betónových aj 3D plotov. Jedna partia, jeden termín, jedno telefónne číslo.</p>
         <div class="hero-cta">
           <a class="btn btn-brass" href="#objednavka">Vytvoriť objednávku <svg><use href="#i-arrow"/></svg></a>
@@ -623,7 +644,7 @@ footer.site{background:var(--deep);color:var(--stone-d);border-top:1px solid var
 
       <div class="hero-visual">
         <figure class="hero-photo" style="margin:0">
-          <img src="/img/s/hero.webp" srcset="/img/s/hero.webp 640w, /img/hero.webp 1400w" sizes="(min-width:1000px) 560px, 100vw" fetchpriority="high" width="1400" height="1050" alt="Betónový plot s kamenným dekorom v záhrade rodinného domu — realizácia">
+          <img src="/img/s/betonovy-plot-kamenny-dekor-zahrada-ruzomberok.webp" srcset="/img/s/betonovy-plot-kamenny-dekor-zahrada-ruzomberok.webp 640w, /img/betonovy-plot-kamenny-dekor-zahrada-ruzomberok.webp 1400w" sizes="(min-width:1000px) 560px, 100vw" fetchpriority="high" width="1400" height="1050" alt="Betónový plot s kamenným dekorom v záhrade rodinného domu — realizácia">
           <svg class="dims" viewBox="0 0 1400 1050" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
             <!-- vodorovná kóta: šírka poľa medzi stĺpikmi -->
             <path class="halo draw" d="M712 282 H986"/>
@@ -675,7 +696,7 @@ footer.site{background:var(--deep);color:var(--stone-d);border-top:1px solid var
 
     <div class="svc-grid">
       <a class="svc" href="/sluzby/murarske-prace/">
-        <div class="svc-media tex" style="background-image:url(/img/tex-tehla.webp)"><span class="no">01</span><svg><use href="#i-brick"/></svg></div>
+        <div class="svc-media tex" style="background-image:url(/img/dekor-betonoveho-plota-tehla.webp)"><span class="no">01</span><svg><use href="#i-brick"/></svg></div>
         <div class="svc-body">
           <h3>Murárske práce</h3>
           <p>Hrubá stavba aj dokončovacie práce pri rodinných domoch, prístavbách a rekonštrukciách.</p>
@@ -684,7 +705,7 @@ footer.site{background:var(--deep);color:var(--stone-d);border-top:1px solid var
         </div>
       </a>
       <a class="svc" href="/sluzby/pomocne-prace/">
-        <div class="svc-media"><img src="/img/s/r016.webp" srcset="/img/s/r016.webp 640w, /img/r016.webp 1400w" sizes="(min-width:1080px) 380px, (min-width:700px) 50vw, 100vw" alt="Výkopy a osadené stĺpiky na pozemku" loading="lazy"><span class="no">02</span></div>
+        <div class="svc-media"><img src="/img/s/vykopy-a-osadene-stlpiky.webp" srcset="/img/s/vykopy-a-osadene-stlpiky.webp 640w, /img/vykopy-a-osadene-stlpiky.webp 1400w" sizes="(min-width:1080px) 380px, (min-width:700px) 50vw, 100vw" alt="Výkopy a osadené stĺpiky na pozemku" loading="lazy"><span class="no">02</span></div>
         <div class="svc-body">
           <h3>Pomocné práce</h3>
           <p>Spoľahlivé ruky na stavbe — keď majster potrebuje posilu alebo chcete urýchliť harmonogram.</p>
@@ -693,7 +714,7 @@ footer.site{background:var(--deep);color:var(--stone-d);border-top:1px solid var
         </div>
       </a>
       <a class="svc" href="/sluzby/prenos-materialu/">
-        <div class="svc-media"><img src="/img/s/r086.webp" srcset="/img/s/r086.webp 640w, /img/r086.webp 1400w" sizes="(min-width:1080px) 380px, (min-width:700px) 50vw, 100vw" alt="Betónové dosky na paletách pripravené na prenos" loading="lazy"><span class="no">03</span></div>
+        <div class="svc-media"><img src="/img/s/betonove-dosky-kamenny-dekor-palety.webp" srcset="/img/s/betonove-dosky-kamenny-dekor-palety.webp 640w, /img/betonove-dosky-kamenny-dekor-palety.webp 1400w" sizes="(min-width:1080px) 380px, (min-width:700px) 50vw, 100vw" alt="Betónové dosky na paletách pripravené na prenos" loading="lazy"><span class="no">03</span></div>
         <div class="svc-body">
           <h3>Prenos materiálu</h3>
           <p>Presun a manipulácia so stavebným materiálom aj tam, kam auto ani technika nedôjde.</p>
@@ -702,7 +723,7 @@ footer.site{background:var(--deep);color:var(--stone-d);border-top:1px solid var
         </div>
       </a>
       <a class="svc" href="/sluzby/upratovacie-prace/">
-        <div class="svc-media"><img src="/img/s/r093.webp" srcset="/img/s/r093.webp 640w, /img/r093.webp 1400w" sizes="(min-width:1080px) 380px, (min-width:700px) 50vw, 100vw" alt="Upratený pozemok po dokončení prác" loading="lazy"><span class="no">04</span></div>
+        <div class="svc-media"><img src="/img/s/upraveny-pozemok-po-stavbe-plota.webp" srcset="/img/s/upraveny-pozemok-po-stavbe-plota.webp 640w, /img/upraveny-pozemok-po-stavbe-plota.webp 1400w" sizes="(min-width:1080px) 380px, (min-width:700px) 50vw, 100vw" alt="Upratený pozemok po dokončení prác" loading="lazy"><span class="no">04</span></div>
         <div class="svc-body">
           <h3>Upratovacie práce</h3>
           <p>Po stavbe nechávame poriadok — pozemok aj interiér odovzdáme pripravený na užívanie.</p>
@@ -711,7 +732,7 @@ footer.site{background:var(--deep);color:var(--stone-d);border-top:1px solid var
         </div>
       </a>
       <a class="svc" href="/sluzby/ploty-betonove/">
-        <div class="svc-media"><img src="/img/s/g-stone.webp" srcset="/img/s/g-stone.webp 640w, /img/g-stone.webp 1400w" sizes="(min-width:1080px) 380px, (min-width:700px) 50vw, 100vw" alt="Betónový plot, kamenný dekor" loading="lazy"><span class="no">05</span><span class="badge">pôvodne BP ploty</span></div>
+        <div class="svc-media"><img src="/img/s/betonovy-plot-kamenny-dekor-hranica-pozemku.webp" srcset="/img/s/betonovy-plot-kamenny-dekor-hranica-pozemku.webp 640w, /img/betonovy-plot-kamenny-dekor-hranica-pozemku.webp 1400w" sizes="(min-width:1080px) 380px, (min-width:700px) 50vw, 100vw" alt="Betónový plot, kamenný dekor" loading="lazy"><span class="no">05</span><span class="badge">pôvodne BP ploty</span></div>
         <div class="svc-body">
           <h3>Betónové ploty</h3>
           <p>Vibrolisovaný betón s reliéfom — masívny, nepriehľadný a bez údržby na desaťročia.</p>
@@ -720,7 +741,7 @@ footer.site{background:var(--deep);color:var(--stone-d);border-top:1px solid var
         </div>
       </a>
       <a class="svc" href="/sluzby/ploty-3d/">
-        <div class="svc-media"><img src="/img/s/g-3d-panel.webp" srcset="/img/s/g-3d-panel.webp 640w, /img/g-3d-panel.webp 1400w" sizes="(min-width:1080px) 380px, (min-width:700px) 50vw, 100vw" alt="3D plotový panel v antracitovej farbe" loading="lazy"><span class="no">06</span><span class="badge">pôvodne BP ploty</span></div>
+        <div class="svc-media"><img src="/img/s/3d-plotovy-panel-antracit.webp" srcset="/img/s/3d-plotovy-panel-antracit.webp 640w, /img/3d-plotovy-panel-antracit.webp 1400w" sizes="(min-width:1080px) 380px, (min-width:700px) 50vw, 100vw" alt="3D plotový panel v antracitovej farbe" loading="lazy"><span class="no">06</span><span class="badge">pôvodne BP ploty</span></div>
         <div class="svc-body">
           <h3>3D ploty</h3>
           <p>Zváraný kovový panel — vzdušný, ľahký, s rýchlou montážou aj na svahovitom teréne.</p>
@@ -800,21 +821,21 @@ footer.site{background:var(--deep);color:var(--stone-d);border-top:1px solid var
       <p>Potiahnite posuvník a porovnajte.</p>
     </div>
     <div class="ba" id="ba">
-      <img src="/img/s/ba-before.webp" srcset="/img/s/ba-before.webp 640w, /img/ba-before.webp 1400w" sizes="(min-width:1200px) 1160px, 100vw" alt="Pred: osadené betónové stĺpiky a rozkopaný pozemok">
-      <img class="after" src="/img/s/ba-after.webp" srcset="/img/s/ba-after.webp 640w, /img/ba-after.webp 1400w" sizes="(min-width:1200px) 1160px, 100vw" alt="Po: hotový betónový plot s kamenným dekorom">
+      <img src="/img/s/stavba-plota-osadene-stlpiky-pred.webp" srcset="/img/s/stavba-plota-osadene-stlpiky-pred.webp 640w, /img/stavba-plota-osadene-stlpiky-pred.webp 1400w" sizes="(min-width:1200px) 1160px, 100vw" alt="Pred: osadené betónové stĺpiky a rozkopaný pozemok">
+      <img class="after" src="/img/s/betonovy-plot-hotovy-po.webp" srcset="/img/s/betonovy-plot-hotovy-po.webp 640w, /img/betonovy-plot-hotovy-po.webp 1400w" sizes="(min-width:1200px) 1160px, 100vw" alt="Po: hotový betónový plot s kamenným dekorom">
       <span class="lbl l">Pred<span class="lx"> · osadené stĺpiky</span></span>
       <span class="lbl r">Po<span class="lx"> · hotový plot</span></span>
       <input type="range" min="0" max="100" value="50" id="baRange" aria-label="Porovnanie pred a po">
       <div class="handle"><div class="knob">‹ ›</div></div>
     </div>
     <div class="gal" id="gallery">
-      <button type="button" class="big" data-i="0"><img src="/img/s/g-stone-garden.webp" srcset="/img/s/g-stone-garden.webp 640w, /img/g-stone-garden.webp 1400w" sizes="(min-width:900px) 30vw, 50vw" data-full="/img/g-stone-garden.webp" alt="Betónový plot v kvitnúcej záhrade" loading="lazy"><span class="cap" aria-hidden="true">Plot v záhrade<span>betón · kameň</span></span></button>
-      <button type="button" data-i="1"><img src="/img/s/g-wood.webp" srcset="/img/s/g-wood.webp 640w, /img/g-wood.webp 1400w" sizes="(min-width:900px) 30vw, 50vw" data-full="/img/g-wood.webp" alt="Betónový plot s drevodekorom pri starom dome" loading="lazy"><span class="cap" aria-hidden="true">Uličná fasáda<span>drevodekor</span></span></button>
-      <button type="button" data-i="2"><img src="/img/s/g-detail.webp" srcset="/img/s/g-detail.webp 640w, /img/g-detail.webp 1400w" sizes="(min-width:900px) 30vw, 50vw" data-full="/img/g-detail.webp" alt="Detail kamenného dekoru betónového plota" loading="lazy"><span class="cap" aria-hidden="true">Detail reliéfu<span>kameň</span></span></button>
-      <button type="button" class="wide" data-i="3"><img src="/img/s/g-3d-yard.webp" srcset="/img/s/g-3d-yard.webp 640w, /img/g-3d-yard.webp 1400w" sizes="(min-width:900px) 30vw, 50vw" data-full="/img/g-3d-yard.webp" alt="3D plot pri rodinnom dome so zámkovou dlažbou" loading="lazy"><span class="cap" aria-hidden="true">Rodinný dom<span>3D panel</span></span></button>
-      <button type="button" data-i="4"><img src="/img/s/g-wood-house.webp" srcset="/img/s/g-wood-house.webp 640w, /img/g-wood-house.webp 1400w" sizes="(min-width:900px) 30vw, 50vw" data-full="/img/g-wood-house.webp" alt="Drevodekorový betónový plot pri drevostavbe" loading="lazy"><span class="cap" aria-hidden="true">Novostavba<span>drevodekor</span></span></button>
-      <button type="button" data-i="5"><img src="/img/s/g-pergola.webp" srcset="/img/s/g-pergola.webp 640w, /img/g-pergola.webp 1400w" sizes="(min-width:900px) 30vw, 50vw" data-full="/img/g-pergola.webp" alt="Betónový plot pri terase s pergolou" loading="lazy"><span class="cap" aria-hidden="true">Súkromie terasy<span>kameň</span></span></button>
-      <button type="button" class="wide" data-i="6"><img src="/img/s/g-stone.webp" srcset="/img/s/g-stone.webp 640w, /img/g-stone.webp 1400w" sizes="(min-width:900px) 30vw, 50vw" data-full="/img/g-stone.webp" alt="Dlhý betónový plot s kamenným dekorom" loading="lazy"><span class="cap" aria-hidden="true">Hranica pozemku<span>betón · 200 cm</span></span></button>
+      <button type="button" class="big" data-i="0"><img src="/img/s/betonovy-plot-zahrada-liptov.webp" srcset="/img/s/betonovy-plot-zahrada-liptov.webp 640w, /img/betonovy-plot-zahrada-liptov.webp 1400w" sizes="(min-width:900px) 30vw, 50vw" data-full="/img/betonovy-plot-zahrada-liptov.webp" alt="Betónový plot v kvitnúcej záhrade" loading="lazy"><span class="cap" aria-hidden="true">Plot v záhrade<span>betón · kameň</span></span></button>
+      <button type="button" data-i="1"><img src="/img/s/betonovy-plot-drevodekor-ulica.webp" srcset="/img/s/betonovy-plot-drevodekor-ulica.webp 640w, /img/betonovy-plot-drevodekor-ulica.webp 1400w" sizes="(min-width:900px) 30vw, 50vw" data-full="/img/betonovy-plot-drevodekor-ulica.webp" alt="Betónový plot s drevodekorom pri starom dome" loading="lazy"><span class="cap" aria-hidden="true">Uličná fasáda<span>drevodekor</span></span></button>
+      <button type="button" data-i="2"><img src="/img/s/betonovy-plot-kamenny-dekor-detail.webp" srcset="/img/s/betonovy-plot-kamenny-dekor-detail.webp 640w, /img/betonovy-plot-kamenny-dekor-detail.webp 1400w" sizes="(min-width:900px) 30vw, 50vw" data-full="/img/betonovy-plot-kamenny-dekor-detail.webp" alt="Detail kamenného dekoru betónového plota" loading="lazy"><span class="cap" aria-hidden="true">Detail reliéfu<span>kameň</span></span></button>
+      <button type="button" class="wide" data-i="3"><img src="/img/s/3d-plot-rodinny-dom-dlazba.webp" srcset="/img/s/3d-plot-rodinny-dom-dlazba.webp 640w, /img/3d-plot-rodinny-dom-dlazba.webp 1400w" sizes="(min-width:900px) 30vw, 50vw" data-full="/img/3d-plot-rodinny-dom-dlazba.webp" alt="3D plot pri rodinnom dome so zámkovou dlažbou" loading="lazy"><span class="cap" aria-hidden="true">Rodinný dom<span>3D panel</span></span></button>
+      <button type="button" data-i="4"><img src="/img/s/betonovy-plot-drevodekor-drevostavba.webp" srcset="/img/s/betonovy-plot-drevodekor-drevostavba.webp 640w, /img/betonovy-plot-drevodekor-drevostavba.webp 1400w" sizes="(min-width:900px) 30vw, 50vw" data-full="/img/betonovy-plot-drevodekor-drevostavba.webp" alt="Drevodekorový betónový plot pri drevostavbe" loading="lazy"><span class="cap" aria-hidden="true">Novostavba<span>drevodekor</span></span></button>
+      <button type="button" data-i="5"><img src="/img/s/betonovy-plot-terasa-pergola.webp" srcset="/img/s/betonovy-plot-terasa-pergola.webp 640w, /img/betonovy-plot-terasa-pergola.webp 1400w" sizes="(min-width:900px) 30vw, 50vw" data-full="/img/betonovy-plot-terasa-pergola.webp" alt="Betónový plot pri terase s pergolou" loading="lazy"><span class="cap" aria-hidden="true">Súkromie terasy<span>kameň</span></span></button>
+      <button type="button" class="wide" data-i="6"><img src="/img/s/betonovy-plot-kamenny-dekor-hranica-pozemku.webp" srcset="/img/s/betonovy-plot-kamenny-dekor-hranica-pozemku.webp 640w, /img/betonovy-plot-kamenny-dekor-hranica-pozemku.webp 1400w" sizes="(min-width:900px) 30vw, 50vw" data-full="/img/betonovy-plot-kamenny-dekor-hranica-pozemku.webp" alt="Dlhý betónový plot s kamenným dekorom" loading="lazy"><span class="cap" aria-hidden="true">Hranica pozemku<span>betón · 200 cm</span></span></button>
     </div>
     <div class="gal-foot">
       <p>Kompletná galéria zostáva na podstránke <code style="font-family:var(--f-mono);color:var(--ink)">/realizacie</code> — prenesená zo starého webu bez zmeny.</p>
@@ -844,12 +865,12 @@ footer.site{background:var(--deep);color:var(--stone-d);border-top:1px solid var
 
 <!-- ================= REGIÓN ================= -->
 <section class="region">
-  <img src="/img/s/region.webp" srcset="/img/s/region.webp 640w, /img/region.webp 1400w" sizes="100vw" alt="Výhľad na Ružomberok a okolité hory s rozostavaným plotom v popredí" loading="lazy">
+  <img src="/img/s/ruzomberok-vyhlad-stavba-plota.webp" srcset="/img/s/ruzomberok-vyhlad-stavba-plota.webp 640w, /img/ruzomberok-vyhlad-stavba-plota.webp 1400w" sizes="100vw" alt="Výhľad na Ružomberok a okolité hory s rozostavaným plotom v popredí" loading="lazy">
   <div class="wrap">
     <span class="eyebrow" style="color:var(--brass)"><i class="stripes"></i>Kde pôsobíme</span>
     <h2>Ružomberok a celý Liptov.</h2>
-    <p>Pracujeme v Ružomberku a okolitých obciach Žilinského kraja. Pri väčších zákazkách prídeme aj ďalej — stačí napísať, kde stavbu plánujete.</p>
-    <div class="pins"><span>Ružomberok</span><span>okolité obce</span><span>Žilinský kraj</span><span>väčšie zákazky aj ďalej</span></div>
+    <p>Pracujeme v Ružomberku a obciach okresu Ružomberok, pri väčších zákazkách aj v Liptovskom Mikuláši, Dolnom Kubíne a ďalej v Žilinskom kraji. Napíšte, kde stavbu plánujete.</p>
+    <div class="pins"><span>Ružomberok</span><span>Likavka</span><span>Lisková</span><span>Ludrová</span><span>Liptovská Teplá</span><span>Liptovská Štiavnica</span><span>Martinček</span><span>Hubová</span><span>Ľubochňa</span><span>Liptovské Sliače</span><span>Lúčky</span><span>Bešeňová</span><span>Ivachnová</span><span>Liptovská Osada</span><span>Liptovská Lúžna</span><span>Komjatná</span><span>Valaská Dubová</span><span>Švošov</span><span>… a ďalšie obce Liptova</span></div>
   </div>
 </section>
 
@@ -880,6 +901,10 @@ footer.site{background:var(--deep);color:var(--stone-d);border-top:1px solid var
   </div>
 </section>
 
+<section class="band light-2" id="poradna"><div class="wrap">
+  <div class="sec-head split"><div><span class="eyebrow"><i class="stripes"></i>Poradňa</span><h2 class="h-sec">Skôr než<br>začnete stavať.</h2></div>
+  <p class="lead">Výška plota a nový stavebný zákon, výber medzi betónom a 3D panelom, priebeh stavby. Krátko a prakticky.</p></div>
+  <div class="ptiles"><a class="ptile" href="/poradna/betonovy-alebo-3d-plot/"><img src="/img/s/betonovy-plot-kamenny-dekor-hranica-pozemku.webp" alt="" loading="lazy" width="640" height="480"><span class="b"><small>Poradňa · 5 min</small><b>Betónový alebo 3D plot?</b><span>Betónový alebo 3D plot? Porovnanie súkromia, vzhľadu, údržby, montáže a povolenia podľa nového stavebného zákona. Rady…</span></span></a><a class="ptile" href="/poradna/plot-a-stavebne-povolenie/"><img src="/img/s/upraveny-pozemok-po-stavbe-plota.webp" alt="" loading="lazy" width="640" height="480"><span class="b"><small>Poradňa · 6 min</small><b>Plot a nový stavebný zákon</b><span>Treba na plot povolenie? Od 1. 4. 2025 platí nový stavebný zákon: plný plot do 1,6 m a priehľadný do 2 m je drobná…</span></span></a><a class="ptile" href="/poradna/ako-prebieha-stavba-plota/"><img src="/img/s/betonovy-plot-hotovy-po.webp" alt="" loading="lazy" width="640" height="480"><span class="b"><small>Poradňa · 5 min</small><b>Ako prebieha stavba plota</b><span>Ako prebieha stavba betónového plota od obhliadky po upratanie: hranica pozemku, ohlásenie, výkopy, betonáž stĺpikov,…</span></span></a></div></div></section>
 <!-- ================= FAQ ================= -->
 <section class="band light-2" id="faq">
   <div class="wrap faq-grid">
@@ -894,9 +919,9 @@ footer.site{background:var(--deep);color:var(--stone-d);border-top:1px solid var
       <details><summary><span><span class="cat">Všeobecné</span>Koľko stojí obhliadka a cenová ponuka?</span><i class="pm"></i></summary><div class="ans">Nič. Obhliadka aj kalkulácia sú bezplatné a nezáväzné.</div></details>
       <details><summary><span><span class="cat">Všeobecné</span>Kde pôsobíte?</span><i class="pm"></i></summary><div class="ans">V Ružomberku a okolitých obciach Žilinského kraja. Pri väčších zákazkách vieme vyraziť aj ďalej — stačí napísať, kde stavbu plánujete.</div></details>
       <details><summary><span><span class="cat">Stavba</span>Dá sa objednať viac prác naraz?</span><i class="pm"></i></summary><div class="ans">Áno, a práve na to sme. Napríklad murovanie, prenos materiálu a záverečné upratanie zvládneme v jednej zákazke s jedným termínom a jednou cenou.</div></details>
-      <details><summary><span><span class="cat">Ploty</span>Akú maximálnu výšku plota viete postaviť?</span><i class="pm"></i></summary><div class="ans">Betónové ploty realizujeme do výšky 200 cm. Pre bežný rodinný dom sa najčastejšie volí 150 – 180 cm, pri väčšom dôraze na súkromie 180 – 200 cm.</div></details>
+      <details><summary><span><span class="cat">Ploty</span>Akú maximálnu výšku plota viete postaviť?</span><i class="pm"></i></summary><div class="ans">Betónové ploty realizujeme do výšky 200 cm. Pre bežný rodinný dom sa najčastejšie volí 150 – 180 cm, pri väčšom dôraze na súkromie 180 – 200 cm. Plot vyšší ako 1,6 m už nie je drobná stavba a potrebuje rozhodnutie o stavebnom zámere.</div></details>
       <details><summary><span><span class="cat">Ploty</span>Aký je rozdiel medzi betónovým a 3D plotom?</span><i class="pm"></i></summary><div class="ans">Betónový plot je z vibrolisovaných dielcov s reliéfnym dekorom a pôsobí masívne a nepriehľadne. 3D plot je zváraný kovový panel — ľahší, priehľadnejší, rýchlejšie sa montuje a je vo viacerých farbách.</div></details>
-      <details><summary><span><span class="cat">Ploty</span>Potrebujem na plot stavebné povolenie?</span><i class="pm"></i></summary><div class="ans">Bežný plot do 2 m výšky spravidla nevyžaduje stavebné povolenie, pravidlá sa však môžu líšiť podľa obce. Odporúčame to overiť na miestnom stavebnom úrade ešte pred realizáciou.</div></details>
+      <details><summary><span><span class="cat">Ploty</span>Potrebujem na plot stavebné povolenie?</span><i class="pm"></i></summary><div class="ans">Od 1. 4. 2025 platí nový stavebný zákon. Plný (nepriehľadný) plot do výšky 1,6 m a priehľadný plot (napríklad 3D panel) do 2 m sú drobné stavby — stačí ich ohlásiť stavebnému úradu. Vyšší betónový plot, napríklad 1,8 – 2 m, už drobnou stavbou nie je a potrebuje rozhodnutie o stavebnom zámere. Podrobnosti nájdete v článku <a href="/poradna/plot-a-stavebne-povolenie/">Plot a stavebný zákon</a>; konkrétne podmienky odporúčame vždy overiť na miestnom stavebnom úrade.</div></details>
       <details><summary><span><span class="cat">Ploty</span>Dá sa stavať aj v zime?</span><i class="pm"></i></summary><div class="ans">Betónovanie vyžaduje teploty nad bodom mrazu, takže pri silných mrazoch práce pozastavíme. Inak pracujeme celý rok a termín prispôsobíme počasiu.</div></details>
     </div>
   </div>
@@ -1045,7 +1070,7 @@ footer.site{background:var(--deep);color:var(--stone-d);border-top:1px solid var
         <h2 class="fh">Web</h2>
         <ul>
           <li><a href="#postup">Ako to prebieha</a></li>
-          <li><a href="#realizacie">Realizácie</a></li>
+          <li><a href="#realizacie">Realizácie</a></li><li><a href="/poradna/">Poradňa</a></li>
           <li><a href="#faq">Časté otázky</a></li>
           <li><a href="#objednavka">Objednávka</a></li>
         </ul>
@@ -1195,7 +1220,7 @@ footer.site{background:var(--deep);color:var(--stone-d);border-top:1px solid var
   /* --- plánovač plota --- */
   var P={type:'beton',len:40,h:150,dec:'kameň'};
   var CFG={
-    beton:{fw:200,heights:[100,150,200],defH:150,decLab:'Dekor',decs:[['kameň','/img/tex-kamen.webp'],['drevodekor','/img/tex-drevo.webp'],['tehla','/img/tex-tehla.webp']]},
+    beton:{fw:200,heights:[100,150,200],defH:150,decLab:'Dekor',decs:[['kameň','/img/dekor-betonoveho-plota-kamen.webp'],['drevodekor','/img/dekor-betonoveho-plota-drevo.webp'],['tehla','/img/dekor-betonoveho-plota-tehla.webp']]},
     '3d':{fw:250,heights:[123,153,173,203],defH:153,decLab:'Farba',decs:[['zelená','#41563A'],['hnedá','#5B4632'],['antracit','#34353A']]}
   };
   var svg=document.getElementById('pSvg'), lenIn=document.getElementById('pLen');
@@ -1274,13 +1299,13 @@ footer.site{background:var(--deep);color:var(--stone-d);border-top:1px solid var
       document.getElementById('bParts').textContent=fields*(P.h/50);
       document.getElementById('bExtraLab').textContent='Dĺžka';
       document.getElementById('bExtra').textContent=P.len+' m';
-      document.getElementById('pNote').textContent='Orientačne pri poli 2,0 m a doske 50 cm. Rohy, svah, bránky a presný počet upresníme na bezplatnej obhliadke.';
+      document.getElementById('pNote').textContent='Orientačne pri poli 2,0 m a doske 50 cm. Rohy, svah, bránky a presný počet upresníme na bezplatnej obhliadke.'+(P.h>160?' Pozor: plný plot vyšší ako 1,6 m nie je drobná stavba — potrebuje rozhodnutie o stavebnom zámere.':'');
     } else {
       document.getElementById('bPartsLab').textContent='Panelov';
       document.getElementById('bParts').textContent=fields;
       document.getElementById('bExtraLab').textContent='Podhrab. dosiek';
       document.getElementById('bExtra').textContent=fields;
-      document.getElementById('pNote').textContent='Orientačne pri paneli 2,5 m s podhrabovou doskou. Rohy, svah, bránky a presný počet upresníme na bezplatnej obhliadke.';
+      document.getElementById('pNote').textContent='Orientačne pri paneli 2,5 m s podhrabovou doskou. Rohy, svah, bránky a presný počet upresníme na bezplatnej obhliadke.'+(P.h>200?' Pozor: priehľadný plot vyšší ako 2 m nie je drobná stavba — potrebuje rozhodnutie o stavebnom zámere.':'');
     }
     document.getElementById('pLenOut').innerHTML=P.len+'<small>m</small>';
     lenIn.style.setProperty('--fill',((P.len-4)/(146)*100)+'%');

@@ -2,6 +2,9 @@
 <html lang="sk">
 <head>
 <meta charset="UTF-8">
+<link rel="preload" href="/fonts/antonio-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/hanken-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>@font-face{font-family:'Antonio';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/antonio-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Antonio';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/antonio-latin-ext-500-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Antonio';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/antonio-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Antonio';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/antonio-latin-ext-600-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Antonio';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/antonio-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Antonio';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/antonio-latin-ext-700-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Hanken Grotesk';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/hanken-grotesk-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Hanken Grotesk';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/hanken-grotesk-latin-ext-400-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Hanken Grotesk';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/hanken-grotesk-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Hanken Grotesk';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/hanken-grotesk-latin-ext-500-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Hanken Grotesk';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/hanken-grotesk-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Hanken Grotesk';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/hanken-grotesk-latin-ext-600-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Hanken Grotesk';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/hanken-grotesk-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Hanken Grotesk';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/hanken-grotesk-latin-ext-700-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/jetbrains-mono-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/jetbrains-mono-latin-ext-400-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/jetbrains-mono-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/jetbrains-mono-latin-ext-500-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}</style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Ochrana osobných údajov | LIBES s.r.o.</title>
 <link rel="canonical" href="https://www.bpploty.sk/ochrana-osobnych-udajov/">
@@ -27,9 +30,6 @@
   window.addEventListener('load',function(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-FCX9F0HGDW';document.head.appendChild(s)});
 </script>
 <meta name="description" content="Ako LIBES s.r.o. spracúva osobné údaje z dopytov a objednávok a ako používa cookies.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Antonio:wght@500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* =================================================================
    LIBES s.r.o. — koncept hlavnej stránky v3
@@ -155,7 +155,8 @@ body.menu-open{overflow:hidden}
   var(--coal);padding-block:72px 0}
 .hero-grid{display:grid;gap:56px;align-items:center}
 @media (min-width:1000px){.hero-grid{grid-template-columns:1.05fr .95fr;gap:64px}}
-.hero h1{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(3.1rem,8.6vw,6.6rem);line-height:1.17;letter-spacing:-.005em;margin-top:22px}
+.hero h1{margin:0}.hero .h1-main{display:block;font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(3.1rem,8.6vw,6.6rem);line-height:1.17;letter-spacing:-.005em;margin-top:22px}
+.hero .h1-kicker{font-weight:400;line-height:1.5}
 .hero h1 .thin{font-weight:500;color:var(--stone-d)}
 .hero h1 .gold{color:var(--brass);position:relative}
 .hero .lead{font-size:1.15rem;color:#C9C1B1;max-width:50ch}
@@ -272,7 +273,7 @@ body.menu-open{overflow:hidden}
 .region .wrap{position:relative;z-index:1;padding-block:72px;width:100%}
 .region h2{font-family:var(--f-display);font-weight:600;text-transform:uppercase;font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.16;max-width:13ch;margin-top:14px}
 .region p{color:#CFC7B7;max-width:46ch;margin-top:16px}
-.region .pins{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.region .pins{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px;max-width:760px}
 .region .pins span{font-family:var(--f-mono);font-size:.72rem;padding:6px 11px;border-radius:999px;border:1px solid rgba(234,229,216,.25);background:rgba(var(--rgb),.4);backdrop-filter:blur(4px)}
 
 /* ---------- prečo / značka ---------- */
@@ -309,6 +310,7 @@ body.menu-open{overflow:hidden}
 .faq details[open] summary .pm{background:var(--ink);border-color:var(--ink)}
 .faq details[open] summary .pm::before,.faq details[open] summary .pm::after{background:var(--bone)}
 .faq details[open] summary .pm::after{transform:translate(-50%,-50%) rotate(0)}
+.faq .ans a{color:var(--brass-deep);font-weight:600}
 .faq .ans{padding:0 50px 24px 0;color:var(--stone-l);font-size:.96rem;max-width:62ch}
 .faq .cat{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--brass-deep);margin-right:10px;font-weight:500}
 
@@ -635,7 +637,7 @@ mark{background:#F3E2BF;color:#5A3E12;padding:0 4px;border-radius:3px}
 </div></section>
 <header class="site"><div class="wrap">
   <a class="logo" href="/"><svg viewBox="0 0 107 163" fill="#EAE5D8" aria-hidden="true"><use href="#mark"/></svg><span class="word">LIBES</span><span class="sro">s.r.o.</span></a>
-  <nav class="nav" aria-label="Hlavná navigácia"><a href="/#sluzby">Služby</a><a href="/#planovac">Plánovač</a><a href="/#realizacie">Realizácie</a><a href="/#postup">Postup</a><a href="/#objednavka">Kontakt</a></nav>
+  <nav class="nav" aria-label="Hlavná navigácia"><a href="/#sluzby">Služby</a><a href="/#planovac">Plánovač</a><a href="/#realizacie">Realizácie</a><a href="/poradna/">Poradňa</a><a href="/#objednavka">Kontakt</a></nav>
   <div class="head-actions">
     <a class="head-phone" href="tel:+421951565717"><svg><use href="#i-phone"/></svg>0951 565 717</a>
     <a class="btn btn-brass btn-sm hide-xs" href="/#objednavka">Vytvoriť objednávku</a>
@@ -668,7 +670,7 @@ mark{background:#F3E2BF;color:#5A3E12;padding:0 4px;border-radius:3px}
     <div class="foot-about"><a class="logo" href="/"><svg viewBox="0 0 107 163" fill="#EAE5D8" aria-hidden="true"><use href="#mark"/></svg><span class="word">LIBES</span><span class="sro">s.r.o.</span></a>
       <p>Stavebné a pomocné práce, prenos materiálu, upratovanie a montáž plotov. Ružomberok a okolie. Predtým BP ploty.</p></div>
     <div><h2 class="fh">Služby</h2><ul><li><a href="/sluzby/murarske-prace/">Murárske práce</a></li><li><a href="/sluzby/pomocne-prace/">Pomocné práce</a></li><li><a href="/sluzby/prenos-materialu/">Prenos materiálu</a></li><li><a href="/sluzby/upratovacie-prace/">Upratovacie práce</a></li><li><a href="/sluzby/ploty-betonove/">Betónové ploty</a></li><li><a href="/sluzby/ploty-3d/">3D ploty</a></li></ul></div>
-    <div><h2 class="fh">Web</h2><ul><li><a href="/#planovac">Plánovač plota</a></li><li><a href="/#realizacie">Realizácie</a></li><li><a href="/#faq">Časté otázky</a></li><li><a href="/#objednavka">Objednávka</a></li></ul></div>
+    <div><h2 class="fh">Web</h2><ul><li><a href="/#planovac">Plánovač plota</a></li><li><a href="/#realizacie">Realizácie</a></li><li><a href="/poradna/">Poradňa</a></li><li><a href="/#faq">Časté otázky</a></li><li><a href="/#objednavka">Objednávka</a></li></ul></div>
     <div><h2 class="fh">Kontakt</h2><ul><li><a href="tel:+421951565717" style="color:var(--bone);font-family:var(--f-mono)">0951 565 717</a></li><li><a href="mailto:libes.sro@gmail.com">libes.sro@gmail.com</a></li><li>Po – Pia 7:00 – 16:00</li><li>Ružomberok a okolie</li><li><a href="https://www.instagram.com/bpploty" target="_blank" rel="noopener">Instagram @bpploty</a></li></ul></div>
   </div></div>
   <div class="giant" aria-hidden="true"><svg viewBox="-1 -1 109 165"><use href="#mark"/></svg><span>LIBES</span></div>
