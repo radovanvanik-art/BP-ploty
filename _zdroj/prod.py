@@ -8,7 +8,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = '/home/claude/bp-ploty'
 
 # ---------------- konfigurácia firmy ----------------
-SITE = 'https://www.bpploty.sk'          # zmeniť pri prechode na novú doménu (+ CNAME)
+SITE = 'https://www.libes.sk'            # hlavná doména (CNAME v repozitári: www.libes.sk)
 FORM_EMAIL = 'libes.sro@gmail.com'        # kam chodia objednávky (FormSubmit)
 EMAIL = 'libes.sro@gmail.com'
 PHONE, TEL = '0951 565 717', '+421951565717'

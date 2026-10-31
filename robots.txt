@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.bpploty.sk/sitemap.xml
+Sitemap: https://www.libes.sk/sitemap.xml

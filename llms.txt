@@ -13,12 +13,12 @@ LIBES s.r.o. pokračuje v činnosti BP ploty s rovnakým tímom a rozšírenou p
 - Prevádzková doba: pondelok–piatok 7:00–16:00
 
 ## Stránky
-- [Domovská stránka](https://www.bpploty.sk/) — služby, plánovač plota, realizácie, časté otázky, objednávka
-- [Murárske práce](https://www.bpploty.sk/sluzby/murarske-prace/)
-- [Pomocné práce](https://www.bpploty.sk/sluzby/pomocne-prace/)
-- [Prenos materiálu](https://www.bpploty.sk/sluzby/prenos-materialu/)
-- [Upratovacie práce](https://www.bpploty.sk/sluzby/upratovacie-prace/)
-- [Betónové ploty](https://www.bpploty.sk/sluzby/ploty-betonove/)
-- [3D ploty](https://www.bpploty.sk/sluzby/ploty-3d/)
-- [Realizácie](https://www.bpploty.sk/realizacie/) — 112 fotiek hotových zákaziek
-- [Kontakt](https://www.bpploty.sk/kontakt/) — telefón, WhatsApp, Viber, e-mail, údaje firmy
+- [Domovská stránka](https://www.libes.sk/) — služby, plánovač plota, realizácie, časté otázky, objednávka
+- [Murárske práce](https://www.libes.sk/sluzby/murarske-prace/)
+- [Pomocné práce](https://www.libes.sk/sluzby/pomocne-prace/)
+- [Prenos materiálu](https://www.libes.sk/sluzby/prenos-materialu/)
+- [Upratovacie práce](https://www.libes.sk/sluzby/upratovacie-prace/)
+- [Betónové ploty](https://www.libes.sk/sluzby/ploty-betonove/)
+- [3D ploty](https://www.libes.sk/sluzby/ploty-3d/)
+- [Realizácie](https://www.libes.sk/realizacie/) — 112 fotiek hotových zákaziek
+- [Kontakt](https://www.libes.sk/kontakt/) — telefón, WhatsApp, Viber, e-mail, údaje firmy
