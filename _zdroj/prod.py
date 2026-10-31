@@ -482,4 +482,6 @@ LIBES s.r.o. pokračuje v činnosti BP ploty s rovnakým tímom a rozšírenou p
 f'''- [Realizácie]({SITE}/realizacie/) — {len(nums)} fotiek hotových zákaziek
 - [Kontakt]({SITE}/kontakt/) — telefón, WhatsApp, Viber, e-mail, údaje firmy
 ''')
+import subprocess
+subprocess.run(['node', __file__.rsplit('/',1)[0]+'/minify.js', REPO], check=True)
 print('hotovo:', REPO)
