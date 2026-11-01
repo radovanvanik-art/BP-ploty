@@ -285,7 +285,7 @@ def footer():
     <div><h2 class="fh">Web</h2><ul><li><a href="{HOME}#planovac">Plánovač plota</a></li><li><a href="{HOME}#realizacie">Realizácie</a></li><li><a href="{HOME}#faq">Časté otázky</a></li><li><a href="{HOME}#objednavka">Objednávka</a></li></ul></div>
     <div><h2 class="fh">Kontakt</h2><ul><li><a href="tel:{TEL}" style="color:var(--bone);font-family:var(--f-mono)">{PHONE}</a></li><li><a href="mailto:libes.sro@gmail.com">libes.sro@gmail.com</a></li><li>Po – Pia 7:00 – 16:00</li><li>Ružomberok a okolie</li></ul></div>
   </div></div>
-  <div class="giant" aria-hidden="true"><svg viewBox="-1 -1 109 165"><use href="#mark"/></svg><span>LIBES</span></div>
+  <div class="giant" aria-hidden="true"><svg viewBox="-1 -1 109 165"><use href="#mark"/></svg><span>IBES</span></div>
   <div class="wrap foot-bottom"><span>© 2026 LIBES s.r.o.</span><span><a href="../../ochrana-osobnych-udajov/index.html" style="color:inherit">Ochrana osobných údajov</a> · IČO a sídlo doplníme po zápise s.r.o.</span></div>
 </footer>
 <aside aria-label="Rýchly kontakt"><a class="fab" href="tel:{TEL}"><span class="ring"><svg><use href="#i-phone"/></svg></span><span><small>Zavolajte nám</small><b>{PHONE}</b></span></a></aside>
